@@ -5,9 +5,9 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: railstut_dev
-  username: railstut
-  password: railstut
+  database: crm_dev
+  username: postgres
+  password: 
   host: localhost
   encoding: UTF8
   pool: 5
@@ -18,9 +18,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
     adapter: postgresql
-    database: railstut_test
+    database: crm_dev
     username: postgres
-    password: postgres
+    password: 
     host: localhost
     encoding: UTF8
     pool: 5
@@ -29,7 +29,7 @@ test:
 production:
     adapter: postgresql
     prepared_statements: false
-    database: railstut_prod
+    database: crm_prod
     username: postgres
     password: 
     host: localhost
