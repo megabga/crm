@@ -4,7 +4,7 @@ module ApplicationHelper
   
   # Returns the full title on a per-page basis.
     def full_title(page_title)
-      base_title = "Gestão do Relacionamento de Clientes"
+      base_title = t("crm.title.full")
       if page_title.empty?
         base_title
       else
@@ -13,6 +13,6 @@ module ApplicationHelper
     end
     
     def title()
-      "CMGB - CRM"
+      t("crm.title.small")
     end
 end

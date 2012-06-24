@@ -1,3 +1,4 @@
+# encoding: utf-8
 module SessionsHelper
 
   def sign_in(user)
@@ -14,7 +15,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_path, notice: "Please sign in."
+      redirect_to signin_path, notice: t("session.erros.restrict_redirected")
     end
   end
   

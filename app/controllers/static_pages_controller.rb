@@ -1,5 +1,7 @@
 
 class StaticPagesController < ApplicationController
+  before_filter :signed_in_user, only: [:home, :edit, :update, :destroy]  
+  
   def home
     if signed_in?
       @micropost  = current_user.microposts.build

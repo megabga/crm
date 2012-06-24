@@ -2,22 +2,25 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     
-    User.destroy_all(); 
+    Faker::Config.locale = [:en]
     
-    User.create!(name: "Example User",
-                     email: "example@railstutorial.org",
-                     password: "foobar",
-                     password_confirmation: "foobar")
+    User.destroy_all();
+    Micropost.destroy_all();
+    
+    User.create!(name: "Teste User",
+                     email: "teste@teste.com",
+                     password: "testes",
+                     password_confirmation: "testes")
                      
-    admin = User.create!(name: "Admin User",
-                        email: "a@a.com",
-                        password: "123456",
-                        password_confirmation: "123456")
+    admin = User.create!(name: "Adm Sistema",
+                        email: "adm@adm.com",
+                        password: "admini",
+                        password_confirmation: "admini")
     admin.toggle!(:admin)
 
     logger =  Logger.new(STDOUT)
 
-    99.times do |n|
+    8.times do |n|
       name  = "#{Faker::Name.name} Gen #{n} "[0..24]
 
       logger.info name
@@ -29,18 +32,20 @@ namespace :db do
                    password_confirmation: password)
     end
     
-    users = User.all(limit: 6)
-    50.times do
-      content = Faker::Lorem.sentence(5)
-      users.each { |user| user.microposts.create!(content: content) }
+    users = User.all(limit: 5)
+    users[2..4].each do |user|
+      26.times do
+        content = Faker::Lorem.sentence(5)
+        user.microposts.create!(content: content)
+      end
     end
     
     
     def make_relationships
       users = User.all
       user  = users.first
-      followed_users = users[2..50]
-      followers      = users[3..40]
+      followed_users = users[2..5]
+      followers      = users[3..7]
       followed_users.each { |followed| user.follow!(followed) }
       followers.each      { |follower| follower.follow!(user) }
     end

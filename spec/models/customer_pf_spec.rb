@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CustomerPf do
   
   before do
-    @customerPf = CustomerPf.new (:setor => "RH", :cargo => "Gestor")
+    @customerPf = CustomerPf.new :setor => "RH", :cargo => "Gestor"
   end
   
   subject { @customerPf }
@@ -13,7 +13,12 @@ describe CustomerPf do
   it { should respond_to(:cargo) }
   
   describe "Relationship 1 to 1 Customer" do
-    @customer 
+    before do 
+      customer = Customer.new(:name => "Teste n");
+      @customerPf.customer = customer
+    end
+    
+    it { should be_valid }
   end
   
 end

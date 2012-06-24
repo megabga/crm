@@ -1,15 +1,4 @@
-Railstutorial::Application.routes.draw do
-  #get "users/new" => para resources
-  resources :users
-
-  
-  #STATIC PAGES
-  
-  #como era
-  #get "static_pages/home" <- convert to named route wirh MATCH
-  #get "static_pages/help"
-  #get "static_pages/about"
-  #get "static_pages/contact"
+Railstutorial::Application.routes.draw do  
 
   root to: 'static_pages#home' 
   
@@ -26,6 +15,7 @@ Railstutorial::Application.routes.draw do
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :customers
 
   
 

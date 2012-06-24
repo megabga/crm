@@ -1,6 +1,5 @@
-<% provide(:title, 'Contact') %>
-<h1>Contact</h1>
+<% provide(:title, t('contact.title')) %>
+<h1><%= t('contact.title') %></h1>
 <p>
-  Contact Ruby on Rails Tutorial about the sample app at the
-  <a href="<%= link_to "Contact Page", contact_path " ></a>.
+  <%= link_to t("contact.link"), contact_path %>
 </p>

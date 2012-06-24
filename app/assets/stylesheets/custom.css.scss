@@ -1,8 +1,22 @@
+/* override bootstrap default variables */
+$linkColor:      #cc0000;
+$linkColorHover: #cc3333;
+$navbarBackground: #400;
+$navbarBackgroundHighlight: black;
+$navbarHeight: 46px;
+
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
 $grayMediumLight: #eaeaea;
+$miniContentHeihgt: 300px;
+
+/* specific */
+
+.container .row {
+  min-height: $miniContentHeihgt;
+}
 
 /* universal */
 
@@ -11,7 +25,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: ($navbarHeight+24);
 }
 
 section {
@@ -42,14 +56,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.7em;
+  font-size: 1.4em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -65,6 +79,18 @@ p {
 
 /* header */
 
+/*#ISSUE NAV~>*/
+.navbar .nav { height: $navbarHeight; }
+
+.navbar .nav > li > a {
+	padding: ($navbarHeight - 20)/2 10px (($navbarHeight - 20)/2 + 1);
+}
+
+.navbar .brand {
+	padding: ((($navbarHeight - 20) / 2) * 0.8) 20px ((($navbarHeight - 20) / 2) * 1.2);
+}
+/*#<~ISSUE NAV*/
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -72,7 +98,6 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
@@ -80,6 +105,7 @@ p {
     text-decoration: none;
   }
 }
+
 
 /* footer */
 

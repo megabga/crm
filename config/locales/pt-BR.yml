@@ -1,0 +1,105 @@
+
+pt-BR:
+  crm:
+    title:
+      full: "Gestão do Relacionamento de Clientes"
+      small: "CMGB - CRM"
+  
+  #MODULES <=================================
+  home:
+    link: "Painel Pricipal"
+    feed: "Mensagens"
+    notifies: "Alertas"
+  
+  sign:
+    in:
+      title: "Autenticação do Sistema"
+      link: "Entrar"
+      error: 'Combinação e-mail/password inválida'
+    out:
+      title: "Sair do sistema"
+      link: "Sair"
+
+  session:
+    erros:
+      restrict_redirected: "Por favor, autentique-se"
+  
+  customers:
+    link: "Clientes"
+    not_valids: "Cadastros incompletos"
+    birthdays: "Aniversariantes"
+  
+  activities:
+    title: "Atividades"
+    link: "Atividades"    
+
+  aministration:
+    link: "Atividades"
+
+  microposts:
+    title: "Mensagens"
+
+  users:
+    title: "Usuários"
+    link: "Usuários"
+    profile:
+      title: "Perfil"
+      link: "Perfil"
+    settings:
+      title: "Preferencias do Usuário"
+      link: "Preferências"
+  #SECTIONS <===================================
+  
+  account:
+    link: "%{user}"
+  
+  maintenances:
+    link: "Cadastros"
+  
+
+  reports:
+    link: "Relatórios"
+  
+
+  administration:
+    link: "Painel Administrativo"
+
+  #LINKS <===================================
+
+  more: "Veja mais"
+
+  about:
+    title: "Sobre o sistema"
+    link: "Sobre"
+    description: "Sistema de Gestão de Relacionamento com o Cliente"
+
+  support:
+    link: "Suporte"
+  
+  developer:
+    link: Bruno Guerra
+  
+
+  contact:
+    title: Contato
+    link: Contato 
+
+  help:
+    link: Ajuda
+
+  
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Registro Inválido'
+        
+    attributes:
+      user:
+        email: 'e-mail'
+        password: 'Senha'
+  
+  helpers:
+    label:
+      session:
+        email: 'e-mail'
+        password: 'senha'
