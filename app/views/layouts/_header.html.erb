@@ -11,8 +11,9 @@
                 <%=t("customers.link")%> <b class="caret"></b>
               </a>
 			  <ul class="dropdown-menu">
-                <li><%= link_to t("profile_link"), current_user %></li>
-                <li><%= link_to t("settings_link"), edit_user_path(current_user) %></li>
+                <li><%= link_to t("customers.search.link"), customers_path %></li>
+                <li><%= link_to t("business_segments.link"), business_segments_path %></li>
+                <li><%= link_to t("business_activits.link"), business_activits_path %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>
@@ -40,9 +41,6 @@
                 </li>
 	         </ul>
 	       </div>
-
-
-            
           <% else %>
             <li><%= link_to t("sign.in.link"), signin_path %></li>
           <% end %>

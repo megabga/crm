@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621105348) do
+ActiveRecord::Schema.define(:version => 20120624192502) do
 
   create_table "atividades", :force => true do |t|
     t.string   "name",       :limit => 20
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(:version => 20120621105348) do
 
   create_table "bairros", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "business_activits", :force => true do |t|
+    t.string   "name"
+    t.boolean  "disable"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "business_segments", :force => true do |t|
+    t.string   "name"
+    t.boolean  "disable"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

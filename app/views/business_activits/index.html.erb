@@ -1,0 +1,25 @@
+<h1>Listing business_activits</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Disable</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @business_activits.each do |business_activit| %>
+  <tr>
+    <td><%= business_activit.name %></td>
+    <td><%= business_activit.disable %></td>
+    <td><%= link_to 'Show', business_activit %></td>
+    <td><%= link_to 'Edit', edit_business_activit_path(business_activit) %></td>
+    <td><%= link_to 'Destroy', business_activit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Business activit', new_business_activit_path %>

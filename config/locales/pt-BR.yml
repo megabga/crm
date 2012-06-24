@@ -25,9 +25,14 @@ pt-BR:
       restrict_redirected: "Por favor, autentique-se"
   
   customers:
+    title: "Cadastro de Clientes"
     link: "Clientes"
     not_valids: "Cadastros incompletos"
     birthdays: "Aniversariantes"
+    new:
+      link: "Novo Cliente"
+    index:
+      title: "Pesquisa de Clientes"
   
   activities:
     title: "Atividades"
@@ -48,6 +53,13 @@ pt-BR:
     settings:
       title: "Preferencias do Usuário"
       link: "Preferências"
+      
+      
+  business_segments:
+    link: "Seguimentos"
+    
+  business_atividades:
+    link: "Atividades"
   #SECTIONS <===================================
   
   account:
@@ -100,6 +112,9 @@ pt-BR:
   
   helpers:
     label:
+      customers:
+        search:
+          names: "Nome: (Razão social, Nome Fantasia)"
       session:
         email: 'e-mail'
         password: 'senha'

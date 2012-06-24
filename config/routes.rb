@@ -1,5 +1,9 @@
 Railstutorial::Application.routes.draw do  
 
+  resources :business_activits
+
+  resources :business_segments
+
   root to: 'static_pages#home' 
   
   match '/help',    to: 'static_pages#help'
