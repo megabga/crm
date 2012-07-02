@@ -5,20 +5,21 @@ class CreateCustomers < ActiveRecord::Migration
       t.string	:doc	, :limit => 14
       t.string	:doc_rg	, :limit => 22
 		
-      t.string	:nome_segundo	, :limit => 40
-      t.string	:endereco	, :limit => 80
-      t.integer	:bairro_id	
+      t.string	:name_sec	, :limit => 40 #
+      t.string	:address	, :limit => 80
+      t.integer	:district_id	
       t.integer	:city_id	
-      t.string	:estado	, :limit => 2
-      t.string	:cep	, :limit => 8
-      t.string	:obs	, :limit => 500
-      t.date  	:data_nascimento	
+      t.string	:state    , :limit => 2
+      t.string	:postal	  , :limit => 8
+      t.string	:notes    , :limit => 500
+      t.date  	:birthday	
 		
-      t.string	:fone	, :limit => 15
-      t.string	:rede_social	, :limit => 200
-      t.string	:site	, :limit => 200
-      t.boolean	:cliente	, :default => false
-      t.boolean	:pj	, :default => true
+      t.string	:phone	        , :limit => 15
+      t.string	:social_link	, :limit => 200
+      t.string	:site	        , :limit => 200
+      t.boolean	:is_customer	, :default => false
+      #dont use field name type, its used for inharitance and crashs on restore
+      #t.boolean	:type         , :default => true #legal entity or individual
       t.integer	:parent_id
       
       t.boolean :disabled

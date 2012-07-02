@@ -1,5 +1,7 @@
 Railstutorial::Application.routes.draw do  
 
+  resources :business_activities
+
   resources :business_activits
 
   resources :business_segments
@@ -19,7 +21,12 @@ Railstutorial::Application.routes.draw do
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
-  resources :customers
+  resources :customers do
+    get :autocomplete_business_segment_name, :on => :collection
+    get :autocomplete_business_activity_name, :on => :collection
+    
+    get :customer_pj, :on => :collection
+  end
 
   
 

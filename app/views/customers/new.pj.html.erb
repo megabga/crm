@@ -1,0 +1,99 @@
+<section id="navbar">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+		<%= link_to t("customers.title"), "#", :class => "brand" %>
+        <div class="nav-collapse">
+          <ul class="nav">
+			    <li ><%= link_to t("customers.index.title"), customers_path %></li>
+			    <li class="active"><%= link_to t("customers.new.link"), "#" %></li>
+          </ul>
+          
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+</section >
+
+<%= form_for @customer, :html => {:class => "well search"}  do |f| %>
+<%= f.fields_for @customer.person do |person_f| %>
+	<fieldset>
+	  <legend><%= t("customers.new.title") %></legend>
+	  <div class="row">
+		<div class="span4">
+			
+		  <div class="control-group">
+            <%= f.label :name, t("helpers.label.customers.search.names"), :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :name %>
+            </div>
+          </div>
+		  
+
+		  <div class="control-group">
+            <%= person_f.label :segment, t("helpers.label.customers.segment"), :class => "control-label" %>
+            <div class="controls">
+	          <%= autocomplete_field_tag :segment, '', autocomplete_business_segment_name_customers_path, :size => 75, :id_element => '#segment_id' %>
+			  <%= person_f.hidden_field :segment_id %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= label_tag :activity, t("helpers.label.customers.search.activity"), :class => "control-label" %>
+            <div class="controls">
+	          <%= autocomplete_field_tag :activity, '', autocomplete_business_activity_name_customers_path, :size => 75, :id_element => '#activity_id' %>
+			  <%= person_f.hidden_field :activity_id %>
+            </div>
+          </div>
+
+
+			<div class="control-group">
+	            <%= f.label :district_id, :class => "control-label" %>
+	            <div class="controls">
+		          <%= f.collection_select(:district_id, District.all, :id, :name, :include_blank => true) %>
+	            </div>
+	          </div>
+
+			  <div class="control-group">
+	            <%= f.label :total_employes, :class => "control-label" %>
+	            <div class="controls">
+		          <%= person_f.number_field :total_employes %>
+	            </div>
+	          </div>
+		   
+		</div>
+		<div class="span4">
+			
+
+			  <div class="control-group">
+	            <%= f.label :is_customer, :class => "control-label" %>
+	            <div class="controls">
+		          <%= f.check_box :is_customer %>
+	            </div>
+	          </div>
+		
+			  <div class="control-group">
+	            <%= f.label :segments, :class => "control-label" %>
+	            <div class="controls">
+		          <%= render  :partial => 'customer_segment', :collection => @person.customer_segments %>
+	            </div>
+	          </div>
+			  
+		</div>
+		
+		<div class="span8">
+			<div class="form-actions">
+			<%= f.submit :class => "btn btn-primary" %>
+            <button type="reset" class="btn"><%= t("helpers.forms.cancel") %></button>
+          </div>
+		</div>
+	  </div>
+	</fieldset>
+<% end %>
+<% end %>

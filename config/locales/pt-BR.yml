@@ -56,9 +56,9 @@ pt-BR:
       
       
   business_segments:
-    link: "Seguimentos"
+    link: "Segmentos"
     
-  business_atividades:
+  business_activities:
     link: "Atividades"
   #SECTIONS <===================================
   
@@ -76,6 +76,9 @@ pt-BR:
   administration:
     link: "Painel Administrativo"
 
+  search:
+    results: "Resultados"
+    select: "Sel."
   #LINKS <===================================
 
   more: "Veja mais"
@@ -98,7 +101,8 @@ pt-BR:
 
   help:
     link: Ajuda
-
+  
+  #SYSTEM <===================================
   
   activerecord:
     errors:
@@ -109,12 +113,29 @@ pt-BR:
       user:
         email: 'e-mail'
         password: 'Senha'
+      customer: &attributes_customer
+        code: "Cod."
+        activity: "Atividade"
+        segment: "Segmento"
+        employes_count: "Qtd. Funcionários"
+        is_customer?: "É Cliente?"
+        bairro: "Bairro"
+        setor: "Setor"
+        cargo: "Cargo"
+  
   
   helpers:
     label:
       customers:
         search:
+          <<: *attributes_customer
           names: "Nome: (Razão social, Nome Fantasia)"
+          type: "Tipo"
+          type_fisica: "Física"
+          type_juridica: "Jurídica"
+          submit: "Pesquisar"
+          cancel: "Cancelar"
+          
       session:
         email: 'e-mail'
         password: 'senha'

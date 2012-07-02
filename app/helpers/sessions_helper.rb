@@ -8,7 +8,6 @@ module SessionsHelper
 
   def sign_out
     self.current_user = nil
-    #logger.debug "HELPER 1: User: #{@current_user} | TOKEN: #{cookies[:remember_token]} "
     cookies.delete(:remember_token)
   end
   
@@ -29,7 +28,7 @@ module SessionsHelper
   end
 
   def current_user
-    #logger.debug "HELPER 2: getCurrentUser User: #{@current_user} | TOKEN: #{cookies[:remember_token]} "
+    #logger.debug "HELPER Session: getCurrentUser User: #{@current_user} | TOKEN: #{cookies[:remember_token]} "
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
   
@@ -44,5 +43,13 @@ module SessionsHelper
   
   def store_location
     session[:return_to] = request.fullpath
+  end
+  
+  def preferences_customer_type=(type)
+    session[:customer_type] = type;
+  end
+  
+  def preferences_customer_type?
+    session[:customer_type] || :pj
   end
 end

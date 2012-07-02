@@ -28,7 +28,7 @@
 
 <div class="row">
 	<div class="span9 offset1">
-	  <%= form_tag customers_path, :class => "well form-search" do %>
+	  <%= form_tag customers_path, :class => "well form-search", :method => :get, :name => :search do %>
 		<fieldset>
 		  <legend><%= t("customers.index.title") %></legend>
 		  <div class="row">
@@ -42,18 +42,108 @@
 	          </div>
 			  
 			  <div class="control-group">
-	            <%= label_tag :names, t("helpers.label.customers.search.segment"), :class => "control-label" %>
+	            <%= label_tag :segment, t("helpers.label.customers.search.segment"), :class => "control-label" %>
 	            <div class="controls">
-		          <%= text_field_tag :names %>
+		          <%= autocomplete_field_tag :segment, '', autocomplete_business_segment_name_customers_path, :size => 75, :id_element => '#segment_id' %>
+				  <%= hidden_field_tag :segment_id %>
 	            </div>
 	          </div>
+
+			  <div class="control-group">
+	            <%= label_tag :activity, t("helpers.label.customers.search.activity"), :class => "control-label" %>
+	            <div class="controls">
+		          <%= autocomplete_field_tag :activity, '', autocomplete_business_activity_name_customers_path, :size => 75, :id_element => '#activity_id' %>
+				  <%= hidden_field_tag :activity_id %>
+	            </div>
+	          </div>
+	
+				<div class="control-group">
+		            <%= label_tag :bairro, t("helpers.label.customers.search.bairro"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= search_field :customer, :bairro %>
+		            </div>
+		          </div>
+
+				  <div class="control-group">
+		            <%= label_tag :employes_count, t("helpers.label.customers.search.employes_count"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= number_field_tag :name %>
+		            </div>
+		          </div>
 			   
 			</div>
 			<div class="span4">
-			aaaa
+				
+
+				  <div class="control-group">
+		            <%= label_tag :is_customer?, t("helpers.label.customers.search.is_customer?"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= text_field_tag :is_customer? %>
+		            </div>
+		          </div>
+		
+				  <div class="control-group">
+		            <%= label_tag :type, t("helpers.label.customers.search.type"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= radio_button_tag :type, :fisica %> <%= label_tag :type_fisica, t("helpers.label.customers.search.type_fisica")  %>
+			          <%= radio_button_tag :type, :juridica %> <%= label_tag :type_juridica, t("helpers.label.customers.search.type_juridica") %>
+		            </div>
+		          </div>
+
+				  <div class="control-group">
+		            <%= label_tag :setor, t("helpers.label.customers.search.setor"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= text_field_tag :setor %>
+		            </div>
+		          </div>
+		
+				  <div class="control-group">
+		            <%= label_tag :cargo, t("helpers.label.customers.search.cargo"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= text_field_tag :cargo %>
+		            </div>
+		          </div>
+
+				  
+			</div>
+			
+			<div class="span8">
+				<div class="form-actions">
+				<%= submit_tag t("helpers.label.customers.search.submit"), :class => "btn btn-primary" %>
+	            <button type="reset" class="btn"><%= t("helpers.label.customers.search.cancel") %></button>
+	          </div>
 			</div>
 		  </div>
 		</fieldset>
 	  <% end %>
 	</div>
+	
 </div>
+
+<% if @custumers %>
+<section id="buttons">
+  <div class="page-header wehll">
+	<%= t("search.results")%>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= t("search.select") %></th>
+        <th><%= t("helpers.lable.customers.search.code") %></th>
+        <th><%= t("helpers.lable.customers.search.names") %></th>
+        <th><%= t("helpers.lable.customers.search.is_customer?") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+		<td></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<% end %>

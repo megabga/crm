@@ -11,33 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624192502) do
+ActiveRecord::Schema.define(:version => 20120628092754) do
 
-  create_table "atividades", :force => true do |t|
-    t.string   "name",       :limit => 20
-    t.boolean  "disabled"
+  create_table "business_activities", :force => true do |t|
+    t.string   "name",       :limit => 30
+    t.boolean  "disable"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
 
-  create_table "bairros", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "business_activits", :force => true do |t|
-    t.string   "name"
-    t.boolean  "disable"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "business_segments", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :limit => 30
     t.boolean  "disable"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -46,25 +33,32 @@ ActiveRecord::Schema.define(:version => 20120624192502) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "customer_activities", :force => true do |t|
+    t.integer  "customer_pj_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "customer_pfs", :force => true do |t|
-    t.string   "sexo",               :limit => 1
-    t.integer  "empresa_id"
-    t.string   "endereco_comercial", :limit => 120
-    t.string   "setor",              :limit => 20
-    t.string   "cargo",              :limit => 20
-    t.string   "celular",            :limit => 15
-    t.string   "formacao",           :limit => 20
+    t.string   "gender",             :limit => 1
+    t.integer  "company"
+    t.string   "business_address",   :limit => 120
+    t.string   "department",         :limit => 20
+    t.string   "corporate_function", :limit => 20
+    t.string   "cellphone",          :limit => 15
+    t.string   "graduated",          :limit => 30
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
 
   create_table "customer_pjs", :force => true do |t|
-    t.string   "fax",              :limit => 15
-    t.integer  "qtd_funcionarios"
-    t.integer  "segmento_id"
-    t.integer  "atividade_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "fax",            :limit => 15
+    t.integer  "total_employes"
+    t.integer  "segment_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "customer_products", :force => true do |t|
@@ -77,43 +71,63 @@ ActiveRecord::Schema.define(:version => 20120624192502) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "customer_segments", :force => true do |t|
+    t.integer  "customer_pj_id"
+    t.integer  "segment_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "customers", :force => true do |t|
-    t.string   "name",            :limit => 60,                     :null => false
-    t.string   "doc",             :limit => 14
-    t.string   "doc_rg",          :limit => 22
-    t.string   "nome_segundo",    :limit => 40
-    t.string   "endereco",        :limit => 80
-    t.integer  "bairro_id"
+    t.string   "name",        :limit => 60,                     :null => false
+    t.string   "doc",         :limit => 14
+    t.string   "doc_rg",      :limit => 22
+    t.string   "name_sec",    :limit => 40
+    t.string   "address",     :limit => 80
+    t.integer  "district_id"
     t.integer  "city_id"
-    t.string   "estado",          :limit => 2
-    t.string   "cep",             :limit => 8
-    t.string   "obs",             :limit => 500
-    t.date     "data_nascimento"
-    t.string   "fone",            :limit => 15
-    t.string   "rede_social",     :limit => 200
-    t.string   "site",            :limit => 200
-    t.boolean  "cliente",                        :default => false
-    t.boolean  "pj",                             :default => true
+    t.string   "state",       :limit => 2
+    t.string   "postal",      :limit => 8
+    t.string   "notes",       :limit => 500
+    t.date     "birthday"
+    t.string   "phone",       :limit => 15
+    t.string   "social_link", :limit => 200
+    t.string   "site",        :limit => 200
+    t.boolean  "is_customer",                :default => false
     t.integer  "parent_id"
     t.boolean  "disabled"
     t.integer  "person_id"
     t.string   "person_type"
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  create_table "districts", :force => true do |t|
+    t.string   "name",       :limit => 30
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "emails", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "customer_id"
+    t.string   "email",       :limit => 120
+    t.boolean  "infos",                      :default => true
+    t.boolean  "private",                    :default => true
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
-  create_table "history_pfs", :force => true do |t|
+  create_table "histories", :force => true do |t|
     t.integer  "customer_id"
-    t.integer  "comercial"
-    t.string   "receber_infos", :default => "t"
-    t.string   "pessoal",       :default => "t"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.integer  "contact_id"
+    t.integer  "user_id"
+    t.datetime "datetime"
+    t.integer  "activity_id"
+    t.string   "notes"
+    t.integer  "feedback_id"
+    t.integer  "status_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "microposts", :force => true do |t|
@@ -135,13 +149,6 @@ ActiveRecord::Schema.define(:version => 20120624192502) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
-
-  create_table "seguimentos", :force => true do |t|
-    t.string   "name",       :limit => 20
-    t.boolean  "disabled"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name",            :limit => 25
