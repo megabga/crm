@@ -20,6 +20,10 @@ class Customer < ActiveRecord::Base
   belongs_to :city
   belongs_to :district
   
+  def contacts
+    @contacts = []
+  end
+  
   def self.search(name)
     conditions = []
     conditions_and = []

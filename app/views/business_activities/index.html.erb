@@ -12,7 +12,7 @@
 <% @business_activities.each do |business_activity| %>
   <tr>
     <td><%= business_activity.name %></td>
-    <td><%= business_activity.disable %></td>
+    <td><%= business_activity.enabled %></td>
     <td><%= link_to 'Show', business_activity %></td>
     <td><%= link_to 'Edit', edit_business_activity_path(business_activity) %></td>
     <td><%= link_to 'Destroy', business_activity, confirm: 'Are you sure?', method: :delete %></td>

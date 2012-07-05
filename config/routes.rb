@@ -30,7 +30,7 @@ Railstutorial::Application.routes.draw do
     
     get :customer_pj, :on => :collection
     
-    resources :contact
+    resources :contacts
   end
   
   resources :lab_ajax
