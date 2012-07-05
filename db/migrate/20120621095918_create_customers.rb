@@ -9,7 +9,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string	:address	, :limit => 80
       t.integer	:district_id	
       t.integer	:city_id	
-      t.string	:state    , :limit => 2
+      t.string	:state_id    , :limit => 2
       t.string	:postal	  , :limit => 8
       t.string	:notes    , :limit => 500
       t.date  	:birthday	
@@ -22,9 +22,11 @@ class CreateCustomers < ActiveRecord::Migration
       #t.boolean	:type         , :default => true #legal entity or individual
       t.integer	:parent_id
       
-      t.boolean :disabled
+      t.boolean :enabled,  :default => true
 
       t.references :person, :polymorphic => true
+      
+      t.boolean :complete
 
       t.timestamps
     end

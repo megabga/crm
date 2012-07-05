@@ -1,3 +1,4 @@
 class History < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :customer_id
+  belongs_to :customer
 end

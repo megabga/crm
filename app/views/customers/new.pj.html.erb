@@ -27,45 +27,71 @@
 	  <legend><%= t("customers.new.title") %></legend>
 	  <div class="row">
 		<div class="span4">
-			
+
 		  <div class="control-group">
-            <%= f.label :name, t("helpers.label.customers.search.names"), :class => "control-label" %>
+            <%= f.label :doc, t('customers.cnpj'), :class => "control-label" %>
+            <div class="controls">
+			<%= f.text_field :doc, :class => "cnpj" %>
+            </div>			
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :doc_rg, t('customers.inscricao_estadual'), :class => "control-label" %>
+            <div class="controls">
+		    <%= f.number_field :doc_rg %>
+            </div>			
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :name_sec, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :name_sec %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :name, :class => "control-label" %>
             <div class="controls">
 	          <%= f.text_field :name %>
             </div>
           </div>
+
 		  
-
 		  <div class="control-group">
-            <%= person_f.label :segment, t("helpers.label.customers.segment"), :class => "control-label" %>
+            <%= f.label :address, :class => "control-label" %>
             <div class="controls">
-	          <%= autocomplete_field_tag :segment, '', autocomplete_business_segment_name_customers_path, :size => 75, :id_element => '#segment_id' %>
-			  <%= person_f.hidden_field :segment_id %>
+	          <%= f.text_field :address %>
+            </div>
+          </div>
+		
+		  <div class="control-group">
+            <%= f.label :state_id, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.collection_select(:state_id, State.all, :id, :acronym, :include_blank => true) %>
             </div>
           </div>
 
 		  <div class="control-group">
-            <%= label_tag :activity, t("helpers.label.customers.search.activity"), :class => "control-label" %>
+            <%= f.label :city_id, :class => "control-label" %>
             <div class="controls">
-	          <%= autocomplete_field_tag :activity, '', autocomplete_business_activity_name_customers_path, :size => 75, :id_element => '#activity_id' %>
-			  <%= person_f.hidden_field :activity_id %>
+	          <%= f.collection_select(:city_id, City.all, :id, :name, :include_blank => true) %>
             </div>
           </div>
 
+		  <div class="control-group">
+            <%= f.label :district_id, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.collection_select(:district_id, District.all, :id, :name, :include_blank => true) %>
+            </div>
+          </div>
 
-			<div class="control-group">
-	            <%= f.label :district_id, :class => "control-label" %>
-	            <div class="controls">
-		          <%= f.collection_select(:district_id, District.all, :id, :name, :include_blank => true) %>
-	            </div>
-	          </div>
+		  <div class="control-group">
+            <%= f.label :postal, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :postal %>
+            </div>
+          </div>
 
-			  <div class="control-group">
-	            <%= f.label :total_employes, :class => "control-label" %>
-	            <div class="controls">
-		          <%= person_f.number_field :total_employes %>
-	            </div>
-	          </div>
 		   
 		</div>
 		<div class="span4">
@@ -77,11 +103,28 @@
 		          <%= f.check_box :is_customer %>
 	            </div>
 	          </div>
+
+			  <div class="control-group">
+	            <%= person_f.label :total_employes, :class => "control-label" %>
+	            <div class="controls">
+		          <%= person_f.number_field :total_employes %>
+	            </div>
+	          </div>
 		
 			  <div class="control-group">
-	            <%= f.label :segments, :class => "control-label" %>
+	            <%= person_f.label :segments, :class => "control-label" %>
 	            <div class="controls">
-		          <%= render  :partial => 'customer_segment', :collection => @person.customer_segments %>
+		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.segments, :autocomplete => multiselect_business_segments_customers_path, :selected => @person.segments, :form_field => :segments, :field_show => :name, :field_store => :id } %>
+	            </div>
+	          </div>
+	
+	
+			  <div class="control-group">
+	            <%= person_f.label :activities, :class => "control-label" %>
+	            <div class="controls">
+		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.activities, :autocomplete => multiselect_business_activities_customers_path, :selected => @person.activities, :form_field => :activities, :field_show => :name, :field_store => :id } %>
 	            </div>
 	          </div>
 			  
@@ -97,3 +140,31 @@
 	</fieldset>
 <% end %>
 <% end %>
+
+<script>
+
+$(function(){
+	
+	$("input.cnpj").mask("99.999.999/9999-99");
+	$("input.cpf").mask("999.999.999-99");
+	
+	$('#state').change(function(){
+		if( $(this).val() ) {
+			$('#cod_cidades').hide();
+			$('.carregando').show();
+			$.getJSON('cidades.ajax.php?search=',{cod_estados: $(this).val(), ajax: 'true'}, function(j){
+				var options = '<option value=""></option>';	
+				for (var i = 0; i < j.length; i++) {
+					options += '<option value="' + j[i].cod_cidades + '">' + j[i].nome + '</option>';
+				}	
+				$('#cod_cidades').html(options).show();
+				$('.carregando').hide();
+			});
+		} else {
+			$('#cod_cidades').html('<option value="">-- Escolha um estado --</option>');
+		}
+	});
+});
+
+
+</script>

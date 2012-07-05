@@ -2,7 +2,12 @@
 TODO: Cadastro de Clientes
   TODO: Form inicial
         
-  TODO: Tela de exemplo de seleção multipla ou criação
-  TODO: Validação do Cadastro
+  CHANGED: Tela de exemplo de seleção multipla ou criação
+  
+  CHANGED: Validação básica do Cadastro
+	CHANGED: Aceitar Registros Incompletos, marcar como tal
+	TODO: Exibir na lista de Resultados se o registro é incompleto ou não
 
+ TODO: revisar o enabled
  
+ TODO: banco de dados com indexs

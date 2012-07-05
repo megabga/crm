@@ -25,10 +25,13 @@ Railstutorial::Application.routes.draw do
     get :autocomplete_business_segment_name, :on => :collection
     get :autocomplete_business_activity_name, :on => :collection
     
+    get :multiselect_business_segments, :on => :collection
+    get :multiselect_business_activities, :on => :collection
+    
     get :customer_pj, :on => :collection
   end
-
   
+  resources :lab_ajax
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,138 @@
+<section id="navbar">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+		<%= link_to t("customers.title"), "#", :class => "brand" %>
+        <div class="nav-collapse">
+          <ul class="nav">
+			    <li ><%= link_to t("customers.index.title"), customers_path %></li>
+			    <li class="active"><%= link_to t("customers.new.link"), new_customer_path %></li>
+          </ul>
+          
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+</section >
+
+	<ul class="thumbnails">
+      <li class="span9">
+        <div class="thumbnail">
+          <div class="caption">
+
+			  <legend><%= t("customers.show.title") %></legend>
+			  <div class="row">
+				<div class="span4">
+
+				  <div class="control-group">
+		            <%= show_label_tag t('customers.cnpj') %>
+					<%= @customer.doc %>
+		          </div>
+
+				  <div class="control-group">
+		            <%= show_label_tag t("customer_#{@customer.person.prefix}s.doc_rg") %>
+		            <div class="controls">
+				    <%= @customer.doc_rg %>
+		            </div>			
+		          </div>
+
+				  <div class="control-group">
+		            <%= show_label_tag t("customer_#{@customer.person.prefix}s.name_sec") %>
+			        <%= @customer.name_sec %>
+		          </div>
+
+  
+				  <div class="control-group">
+		            <%= show_label_tag t("customer_#{@customer.person.prefix}s.name") %>
+			        <%= @customer.name %>
+		          </div>
+
+
+				  <div class="control-group">
+		            <%= show_label_tag t("customers.address") %>
+			          <%= @customer.format_address %>
+		          </div>
+
+				  <div class="control-group">
+		            <%= t("customer_pjs.total_employes") %>
+		            <div class="controls">
+			          <%= @customer.person.total_employes %>
+		            </div>
+		          </div>
+   
+				</div>
+				<div class="span4">
+					<div class="control-group">
+			            <%= t("customers.is_customer") %>
+			            <div class="controls">
+				          <%= format_boolean @customer.is_customer %>
+			            </div>
+			        </div>
+	
+					<div class="control-group">
+			            <%= t("customers.complete") %>
+			            <div class="controls">
+				          <%= format_boolean @customer.complete %>
+			            </div>
+			        </div>
+	
+					<div class="control-group">
+			            <%= t("customer_pjs.segments") %>
+			            <div class="controls">
+				          <%= format_namedlist @customer.person.segments %>
+			            </div>
+			        </div>
+
+					<div class="control-group">
+			            <%= t("customer_pjs.activities") %>
+			            <div class="controls">
+				          <%= format_namedlist @customer.person.activities %>
+			            </div>
+			        </div>
+				</div>
+
+				<div class="span8">
+				  <div class="form-actions">
+					<%= link_to t("helpers.forms.edit"), edit_customer_path(@customer), :class => "btn btn-primary" %>
+		          </div>
+				</div>
+
+			  </div>
+
+	      </div>
+	    </div>
+	  </li>
+	</ul>
+<script>
+
+$(function(){
+	
+	$("input.cnpj").mask("99.999.999/9999-99");
+	$("input.cpf").mask("999.999.999-99");
+	
+	$('#state').change(function(){
+		if( $(this).val() ) {
+			$('#cod_cidades').hide();
+			$('.carregando').show();
+			$.getJSON('cidades.ajax.php?search=',{cod_estados: $(this).val(), ajax: 'true'}, function(j){
+				var options = '<option value=""></option>';	
+				for (var i = 0; i < j.length; i++) {
+					options += '<option value="' + j[i].cod_cidades + '">' + j[i].nome + '</option>';
+				}	
+				$('#cod_cidades').html(options).show();
+				$('.carregando').hide();
+			});
+		} else {
+			$('#cod_cidades').html('<option value="">-- Escolha um estado --</option>');
+		}
+	});
+});
+
+
+</script>

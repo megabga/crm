@@ -7,4 +7,8 @@ class CustomerPf < ActiveRecord::Base
   has_many	:emails	
   belongs_to	:company	, class_name: "Customer"
   has_many	:history_pfs
+  
+  def prefix
+    "pf"
+  end
 end

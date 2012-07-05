@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628092754) do
+ActiveRecord::Schema.define(:version => 20120703102859) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
-    t.boolean  "disable"
+    t.boolean  "enabled"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
 
   create_table "business_segments", :force => true do |t|
     t.string   "name",       :limit => 30
-    t.boolean  "disable"
+    t.boolean  "enabled"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120628092754) do
     t.string   "address",     :limit => 80
     t.integer  "district_id"
     t.integer  "city_id"
-    t.string   "state",       :limit => 2
+    t.string   "state_id",    :limit => 2
     t.string   "postal",      :limit => 8
     t.string   "notes",       :limit => 500
     t.date     "birthday"
@@ -95,9 +95,10 @@ ActiveRecord::Schema.define(:version => 20120628092754) do
     t.string   "site",        :limit => 200
     t.boolean  "is_customer",                :default => false
     t.integer  "parent_id"
-    t.boolean  "disabled"
+    t.boolean  "enabled"
     t.integer  "person_id"
     t.string   "person_type"
+    t.boolean  "complete"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end
@@ -149,6 +150,13 @@ ActiveRecord::Schema.define(:version => 20120628092754) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "states", :force => true do |t|
+    t.string   "name",       :limit => 30
+    t.string   "acronym",    :limit => 2
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name",            :limit => 25

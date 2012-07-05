@@ -1,6 +1,6 @@
 class CustomerPj < ActiveRecord::Base
-  # attr_accessible :title, :body
-  attr_protected
+  attr_accessible :segments, :activities, :fax, :total_employes
+  #attr_protected
   
   #segments
   has_many :customer_segments
@@ -14,6 +14,8 @@ class CustomerPj < ActiveRecord::Base
   
   #person
   has_one	:customer, :as => :person
+  
+  #many-to-many helpers <-----------------------------------
   
   def new_customer_segments_attributes=(segment_attributes)
     logger.debug "new_customer_segment"
@@ -41,4 +43,12 @@ class CustomerPj < ActiveRecord::Base
       segment.save(false)
     end
   end
+  
+  #many-to-many helpers ----------------------------------->
+  
+  
+  def prefix
+    "pj"
+  end
+  
 end

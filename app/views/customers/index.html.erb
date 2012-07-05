@@ -28,16 +28,16 @@
 
 <div class="row">
 	<div class="span9 offset1">
-	  <%= form_tag customers_path, :class => "well form-search", :method => :get, :name => :search do %>
+	  <%= form_tag customers_path, :class => "well form-search", :method => :get, :name => :search do  %>
 		<fieldset>
 		  <legend><%= t("customers.index.title") %></legend>
 		  <div class="row">
 			<div class="span4">
 				
 			  <div class="control-group">
-	            <%= label_tag :names, t("helpers.label.customers.search.names"), :class => "control-label" %>
+	            <%= label_tag :name, t("helpers.label.customers.search.names"), :class => "control-label" %>
 	            <div class="controls">
-		          <%= search_field :customer, :name %>
+		          <%= text_field_tag :name, params[:name] %>
 	            </div>
 	          </div>
 			  
@@ -65,9 +65,9 @@
 		          </div>
 
 				  <div class="control-group">
-		            <%= label_tag :employes_count, t("helpers.label.customers.search.employes_count"), :class => "control-label" %>
+		            <%= label_tag :total_employes, t("helpers.label.customers.search.employes_count"), :class => "control-label" %>
 		            <div class="controls">
-			          <%= number_field_tag :name %>
+			          <%= number_field_tag :total_employes %>
 		            </div>
 		          </div>
 			   
@@ -76,19 +76,19 @@
 				
 
 				  <div class="control-group">
-		            <%= label_tag :is_customer?, t("helpers.label.customers.search.is_customer?"), :class => "control-label" %>
+		            <%= label_tag :is_customer, t("helpers.label.customers.search.is_customer"), :class => "control-label" %>
 		            <div class="controls">
-			          <%= text_field_tag :is_customer? %>
+			          <%= check_box_tag :is_customer, "y", params[:is_customer] %>
 		            </div>
 		          </div>
 		
-				  <div class="control-group">
+				  <!-- div class="control-group">
 		            <%= label_tag :type, t("helpers.label.customers.search.type"), :class => "control-label" %>
 		            <div class="controls">
 			          <%= radio_button_tag :type, :fisica %> <%= label_tag :type_fisica, t("helpers.label.customers.search.type_fisica")  %>
 			          <%= radio_button_tag :type, :juridica %> <%= label_tag :type_juridica, t("helpers.label.customers.search.type_juridica") %>
 		            </div>
-		          </div>
+		          </div -->
 
 				  <div class="control-group">
 		            <%= label_tag :setor, t("helpers.label.customers.search.setor"), :class => "control-label" %>
@@ -120,7 +120,7 @@
 	
 </div>
 
-<% if @custumers %>
+<% if @customers %>
 <section id="buttons">
   <div class="page-header wehll">
 	<%= t("search.results")%>
@@ -129,20 +129,26 @@
     <thead>
       <tr>
         <th><%= t("search.select") %></th>
-        <th><%= t("helpers.lable.customers.search.code") %></th>
-        <th><%= t("helpers.lable.customers.search.names") %></th>
-        <th><%= t("helpers.lable.customers.search.is_customer?") %></th>
+        <th><%= t("customers.code") %></th>
+        <th><%= t("customers.names") %></th>
+        <th><%= t("customers.is_customer") %></th>
+        <th><%= t("customers.enabled") %></th>
+        <th><%= t("customers.complete") %></th>
+        <th><%= t("helpers.forms.actions") %></th>
       </tr>
     </thead>
     <tbody>
+	<% @customers.each do |c| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-		<td></td>
+        <td><%= check_box_tag 'sels[]', c.id, @sels[c.id] %></td>
+        <td><%= c.id %></td>
+        <td><%= c.name %></td>
+        <td><%= format_boolean c.is_customer %></td>
+        <td><%= format_boolean c.enabled %></td>
+        <td><%= format_boolean c.complete %></td>
+        <td><%= link_to t("helpers.forms.show"), customer_path(c), :class => "btn" %></td>
       </tr>
+    <% end %>
     </tbody>
   </table>
 </section>
