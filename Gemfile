@@ -21,6 +21,7 @@ gem 'rails-i18n'
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'
+	gem 'nested_scaffold'
 end
 
 group :development, :test do
