@@ -52,6 +52,36 @@ class CustomersController < ApplicationController
     end
   end
   
+  def update
+    
+    params_pj = params[:customer][:customer_pj]
+    params[:customer].delete :customer_pj
+    
+    @customer = Customer.find(params[:id])
+    @person = @customer.person
+    
+    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid } : []
+    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid } : []
+    
+    if @customer.update_attributes(params[:customer]) &&
+    @person.update_attributes(params_pj)
+    
+      debugger
+      
+      if @customer.save
+        flash[:success] = t("helpers.forms.new_sucess")
+        redirect_to customer_path(@customer)
+      else
+        render 'new.'+preferences_customer_type?.to_s
+      end
+    end
+  end
+  
+  def edit
+    @customer = Customer.find params[:id]
+    @person = @customer.person
+  end
+  
   def filter_inputs(params)
     params[:doc].gsub! /[\.\/-]/, ""
   end

@@ -29,6 +29,8 @@ Railstutorial::Application.routes.draw do
     get :multiselect_business_activities, :on => :collection
     
     get :customer_pj, :on => :collection
+    
+    resources :contact
   end
   
   resources :lab_ajax

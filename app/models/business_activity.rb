@@ -1,3 +1,3 @@
 class BusinessActivity < ActiveRecord::Base
-  attr_accessible :disable, :name
+  attr_accessible :enabled, :name
 end

@@ -24,7 +24,7 @@ class CustomerPj < ActiveRecord::Base
     end
   end
   
-  after_update :save_authorships
+  #after_update :save_customer_segments
   
   def existing_customer_segment_attributes=(segment_attributes)
     logger.debug "existing_customer_segment"
@@ -38,7 +38,7 @@ class CustomerPj < ActiveRecord::Base
     end
   end
   
-  def save_customer_segment
+  def save_customer_segments
     segments.each do |segment|
       segment.save(false)
     end

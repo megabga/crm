@@ -6,7 +6,11 @@ TODO: Cadastro de Clientes
   
   CHANGED: Validação básica do Cadastro
 	CHANGED: Aceitar Registros Incompletos, marcar como tal
-	TODO: Exibir na lista de Resultados se o registro é incompleto ou não
+	CHANGED: Exibir na lista de Resultados se o registro é incompleto ou não
+  
+  CHANGED: Search works with a name*
+
+  TODO: Editar cliente
 
  TODO: revisar o enabled
  

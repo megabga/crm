@@ -1,0 +1,175 @@
+<%= form_for @customer, :html => {:class => "well search"}  do |f| %>
+<%= f.fields_for @customer.person do |person_f| %>
+	<fieldset>
+	  <legend><%= t("customers.new.title") %></legend>
+	  <div class="row">
+		<div class="span4">
+
+		  <div class="control-group">
+            <%= f.label :doc, t('customers.cnpj'), :class => "control-label" %>
+            <div class="controls">
+			<%= f.text_field :doc, :class => "cnpj" %>
+            </div>			
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :doc_rg, t('customers.inscricao_estadual'), :class => "control-label" %>
+            <div class="controls">
+		    <%= f.number_field :doc_rg %>
+            </div>			
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :name_sec, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :name_sec %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :name, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :name %>
+            </div>
+          </div>
+
+		  
+		  <div class="control-group">
+            <%= f.label :address, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :address %>
+            </div>
+          </div>
+		
+		  <div class="control-group">
+            <%= f.label :state_id, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.collection_select(:state_id, State.all, :id, :acronym, :include_blank => true) %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :city_id, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.collection_select(:city_id, City.all, :id, :name, :include_blank => true) %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :district_id, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.collection_select(:district_id, District.all, :id, :name, :include_blank => true) %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :postal, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :postal, :class => "postal" %>
+            </div>
+          </div>
+
+		   
+		</div>
+		<div class="span4">
+			
+		  <div class="control-group">
+            <%= f.label :is_customer, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.check_box :is_customer %>
+            </div>
+          </div>
+			
+		  <div class="control-group">
+            <%= f.label :phone, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :phone, :class => "postal" %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= person_f.label :fax, :class => "control-label" %>
+            <div class="controls">
+	          <%= person_f.text_field :fax, :class => "postal" %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :site, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :site, :class => "postal" %>
+            </div>
+          </div>
+
+		  <div class="control-group">
+            <%= f.label :social_link, :class => "control-label" %>
+            <div class="controls">
+	          <%= f.text_field :social_link, :class => "postal" %>
+            </div>
+          </div>
+
+			  <div class="control-group">
+	            <%= person_f.label :total_employes, :class => "control-label" %>
+	            <div class="controls">
+		          <%= person_f.number_field :total_employes %>
+	            </div>
+	          </div>
+		
+			  <div class="control-group">
+	            <%= person_f.label :segments, :class => "control-label" %>
+	            <div class="controls">
+		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.segments, :autocomplete => multiselect_business_segments_customers_path, :form_field => :segments, :field_show => :name, :field_store => :id } %>
+	            </div>
+	          </div>
+	
+	
+			  <div class="control-group">
+	            <%= person_f.label :activities, :class => "control-label" %>
+	            <div class="controls">
+		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.activities, :autocomplete => multiselect_business_activities_customers_path, :form_field => :activities, :field_show => :name, :field_store => :id } %>
+	            </div>
+	          </div>
+			  
+		</div>
+		
+		<div class="span8">
+			<div class="form-actions">
+			<%= f.submit :class => "btn btn-primary" %>
+            <button type="reset" class="btn"><%= t("helpers.forms.cancel") %></button>
+          </div>
+		</div>
+	  </div>
+	</fieldset>
+<% end %>
+<% end %>
+
+<script>
+
+$(function(){
+	
+	$("input.cnpj").mask("99.999.999/9999-99");
+	$("input.cpf").mask("999.999.999-99");
+	$("input.postal").mask("99.999-99");
+	
+	$('#state').change(function(){
+		if( $(this).val() ) {
+			$('#cod_cidades').hide();
+			$('.carregando').show();
+			$.getJSON('cidades.ajax.php?search=',{cod_estados: $(this).val(), ajax: 'true'}, function(j){
+				var options = '<option value=""></option>';	
+				for (var i = 0; i < j.length; i++) {
+					options += '<option value="' + j[i].cod_cidades + '">' + j[i].nome + '</option>';
+				}	
+				$('#cod_cidades').html(options).show();
+				$('.carregando').hide();
+			});
+		} else {
+			$('#cod_cidades').html('<option value="">-- Escolha um estado --</option>');
+		}
+	});
+});
+
+
+</script>

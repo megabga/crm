@@ -35,8 +35,11 @@ pt-BR:
     birthdays: "Aniversariantes"
     new:
       link: "Novo Cliente"
+      title: "Edição"
     index:
       title: "Pesquisa de Clientes"
+    show:
+      title: "Exibindo Cliente"
     
     name: "Nome/Fantasia"
     name_sec: "Apelido/Razão Social"
@@ -63,6 +66,9 @@ pt-BR:
     cargo: "Cargo"
     cnpj: "CNPJ"
     inscricao_estadual: "Inscrição estadual"
+    
+    contacts:
+      link: "Contatos"
 
   customer_pjs: &attributes_customer_pj
     doc: "CNPJ"

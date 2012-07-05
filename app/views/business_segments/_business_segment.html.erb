@@ -3,6 +3,6 @@
 <% fields_for prefix, business_segment do |business_segment_form| %>
 <p>
   <%= business_segment_form.collection_select :author_id, @authors, :id, :name %>
-  <%= link_to_function "remove", "$(this).up('.business_segment').remove()" %>
+  <%= link_to_function t("helpers.forms.remove"), "$(this).up('.business_segment').remove()" %>
 </p>
 <% end %>

@@ -1,5 +1,4 @@
-
-<%= select_tag("#{form_field}_select", options_for_select(selected.collect { |ff| [ff.send(field_show), ff.send(field_store)] }, selected.collect { |fs| fs.send(field_store) }),
+<%= select_tag("#{form_field}_select", options_for_select(values.collect { |ff| [ff.send(field_show), ff.send(field_store), :class => "selected"] }, values.collect { |fs| fs.send(field_store) }),
                    {:multiple=>true, :id => "#{form_field}_select"}) %>
 
 				<script type="text/javascript">
