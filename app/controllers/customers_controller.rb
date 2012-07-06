@@ -23,8 +23,8 @@ class CustomersController < ApplicationController
     @customer.person = @person
     @segments = BusinessSegment.all
     #@customer.person.customer_segments.build
-    @customer.person.segments.build
-    @customer.person.activities.build
+    #@customer.person.segments.build
+    #@customer.person.activities.build
     render "new."+preferences_customer_type?.to_s
   end
   
