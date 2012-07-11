@@ -5,6 +5,8 @@ class CreateEmails < ActiveRecord::Migration
       t.string	:email	, :limit => 120
       t.boolean	:infos	, :default => true
       t.boolean	:private	, :default => true
+      t.references :emailable, :polymorphic => true
+      
       t.timestamps
     end
   end

@@ -7,21 +7,21 @@ describe "Authentication" do
   describe "signin page" do
     before { visit signin_path }
 
-    it { should have_selector('h1',    text: 'Sign in') }
-    it { should have_selector('title', text: 'Sign in') }
+    it { should have_selector('h1',    text: I18n.t("sign.in.title")) }
+    it { should have_selector('title', text: I18n.t("sign.in.title")) }
   end
   
   describe "signin" do
     before { visit signin_path }
 
     describe "with invalid information" do
-        before { click_button "Sign in" }
+        before { click_button I18n.t("sign.in.link") }
 
-        it { should have_selector('title', text: 'Sign in') }
-        it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+        it { should have_selector('title', text: I18n.t("sign.in.title")) }
+        it { should have_selector('div.alert.alert-error', text: I18n.t("sign.in.error")) }
 
         describe "after visiting another page" do
-          before { click_link "Home" }
+          before { click_link I18n.t("home.link") }
           it { should_not have_selector('div.alert.alert-error') }
         end
       end
@@ -32,16 +32,16 @@ describe "Authentication" do
 
         it { should have_selector('title', text: user.name) }
 
-        it { should have_link('Users',    href: users_path) }
-        it { should have_link('Profile',  href: user_path(user)) }
-        it { should have_link('Settings', href: edit_user_path(user)) }
-        it { should have_link('Sign out', href: signout_path) }
+        it { should have_link(I18n.t('customers.link'),    href: customers_path) }
+        it { should have_link(I18n.t('users.profile.link'),  href: user_path(user)) }
+        it { should have_link(I18n.t('users.settings.link'), href: edit_user_path(user)) }
+        it { should have_link(I18n.t('sign.out.link'), href: signout_path) }
 
-        it { should_not have_link('Sign in', href: signin_path) }
+        it { should_not have_link(I18n.t('sign.in.link'), href: signin_path) }
         
         describe "followed by signout" do
-          before { click_link "Sign out" }
-          it { should have_link('Sign in') }
+          before { click_link I18n.t("sign.out.link") }
+          it { should have_link(I18n.t("sign.in.link")) }
         end
       end
   end
@@ -54,15 +54,15 @@ describe "Authentication" do
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          fill_in "Email",    with: user.email
-          fill_in "Password", with: user.password
-          click_button "Sign in"
+          fill_in I18n.t("session.email"),    with: user.email
+          fill_in I18n.t("session.password"), with: user.password
+          click_button I18n.t("sign.in.link")
         end
 
         describe "after signing in" do
 
           it "should render the desired protected page" do
-            page.should have_selector('title', text: 'Edit user')
+            page.should have_selector('title', text: I18n.t('users.edit.title'))
           end
         end
       end
@@ -71,7 +71,7 @@ describe "Authentication" do
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_selector('title', text: 'Sign in') }
+          it { should have_selector('title', text: I18n.t('sign.in.title')) }
         end
 
         describe "submitting to the update action" do
@@ -81,7 +81,7 @@ describe "Authentication" do
         
         describe "visiting the user index" do
             before { visit users_path }
-            it { should have_selector('title', text: 'Sign in') }
+            it { should have_selector('title', text: I18n.t('sign.in.title')) }
           end
       end
       
@@ -107,7 +107,7 @@ describe "Authentication" do
 
       describe "visiting Users#edit page" do
         before { visit edit_user_path(wrong_user) }
-        it { should_not have_selector('title', text: full_title('Edit user')) }
+        it { should_not have_selector('title', text: full_title(I18n.t('users.edit.title'))) }
       end
 
       describe "submitting a PUT request to the Users#update action" do

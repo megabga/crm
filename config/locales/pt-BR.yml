@@ -19,18 +19,21 @@ pt-BR:
     in:
       title: "Autenticação do Sistema"
       link: "Entrar"
-      error: 'Combinação e-mail/password inválida'
+      error: 'Combinação e-mail/senha inválida'
     out:
       title: "Sair do sistema"
       link: "Sair"
 
-  session:
+  session: &attr_session
+    email: 'e-mail'
+    password: 'Senha'
     erros:
       restrict_redirected: "Por favor, autentique-se"
   
-  customers: &attributes_customer
+  customers: &attr_customer
     title: "Cadastro de Clientes"
     link: "Clientes"
+    general: "Geral"
     not_valids: "Cadastros incompletos"
     birthdays: "Aniversariantes"
     new:
@@ -40,6 +43,9 @@ pt-BR:
       title: "Pesquisa de Clientes"
     show:
       title: "Exibindo Cliente"
+    edit:
+      title: "Cadastro de Clientes"
+      link: "Edição"
     
     name: "Nome/Fantasia"
     name_sec: "Apelido/Razão Social"
@@ -67,10 +73,27 @@ pt-BR:
     cnpj: "CNPJ"
     inscricao_estadual: "Inscrição estadual"
     
-    contacts:
+    
+    contacts: &attr_contacts
+      name: "Nome"
+      #business_segment: "Segmento"
+      #business_activity: "Atividade"
+      bussiness_function: "Cargo"
+      departament: "Setor"
+      phone: "Fone"
+      cell: "Celular"
+      birthday: "Aniversário"
+      edit:
+        title: "Editar Contato"
+      new:
+        title: "Novo Contato"  
+      title: "%{customer}"
       link: "Contatos"
+      search:
+          title: "Filtro Contatos"
+      
 
-  customer_pjs: &attributes_customer_pj
+  customer_pjs: &attr_customer_pj
     doc: "CNPJ"
     doc_rg: "Inscrição Estadual"
     name: "Fantasia"
@@ -89,8 +112,15 @@ pt-BR:
     title: "Mensagens"
 
   users:
+    name: "Nome do Usuário"
+    email: "e-mail"
+    password: "Senha"
+    password_confirm: "Confirmação da Senha"
     title: "Usuários"
     link: "Usuários"
+    edit:
+      title: "Edição do Usuário"
+      link: "Editar"
     profile:
       title: "Perfil"
       link: "Perfil"
@@ -119,6 +149,7 @@ pt-BR:
 
   administration:
     link: "Painel Administrativo"
+  
 
   search:
     results: "Resultados"
@@ -158,12 +189,20 @@ pt-BR:
         email: 'e-mail'
         password: 'Senha'
       customer:
-          <<: *attributes_customer
+          <<: *attr_customer
+      
       customer_pj:
-          <<: *attributes_customer_pj
-
+          <<: *attr_customer_pj
+      
+      contact:
+          <<: *attr_contacts
+      
     models:
       customer: "Cliente"
+      contact: "Contato"
+      business_segment: "Segmento"
+      business_activity: "Atividade"
+      
   
   helpers:
     yes: "Sim"
@@ -173,8 +212,11 @@ pt-BR:
       cancel: "Cancelar"
       edit: "Editar"
       add: "Adicionar"
+      create: "Criar"
       new: "Novo"
+      save: "Salvar"
       show: "Exibir"
+      back: "Voltar"
       destroy: "Apagar"
       disable: "Desabilitar"
       new_sucess: "Cadastrado com Sucesso"
@@ -182,8 +224,8 @@ pt-BR:
     label:
       customers:
         search:
-          <<: *attributes_customer
-          <<: *attributes_customer_pj
+          <<: *attr_customer
+          <<: *attr_customer_pj
           names: "Nome: (Razão social, Nome Fantasia)"
           type: "Tipo"
           type_fisica: "Física"
@@ -192,5 +234,4 @@ pt-BR:
           cancel: "Cancelar"
           
       session:
-        email: 'e-mail'
-        password: 'senha'
+        <<: *attr_session

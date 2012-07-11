@@ -1,5 +1,5 @@
 class Email < ActiveRecord::Base
-  attr_accessible :customer_id, :email, :infos, :private
+  attr_accessible :customer_id, :email, :infos, :private, :emailable
   
-  belongs_to :customer
+  belongs_to :emailable, :polymorphic => true
 end

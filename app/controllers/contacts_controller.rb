@@ -2,8 +2,8 @@ class ContactsController < ApplicationController
   # GET customers/1/contacts
   # GET customers/1/contacts.json
   def index
-    @customers = Customer.find(params[:customer_id])
-    @contacts = @customers.contacts
+    @customer = Customer.find(params[:customer_id])
+    @contacts = @customer.contacts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +14,8 @@ class ContactsController < ApplicationController
   # GET customers/1/contacts/1
   # GET customers/1/contacts/1.json
   def show
-    @customers = Customer.find(params[:customer_id])
-    @contact = @customers.contacts.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,8 +26,8 @@ class ContactsController < ApplicationController
   # GET customers/1/contacts/new
   # GET customers/1/contacts/new.json
   def new
-    @customers = Customer.find(params[:customer_id])
-    @contact = @customers.contacts.build
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.build
 
     respond_to do |format|
       format.html # new.html.erb

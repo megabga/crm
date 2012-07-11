@@ -16,6 +16,9 @@ describe Customer do
    it { respond_to :emails }
    it { respond_to :complete? }
    
+   it { respond_to :contacts }
+   
+   
    describe "if record its complete" do
      describe "needs required fields" do
        before do
@@ -25,4 +28,16 @@ describe Customer do
        it { should be_invalid }
      end
    end
+   
+   describe "Relationships with client" do
+      before do       
+        let!(:contact) { FactoryGirl.create(:contact, customer: @customer) }
+        let!(:contact_other) { FactoryGirl.create(:contact, customer: @customer) }
+      end
+
+      it "customer has_many contacts " do
+        @customer.contacts.should include(contact, contact_other)
+      end
+      
+    end
 end

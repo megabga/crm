@@ -1,25 +1,4 @@
-<section id="navbar">
+<%= render :partial => "navbar", :locals => { :active => :new } %>
 
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container" style="width: auto;">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-		<%= link_to t("customers.title"), "#", :class => "brand" %>
-        <div class="nav-collapse">
-          <ul class="nav">
-			    <li ><%= link_to t("customers.index.title"), customers_path %></li>
-			    <li class="active"><%= link_to t("customers.new.link"), "#" %></li>
-          </ul>
-          
-        </div><!-- /.nav-collapse -->
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
-</section >
-
-<%= render "customer_form"%>
+<%= render "form"%>
 

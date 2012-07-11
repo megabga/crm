@@ -1,33 +1,59 @@
-<h1>Listing contacts</h1>
+<% provide(:title, t("customers.contacts.title", :customer => @customer.name)) %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Departament</th>
-    <th>Business function</th>
-    <th>Phone</th>
-    <th>Cell</th>
-    <th>Birthday</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render :partial => "header" %>
 
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.name %></td>
-    <td><%= contact.departament %></td>
-    <td><%= contact.business_function %></td>
-    <td><%= contact.phone %></td>
-    <td><%= contact.cell %></td>
-    <td><%= contact.birthday %></td>
-    <td><%= link_to 'Show', [contact.customers, contact] %></td>
-    <td><%= link_to 'Edit', edit_customers_contact_path(contact.customers, contact) %></td>
-    <td><%= link_to 'Destroy', [contact.customers, contact], :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+
+<div class="row">
+	<div class="span12">
+	  <%= form_tag customer_contacts_path, :class => "well form-search", :method => :get, :name => :search do  %>
+		<fieldset>
+		  <legend><%= t("customers.contacts.search.title") %></legend>
+		  <div class="row">
+			<div class="span4">
+				
+			</div>
+		  </div>
+		</fieldset>
+	  <% end %>
+	</div>
+</div>
+
+<% if @contacts %>
+<section id="buttons">
+  <div class="page-header wehll">
+	<%= t("search.results")%>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= t("search.select") %></th>
+        <th><%= t("customers.contacts.name") %></th>
+        <th><%= t("customers.contacts.departament") %></th>
+        <th><%= t("customers.contacts.business_function") %></th>
+        <th><%= t("customers.contacts.phone") %></th>
+        <th><%= t("customers.contacts.cell") %></th>
+        <th><%= t("customers.contacts.birthday") %></th>
+        <th><%= t("helpers.forms.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+	    <td><%= contact.name %></td>
+	    <td><%= contact.departament %></td>
+	    <td><%= contact.business_function %></td>
+	    <td><%= contact.phone %></td>
+	    <td><%= contact.cell %></td>
+	    <td><%= contact.birthday %></td>
+	    <td></td>
+	    <td><%= link_to 'Show', [contact.customer, contact] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Contact', new_customer_contact_path(params[:customer_id]) %>
+<%= link_to 'Novo Contact', new_customer_contact_path(params[:customer_id]) %>

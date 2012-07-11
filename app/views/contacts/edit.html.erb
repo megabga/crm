@@ -1,6 +1,6 @@
-<h1>Editing contact</h1>
+<%= render :partial => "header" %>
 
-<%= render 'form' %>
+<%= render :partial => 'form', :locals => { :title => t("customers.contacts.edit.title") } %>
 
-<%= link_to 'Show', [@contact.customers, @contact] %> |
-<%= link_to 'Back', customers_contacts_path(@contact.customers) %>
+<%= link_to t('helpers.forms.show'), [@contact.customers, @contact] %> |
+<%= link_to t('helpers.forms.back'), customer_contacts_path(@contact.customer) %>

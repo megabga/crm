@@ -14,4 +14,8 @@ module CustomersHelper
      list.all.collect {|item| "#{item.name}" }.join ", "
   end
   
+  def navbar_title
+    nil
+  end
+  
 end

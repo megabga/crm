@@ -1,7 +1,7 @@
 class CreateContacts < ActiveRecord::Migration
   def change
     create_table :contacts do |t|
-      t.references :customers
+      t.references :customer
       t.string :name
       t.string :departament
       t.string :business_function
@@ -11,6 +11,6 @@ class CreateContacts < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :contacts, :customers_id
+    add_index :contacts, :customer_id
   end
 end

@@ -1,0 +1,196 @@
+
+en:
+    
+  yes: "Sim"
+  no: "Não"
+  
+  crm:
+    title:
+      full: "Gestão do Relacionamento de Clientes"
+      small: "CMGB - CRM"
+  
+  #MODULES <=================================
+  home:
+    link: "Painel Pricipal"
+    feed: "Mensagens"
+    notifies: "Alertas"
+  
+  sign:
+    in:
+      title: "Autenticação do Sistema"
+      link: "Entrar"
+      error: 'Combinação e-mail/password inválida'
+    out:
+      title: "Sair do sistema"
+      link: "Sair"
+
+  session:
+    erros:
+      restrict_redirected: "Por favor, autentique-se"
+  
+  customers: &attributes_customer
+    title: "Cadastro de Clientes"
+    link: "Clientes"
+    not_valids: "Cadastros incompletos"
+    birthdays: "Aniversariantes"
+    new:
+      link: "Novo Cliente"
+      title: "Edição"
+    index:
+      title: "Pesquisa de Clientes"
+    show:
+      title: "Exibindo Cliente"
+    
+    name: "Nome/Fantasia"
+    name_sec: "Apelido/Razão Social"
+    code: "Cod."
+    activity: "Atividade"
+    segment: "Segmento"
+    employes_count: "Qtd. Funcionários"
+    is_customer: "É Cliente?"
+    complete: "Cadastro Completo?"
+    address: "Endereço"
+    district: "Bairro"
+    city: "Cidade"
+    state: "Estado"
+    
+    city_id: "Cidade"
+    state_id: "Estado"
+    district_id: "Bairro"
+
+
+    enabled: "Ativo?"    
+    postal: "Cep"
+    
+    setor: "Setor"
+    cargo: "Cargo"
+    cnpj: "CNPJ"
+    inscricao_estadual: "Inscrição estadual"
+    
+    contacts:
+      link: "Contatos"
+
+  customer_pjs: &attributes_customer_pj
+    doc: "CNPJ"
+    doc_rg: "Inscrição Estadual"
+    name: "Fantasia"
+    name_sec: "Razão Social"
+    total_employes: "Total de Funcionários"
+    segments: "Segmentos"
+    activities: "Atividades"
+  activities:
+    title: "Atividades"
+    link: "Atividades"    
+
+  aministration:
+    link: "Atividades"
+
+  microposts:
+    title: "Mensagens"
+
+  users:
+    title: "Usuários"
+    link: "Usuários"
+    profile:
+      title: "Perfil"
+      link: "Perfil"
+    settings:
+      title: "Preferencias do Usuário"
+      link: "Preferências"
+      
+      
+  business_segments:
+    link: "Segmentos"
+    
+  business_activities:
+    link: "Atividades"
+  #SECTIONS <===================================
+  
+  account:
+    link: "%{user}"
+  
+  maintenances:
+    link: "Cadastros"
+  
+
+  reports:
+    link: "Relatórios"
+  
+
+  administration:
+    link: "Painel Administrativo"
+
+  search:
+    results: "Resultados"
+    select: "Sel."
+  #LINKS <===================================
+
+  more: "Veja mais"
+
+  about:
+    title: "Sobre o sistema"
+    link: "Sobre"
+    description: "Sistema de Gestão de Relacionamento com o Cliente"
+
+  support:
+    link: "Suporte"
+  
+  developer:
+    link: Bruno Guerra
+  
+
+  contact:
+    title: Contato
+    link: Contato 
+
+  help:
+    link: Ajuda
+  
+  #SYSTEM <===================================
+  
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Registro Inválido'
+        
+    attributes:
+      user:
+        email: 'e-mail'
+        password: 'Senha'
+      customer:
+          <<: *attributes_customer
+      customer_pj:
+          <<: *attributes_customer_pj
+
+    models:
+      customer: "Cliente"
+  
+  helpers:
+    yes: "Sim"
+    no: "Não"
+    
+    forms:
+      cancel: "Cancelar"
+      edit: "Editar"
+      add: "Adicionar"
+      new: "Novo"
+      show: "Exibir"
+      destroy: "Apagar"
+      disable: "Desabilitar"
+      new_sucess: "Cadastrado com Sucesso"
+      
+    label:
+      customers:
+        search:
+          <<: *attributes_customer
+          <<: *attributes_customer_pj
+          names: "Nome: (Razão social, Nome Fantasia)"
+          type: "Tipo"
+          type_fisica: "Física"
+          type_juridica: "Jurídica"
+          submit: "Pesquisar"
+          cancel: "Cancelar"
+          
+      session:
+        email: 'e-mail'
+        password: 'senha'

@@ -1,17 +1,27 @@
+Session 5:
+TODO: 1: Regras de Acesso
+
+TODO: 2: Paginação
+
+9/7/12 - Cadastro de Contatos
+ SESSION 2,3,4: 
+ TODO: 3: Cadastro Contatos - Layouting
+
 
 TODO: Cadastro de Clientes
-  TODO: Form inicial
-        
+  CHANGED: Form inicial
   CHANGED: Tela de exemplo de seleção multipla ou criação
-  
+
   CHANGED: Validação básica do Cadastro
 	CHANGED: Aceitar Registros Incompletos, marcar como tal
 	CHANGED: Exibir na lista de Resultados se o registro é incompleto ou não
-  
-  CHANGED: Search works with a name*
 
-  TODO: Editar cliente
+  CHANGED: Search works with a name*
+  CHANGED: Editar cliente
+
+  CHANGED: Cadastrar contatos
 
  TODO: revisar o enabled
- 
  TODO: banco de dados com indexs
+
+

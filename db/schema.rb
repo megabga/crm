@@ -11,20 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703102859) do
+ActiveRecord::Schema.define(:version => 20120705121011) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
-    t.boolean  "enabled"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.boolean  "enabled",                  :default => true
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "business_segments", :force => true do |t|
     t.string   "name",       :limit => 30
-    t.boolean  "enabled"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.boolean  "enabled",                  :default => true
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -32,6 +32,20 @@ ActiveRecord::Schema.define(:version => 20120703102859) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "customer_id"
+    t.string   "name"
+    t.string   "departament"
+    t.string   "business_function"
+    t.string   "phone"
+    t.string   "cell"
+    t.string   "birthday"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "contacts", ["customer_id"], :name => "index_contacts_on_customer_id"
 
   create_table "customer_activities", :force => true do |t|
     t.integer  "customer_pj_id"
@@ -95,7 +109,7 @@ ActiveRecord::Schema.define(:version => 20120703102859) do
     t.string   "site",        :limit => 200
     t.boolean  "is_customer",                :default => false
     t.integer  "parent_id"
-    t.boolean  "enabled"
+    t.boolean  "enabled",                    :default => true
     t.integer  "person_id"
     t.string   "person_type"
     t.boolean  "complete"
@@ -111,11 +125,13 @@ ActiveRecord::Schema.define(:version => 20120703102859) do
 
   create_table "emails", :force => true do |t|
     t.integer  "customer_id"
-    t.string   "email",       :limit => 120
-    t.boolean  "infos",                      :default => true
-    t.boolean  "private",                    :default => true
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "email",          :limit => 120
+    t.boolean  "infos",                         :default => true
+    t.boolean  "private",                       :default => true
+    t.integer  "emailable_id"
+    t.string   "emailable_type"
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "histories", :force => true do |t|

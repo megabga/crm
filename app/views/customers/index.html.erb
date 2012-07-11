@@ -1,28 +1,6 @@
 <% provide(:title, t("customers.index.title")) %>
 
-<section id="navbar">
-
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container" style="width: auto;">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-		<%= link_to t("customers.title"), "#", :class => "brand" %>
-        <div class="nav-collapse">
-          <ul class="nav">
-			    <li class="active"><%= link_to t("customers.index.title"), customers_path %></li>
-			    <li class=""><%= link_to t("customers.new.link"), new_customer_path %></li>
-          </ul>
-          
-        </div><!-- /.nav-collapse -->
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
-
-</section>
+<%= render :partial => "navbar", :locals => { :active => :search } %>
 
 
 

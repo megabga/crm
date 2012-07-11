@@ -4,25 +4,32 @@ class Customer < ActiveRecord::Base
                   :disable, :phone, :fax, :social_link, :site
   #attr_protected 
   
-  validates :doc, :customer_cnpj => true
-  validates :doc, :presence => true, :uniqueness => true, :if => :doc_needs?
-  validates :name, :presence => true
-  validates :address, :presence => true, :if => :complete?
-  validates :state_id, :presence => true, :if => :complete?
-  validates :city_id, :presence => true, :if => :complete?
-  validates :district_id, :presence => true, :if => :complete?
+  
+  #=========================== associations <--------------------------------------------
   
   belongs_to :person, :polymorphic => true, dependent: :destroy
   has_many :histories
-  has_many :emails
+  has_many :emails, :as => :emaiable
+  has_many :contacts
   
   belongs_to :state
   belongs_to :city
   belongs_to :district
   
-  def contacts
-    @contacts = []
-  end
+  #=========================== VALIDATE <------------------------------------------------
+  
+  
+  VALID_NAME_REGEX = /\A\w[\w ]*\z/i
+  
+  validates :doc, :customer_cnpj => true
+  validates :doc, :presence => true, :uniqueness => true, :if => :doc_needs?
+  validates :name, :presence => true, length: { maximum: 60 }, format: { with: VALID_NAME_REGEX }, uniqueness: true
+  validates :address, :presence => true, :if => :complete?
+  validates :state_id, :presence => true, :if => :complete?
+  validates :city_id, :presence => true, :if => :complete?
+  validates :district_id, :presence => true, :if => :complete?
+  
+  # -------------------------------------------------------------------------> validates
   
   def self.search(name)
     conditions = []

@@ -5,19 +5,23 @@ describe CustomerPj do
   before do
     
     #:doc, :doc_rg, :name, :name_sec, :address, :birthday, :state_id, :city_id, :district_id, :customer_pj, :is_customer
-     @customer = Customer.new(doc: "23532278000105", doc_rg: "000182", name: "Example Customer", name_sec: "Name Sec",
+     @customer = Customer.new(doc: "23532278000105",
+                              doc_rg: "000182",
+                              name: "Example Customer", name_sec: "Name Sec",
                               address: "Rua B, Plano A",
-                              birthday: "19/01/1900", state_id: 1, city_id: 1, district_id: 1, 
-                              emails: [Email.new(email: "example@example.com")])
+                              birthday: "19/01/1900",
+                              state_id: FactoryGirl.create(:state),
+                              city_id: FactoryGirl.create(:city),
+                              district: FactoryGirl.create(:district))
                               
      @customer.person = CustomerPj.new(fax: "859998887", total_employes: 230)
      
-     @customer.person.segments = [BusinessSegment.new(name: "Seg. Test 1" ),
-                                  BusinessSegment.new(name: "Seg. Test 2" ),
-                                  BusinessSegment.new(name: "Seg. Test 3" )]
+     @customer.person.segments = [FactoryGirl.create(:business_segment),
+                                  FactoryGirl.create(:business_segment),
+                                  FactoryGirl.create(:business_segment)]
                                   
-     @customer.person.activities = [BusinessActivity.new(name: "Activity Test 1"),
-                                    BusinessActivity.new(name: "Activity Test 2")]
+     @customer.person.activities = [FactoryGirl.create(:business_activity),
+                                    FactoryGirl.create(:business_activity)]
    end
   
   subject { @customer.person }
