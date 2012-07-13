@@ -11,13 +11,6 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
   
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_path, notice: t("session.erros.restrict_redirected")
-    end
-  end
-  
   def signed_in?
     !current_user.nil?
   end
@@ -41,6 +34,13 @@ module SessionsHelper
     session.delete(:return_to)
   end
 =end
+
+  def signed_in_user
+    unless user_signed_in?
+      store_location
+      redirect_to new_user_session_path, notice: t("session.erros.restrict_redirected")
+    end
+  end
 
   def store_location
     session[:return_to] = request.fullpath

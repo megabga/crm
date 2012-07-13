@@ -1,6 +1,12 @@
 GUARACRM::Application.routes.draw do  
 
-  devise_for :users
+  devise_for :users#, :controllers => { :sessions => "sessions" } do
+#    #get "/signup" => "devise/registrations#new", :as => 'user_signup'
+#    #get '/logout' => 'devise/sessions#destroy', :as => 'user_logout'
+#    #get '/login' => "devise/sessions#new", :as => 'user_login'
+#    get 'get_token' => 'sessions#get_token'
+#    match 'sessions', :to => 'static_pages#home'
+#  end
 
   resources :business_activities
   resources :business_segments
@@ -17,8 +23,10 @@ GUARACRM::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   
   #resources
-  resources :users
-  #resources :sessions,   only: [:new, :create, :destroy]
+  resources :users do
+  #  resources :sessions
+  end
+  #resources :sessions #,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :customers do
     get :autocomplete_business_segment_name, :on => :collection
