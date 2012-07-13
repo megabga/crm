@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Railstutorial::Application.load_tasks
+GUARACRM::Application.load_tasks

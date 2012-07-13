@@ -1,9 +1,8 @@
-Railstutorial::Application.routes.draw do  
+GUARACRM::Application.routes.draw do  
+
+  devise_for :users
 
   resources :business_activities
-
-  resources :business_activits
-
   resources :business_segments
 
   root to: 'static_pages#home' 
@@ -19,7 +18,7 @@ Railstutorial::Application.routes.draw do
   
   #resources
   resources :users
-  resources :sessions,   only: [:new, :create, :destroy]
+  #resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :customers do
     get :autocomplete_business_segment_name, :on => :collection

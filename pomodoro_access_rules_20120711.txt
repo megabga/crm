@@ -1,0 +1,17 @@
+
+Session 1
+  Search GEM
+  Git reconfiguration
+
+Session 2
+  Configuring GIT
+  Install GEM
+
+SESSION 3
+  Install Divise
+    https://github.com/plataformatec/devise
+
+SESSION 4
+  Configure Divise
+  
+  Sample Rules

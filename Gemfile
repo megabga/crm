@@ -12,6 +12,10 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'rails3-jquery-autocomplete'
 
+#login rules
+gem 'devise'
+gem 'cancan'
+
 #criptar
 gem 'bcrypt-ruby', '3.0.1'
 

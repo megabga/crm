@@ -1,6 +1,6 @@
 # encoding: utf-8
 module SessionsHelper
-
+=begin
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
@@ -40,7 +40,8 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
   end
-  
+=end
+
   def store_location
     session[:return_to] = request.fullpath
   end

@@ -10,6 +10,12 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable, :registerable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
+  
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
   
@@ -24,9 +30,7 @@ class User < ActiveRecord::Base
 
   
   #attr_readonly :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :admin
-
-  has_secure_password
+  attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me
   
   #BASICS
   VALID_NAME_REGEX = /\A\w+.*\s.*\z/i

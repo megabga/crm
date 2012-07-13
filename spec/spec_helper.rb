@@ -18,6 +18,8 @@ Spork.prefork do
   RSpec.configure do |config|
     I18n.locale = :"pt-BR"
     
+    config.include Devise::TestHelpers, :type => :controller
+      
     # == Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -94,6 +96,8 @@ RSpec.configure do |config|
   # SO SO BLAH config.include Rails.application.routes.url_helpers
   
   I18n.locale = :"pt-BR"
+  
+  config.include Devise::TestHelpers, :type => :controller
   
   # ## Mock Framework
   #

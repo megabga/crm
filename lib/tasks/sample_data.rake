@@ -25,7 +25,7 @@ namespace :db do
       name  = "#{Faker::Name.name} Gen #{n} "[0..24]
 
       logger.info name
-      email = "example-#{n+1}@railstutorial.org"
+      email = "example-#{n+1}@guaracrm.org"
       password  = "password"
       User.create!(name: name,
                    email: email,
