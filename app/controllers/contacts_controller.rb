@@ -1,9 +1,13 @@
 class ContactsController < ApplicationController
+  load_and_authorize_resource :customer
+  load_and_authorize_resource :through => :customer
+  
+=begin
   # GET customers/1/contacts
   # GET customers/1/contacts.json
   def index
-    @customer = Customer.find(params[:customer_id])
-    @contacts = @customer.contacts
+    #@customer = Customer.find(params[:customer_id])
+    #@contacts = @customer.contacts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,17 +44,19 @@ class ContactsController < ApplicationController
     @customers = Customer.find(params[:customer_id])
     @contact = @customers.contacts.find(params[:id])
   end
+  
+=end
 
   # POST customers/1/contacts
   # POST customers/1/contacts.json
   def create
-    @customers = Customer.find(params[:customer_id])
-    @contact = @customers.contacts.build(params[:contact])
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.build(params[:contact])
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to([@contact.customers, @contact], :notice => 'Contact was successfully created.') }
-        format.json { render :json => @contact, :status => :created, :location => [@contact.customers, @contact] }
+        format.html { redirect_to([@contact.customer, @contact], :notice => 'Contact was successfully created.') }
+        format.json { render :json => @contact, :status => :created, :location => [@contact.customer, @contact] }
       else
         format.html { render :action => "new" }
         format.json { render :json => @contact.errors, :status => :unprocessable_entity }
@@ -61,12 +67,12 @@ class ContactsController < ApplicationController
   # PUT customers/1/contacts/1
   # PUT customers/1/contacts/1.json
   def update
-    @customers = Customer.find(params[:customer_id])
-    @contact = @customers.contacts.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.find(params[:id])
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to([@contact.customers, @contact], :notice => 'Contact was successfully updated.') }
+        format.html { redirect_to([@contact.customer, @contact], :notice => 'Contact was successfully updated.') }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,13 +84,14 @@ class ContactsController < ApplicationController
   # DELETE customers/1/contacts/1
   # DELETE customers/1/contacts/1.json
   def destroy
-    @customers = Customer.find(params[:customer_id])
-    @contact = @customers.contacts.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @contact = @customer.contacts.find(params[:id])
     @contact.destroy
 
     respond_to do |format|
-      format.html { redirect_to customers_contacts_url(customers) }
+      format.html { redirect_to customer_contacts_url(customer) }
       format.json { head :ok }
     end
   end
+
 end

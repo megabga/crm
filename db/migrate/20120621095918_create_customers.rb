@@ -7,8 +7,8 @@ class CreateCustomers < ActiveRecord::Migration
 		
       t.string	:name_sec	, :limit => 40 #
       t.string	:address	, :limit => 80
-      t.integer	:district_id	
-      t.integer	:city_id	
+      t.integer	:district_id
+      t.integer	:city_id
       t.string	:state_id    , :limit => 2
       t.string	:postal	  , :limit => 8
       t.string	:notes    , :limit => 500

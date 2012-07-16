@@ -103,6 +103,9 @@
   <div class="page-header wehll">
 	<%= t("search.results")%>
   </div>
+ 
+  <%= will_paginate %>
+
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -127,7 +130,10 @@
         <td><%= link_to t("helpers.forms.show"), customer_path(c), :class => "btn" %></td>
       </tr>
     <% end %>
+
     </tbody>
   </table>
+
+  <%= will_paginate %>
 </section>
 <% end %>

@@ -1,12 +1,3 @@
-Session 5:
-TODO: 1: Regras de Acesso
-
-TODO: 2: Paginação
-
-9/7/12 - Cadastro de Contatos
- SESSION 2,3,4: 
- TODO: 3: Cadastro Contatos - Layouting
-
 
 TODO: Cadastro de Clientes
   CHANGED: Form inicial
@@ -24,4 +15,16 @@ TODO: Cadastro de Clientes
  TODO: revisar o enabled
  TODO: banco de dados com indexs
 
+  ==== REGRAS DE ACESSO ===
+  TODO: 1: Regras de Acesso
+    CHANGED: 1.1 Iniciar Administrador com regras de acesso manage :all
+    CHANGED: Error: Problema params[:customer_pj]
+    TODO: gerar model de acesso
+    TODO: Cadastro de Regras
 
+  CHANGED: Paginação
+
+
+TODO: Cadastro de Contatos
+ CHANGED: 3: Cadastro Contatos - Layouting
+ TODO: Filtro de Contatos

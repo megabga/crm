@@ -1,5 +1,8 @@
 
 class BusinessSegmentsController < ApplicationController
+  
+  load_and_authorize_resource
+=begin  
   # GET /business_segments
   # GET /business_segments.json
   def index
@@ -37,11 +40,12 @@ class BusinessSegmentsController < ApplicationController
   def edit
     @business_segment = BusinessSegment.find(params[:id])
   end
+=end
 
   # POST /business_segments
   # POST /business_segments.json
   def create
-    @business_segment = BusinessSegment.new(params[:business_segment])
+    #@business_segment = BusinessSegment.new(params[:business_segment])
 
     respond_to do |format|
       if @business_segment.save
@@ -57,7 +61,7 @@ class BusinessSegmentsController < ApplicationController
   # PUT /business_segments/1
   # PUT /business_segments/1.json
   def update
-    @business_segment = BusinessSegment.find(params[:id])
+    #@business_segment = BusinessSegment.find(params[:id])
 
     respond_to do |format|
       if @business_segment.update_attributes(params[:business_segment])
@@ -73,7 +77,7 @@ class BusinessSegmentsController < ApplicationController
   # DELETE /business_segments/1
   # DELETE /business_segments/1.json
   def destroy
-    @business_segment = BusinessSegment.find(params[:id])
+    #@business_segment = BusinessSegment.find(params[:id])
     @business_segment.destroy
 
     respond_to do |format|

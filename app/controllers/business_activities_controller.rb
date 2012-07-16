@@ -1,5 +1,7 @@
 
 class BusinessActivitiesController < ApplicationController
+  load_and_authorize_resource
+=begin  
   # GET /business_activities
   # GET /business_activities.json
   def index
@@ -37,11 +39,12 @@ class BusinessActivitiesController < ApplicationController
   def edit
     @business_activity = BusinessActivity.find(params[:id])
   end
+=end
 
   # POST /business_activities
   # POST /business_activities.json
   def create
-    @business_activity = BusinessActivity.new(params[:business_activity])
+    #@business_activity = BusinessActivity.new(params[:business_activity])
 
     respond_to do |format|
       if @business_activity.save
@@ -57,7 +60,7 @@ class BusinessActivitiesController < ApplicationController
   # PUT /business_activities/1
   # PUT /business_activities/1.json
   def update
-    @business_activity = BusinessActivity.find(params[:id])
+    #@business_activity = BusinessActivity.find(params[:id])
 
     respond_to do |format|
       if @business_activity.update_attributes(params[:business_activity])
@@ -73,7 +76,7 @@ class BusinessActivitiesController < ApplicationController
   # DELETE /business_activities/1
   # DELETE /business_activities/1.json
   def destroy
-    @business_activity = BusinessActivity.find(params[:id])
+    #@business_activity = BusinessActivity.find(params[:id])
     @business_activity.destroy
 
     respond_to do |format|

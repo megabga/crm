@@ -78,7 +78,7 @@ pt-BR:
       name: "Nome"
       #business_segment: "Segmento"
       #business_activity: "Atividade"
-      bussiness_function: "Cargo"
+      business_function: "Cargo"
       departament: "Setor"
       phone: "Fone"
       cell: "Celular"
@@ -177,7 +177,7 @@ pt-BR:
   help:
     link: Ajuda
   
-  #SYSTEM <===================================
+  #Rails <===================================
   
   activerecord:
     errors:
@@ -220,6 +220,7 @@ pt-BR:
       destroy: "Apagar"
       disable: "Desabilitar"
       new_sucess: "Cadastrado com Sucesso"
+      actions: "Ações"
       
     label:
       customers:
@@ -235,3 +236,13 @@ pt-BR:
           
       session:
         <<: *attr_session
+  # ====================== Rails >
+    
+    
+  # Components <======================
+    
+  will_paginate:
+    previous_label: "Anteriores"
+    next_label: "Próximos"
+        
+  # ========================== Components >

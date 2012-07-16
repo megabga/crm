@@ -1,15 +1,18 @@
 
 class CustomersController < ApplicationController
+  before_filter :custom_load_creator, :only => :create
+  load_and_authorize_resource
+  
   autocomplete :business_segment, :name, :full => true
   autocomplete :business_activity, :name, :full => true
-    
+  
   def index
     @sels = params["sels"] || []
-    @customers = Customer.search params[:name]
+    @customers = Customer.search(@customers, params[:name]).paginate(page: params[:page], :per_page => 5)
   end
   
   def show
-    @customer  = Customer.find params[:id]
+    #@customer  = Customer.find params[:id]
     render "show."+@customer.person.prefix
   end
   
@@ -18,7 +21,7 @@ class CustomersController < ApplicationController
   end
   
   def new
-    @customer = Customer.new
+    #@customer = Customer.new
     @person = CustomerPj.new
     @customer.person = @person
     @segments = BusinessSegment.all
@@ -29,14 +32,17 @@ class CustomersController < ApplicationController
   end
   
   def create
-    filter_inputs params[:customer]
+    logger.error "============>#create"
+    if (params[:customer]==nil)
+      return
+    end
+    filter_inputs params[:customer] if params[:customer]
     
-    params_pj = params[:customer][:customer_pj]
-    params[:customer].delete :customer_pj
-    
+#    params_pj = params[:customer][:customer_pj]
+#    params[:customer].delete :customer_pj
     
     @customer = Customer.new(params[:customer])
-    @person = CustomerPj.new(params_pj)
+    @person = CustomerPj.new(params[:customer_pj])
     @customer.person = @person
     
     debugger
@@ -48,6 +54,7 @@ class CustomersController < ApplicationController
       flash[:success] = t("helpers.forms.new_sucess")
       redirect_to customer_path(@customer)
     else
+      authorize! :new, @customer, 'new.'+preferences_customer_type?.to_s
       render 'new.'+preferences_customer_type?.to_s
     end
   end
@@ -57,7 +64,7 @@ class CustomersController < ApplicationController
     params_pj = params[:customer][:customer_pj]
     params[:customer].delete :customer_pj
     
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
     @person = @customer.person
     
     @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid } : []
@@ -83,7 +90,7 @@ class CustomersController < ApplicationController
   end
   
   def filter_inputs(params)
-    params[:doc].gsub! /[\.\/-]/, ""
+    params[:doc].gsub! /[\.\/-]/, "" if params[:doc] 
   end
   
   
@@ -97,5 +104,10 @@ class CustomersController < ApplicationController
     res = []
     BusinessActivity.all.each {|b| res << {:key => b.id.to_s, :value => b.name} }
     render :json => res
+  end
+  
+  def custom_load_creator
+    params[:customer_pj] = params[:customer][:customer_pj]
+    params[:customer].delete :customer_pj
   end
 end

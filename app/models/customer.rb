@@ -31,13 +31,13 @@ class Customer < ActiveRecord::Base
   
   # -------------------------------------------------------------------------> validates
   
-  def self.search(name)
+  def self.search(customers, name)
     conditions = []
     conditions_and = []
     conditions_params = []
     if name
       name = name.upcase
-      conditions_and << 'upper(name) LIKE ?' 
+      conditions_and << 'upper(name) LIKE ?'
       conditions_params << "%#{name}%"
     end
     
@@ -45,7 +45,8 @@ class Customer < ActiveRecord::Base
     conditions_params.each { |p| conditions << p  }
     
     if conditions.count>0
-      find(:all, :conditions => conditions)
+      logger.debug customers
+      ret = customers.where(conditions)
     else
       []
     end
@@ -62,5 +63,9 @@ class Customer < ActiveRecord::Base
   
   def complete?
     complete
+  end
+  
+  def customer_pj=(customer_pj)
+    
   end
 end

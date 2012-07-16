@@ -1,9 +1,12 @@
 class CustomerPj < ActiveRecord::Base
+  
+  
   attr_accessible :segments, :activities, :fax, :total_employes
   #attr_protected
   
   #segments
   has_many :customer_segments
+  
   #não funcionou
   #has_many :segments, :class_name => 'customer_segment'
   has_many :segments, :through => :customer_segments, source: :business_segment
@@ -44,7 +47,7 @@ class CustomerPj < ActiveRecord::Base
     end
   end
   
-  #many-to-many helpers ----------------------------------->
+  # ------------------>
   
   
   def prefix
