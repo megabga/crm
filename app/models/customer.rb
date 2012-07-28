@@ -4,6 +4,8 @@ class Customer < ActiveRecord::Base
                   :disable, :phone, :fax, :social_link, :site
   #attr_protected 
   
+  default_scope where("enabled = TRUE")
+  
   
   #=========================== associations <--------------------------------------------
   

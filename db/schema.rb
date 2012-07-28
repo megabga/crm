@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711233943) do
+ActiveRecord::Schema.define(:version => 20120723104639) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -172,6 +172,26 @@ ActiveRecord::Schema.define(:version => 20120711233943) do
     t.string   "acronym",    :limit => 2
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "system_abilities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "system_modules", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_abilities", :force => true do |t|
+    t.integer  "module_id"
+    t.integer  "ability_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

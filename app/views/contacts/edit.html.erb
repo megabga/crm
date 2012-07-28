@@ -2,5 +2,5 @@
 
 <%= render :partial => 'form', :locals => { :title => t("customers.contacts.edit.title") } %>
 
-<%= link_to t('helpers.forms.show'), [@contact.customers, @contact] %> |
+<%= link_to t('helpers.forms.show'), [@contact.customer, @contact] %> |
 <%= link_to t('helpers.forms.back'), customer_contacts_path(@contact.customer) %>

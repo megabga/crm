@@ -39,4 +39,17 @@ FactoryGirl.define do
   factory :email do
     email Faker::Internet.email
   end
+  
+  factory :system_ability do
+    factory :read do
+      name "READ"
+    end
+  end
+  
+  factory :system_module do
+    factory :module_customer do
+      name "Customer"
+    end
+  end
+  
 end

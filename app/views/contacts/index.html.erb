@@ -10,8 +10,22 @@
 		  <legend><%= t("customers.contacts.search.title") %></legend>
 		  <div class="row">
 			<div class="span4">
+			
+			  <div class="control-group">
+	            <%= label_tag :name, t("customers.contacts.name"), :class => "control-label" %>
+	            <div class="controls">
+		          <%= text_field_tag :name, params[:name] %>
+	            </div>
+	          </div>
 				
 			</div>
+			
+			<div class="span8">
+				<div class="form-actions">
+					<%= submit_tag t("helpers.forms.search"), :class => "btn btn-primary" %>
+				</div>
+			</div>
+			
 		  </div>
 		</fieldset>
 	  <% end %>
@@ -46,7 +60,7 @@
 	    <td><%= contact.cell %></td>
 	    <td><%= contact.birthday %></td>
 	    <td></td>
-	    <td><%= link_to 'Show', [contact.customer, contact] %></td>
+	    <td><%= link_to t('helpers.forms.show'), [contact.customer, contact] %></td>
       </tr>
     <% end %>
     </tbody>
@@ -56,4 +70,4 @@
 
 <br />
 
-<%= link_to 'Novo Contact', new_customer_contact_path(params[:customer_id]) %>
+<%= link_to t('helpers.forms.new')+' '+t('activerecord.models.contact'), new_customer_contact_path(params[:customer_id]), :class => "btn" %>

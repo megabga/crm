@@ -1,13 +1,37 @@
 class Ability
   include CanCan::Ability
 
+  @@UPDATE = 1
+  cattr_reader :CREATE
+  
+  @@UPDATE = 2
+  cattr_reader :READ  
+
+  @@UPDATE = 3
+  cattr_reader :UPDATE
+
+  @@DELETE = 4
+  cattr_reader :DELETE
+
   def initialize(user)
     
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
     else
-      can :read, :all
+      
+      user.abilities.each do |ab|
+        if (ab.model=="all")
+          model = :all
+        else        
+          model = eval(ab.model)
+        end
+        
+        can :create, model  if ab.ability.id == CREATE
+        can :read, model   if ab.ability.id == READ
+        can :update, model if ab.ability.id == UPDATE
+        can :delete, model if ab.ability.id == DELETE
+      end 
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

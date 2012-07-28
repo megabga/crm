@@ -24,3 +24,6 @@ SESSION 10
 
 SESSION 11
   Configure will_paginate
+
+SESSION 12
+  Filtro de Contatos

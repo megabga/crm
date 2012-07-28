@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+SystemAbility.create([{ name: 'CREATE' }, { name: 'READ' }, { name: 'UPDATE' }, { name: 'DELETE' }])
+SystemModule.create([{ name: 'All' }, 
+                     { name: 'Customer' },
+                     { name: 'CustomerPj' },
+                     { name: 'CustomerPf' }, 
+                     { name: 'BusinessActivity' }, 
+                     { name: 'BusinessSegment' }, 
+                     { name: 'BusinessActivity' }, 
+                     { name: 'Contact' }, 
+                     { name: 'Micropost' },
+                     { name: 'State' }, 
+                     { name: 'City' }, 
+                     { name: 'District' },])

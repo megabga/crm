@@ -2,12 +2,11 @@ class ContactsController < ApplicationController
   load_and_authorize_resource :customer
   load_and_authorize_resource :through => :customer
   
-=begin
   # GET customers/1/contacts
   # GET customers/1/contacts.json
-  def index
-    #@customer = Customer.find(params[:customer_id])
-    #@contacts = @customer.contacts
+  def index  
+    @sels = params["sels"] || []
+    @contacts = Contact.search(@contacts, params[:name]).paginate(page: params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +14,7 @@ class ContactsController < ApplicationController
     end
   end
 
+=begin
   # GET customers/1/contacts/1
   # GET customers/1/contacts/1.json
   def show

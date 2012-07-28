@@ -10,6 +10,9 @@
 #
 
 class User < ActiveRecord::Base
+  
+  default_scope where("enabled = TRUE")
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable, :registerable
@@ -27,6 +30,8 @@ class User < ActiveRecord::Base
                                      class_name:  "Relationship",
                                      dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  
+  has_many :abilities, class_name: "UserAbility"
 
   
   #attr_readonly :admin
@@ -42,6 +47,7 @@ class User < ActiveRecord::Base
   #PASSWORD  
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  
   
   public
   

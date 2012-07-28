@@ -221,6 +221,9 @@ pt-BR:
       disable: "Desabilitar"
       new_sucess: "Cadastrado com Sucesso"
       actions: "Ações"
+      errors: "O cadastro possui "
+      error: "erro"
+      search: "Pesquisar"
       
     label:
       customers:

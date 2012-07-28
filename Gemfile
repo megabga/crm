@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
-
 gem 'pg', '0.12.2'
 
-# Bootstrap
-gem 'rails', '3.2.5'
+gem "meta_search"
+
+# Bootstrap and layouting
 gem 'bootstrap-sass', '2.0.3'
-gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'rails3-jquery-autocomplete'
+
+#test support
+gem 'faker', '1.0.1'
 
 #login rules
 gem 'devise'

@@ -1,4 +1,4 @@
-<section id="navbar">
+<section class="show">
 
 	<%= render :partial => "navbar", :locals => { :active => :edit } %>
 
@@ -42,7 +42,7 @@
 		          </div>
 
 				  <div class="control-group">
-		            <%= t("customer_pjs.total_employes") %>
+		            <%= show_label_tag t("customer_pjs.total_employes") %>
 		            <div class="controls">
 			          <%= @customer.person.total_employes %>
 		            </div>
@@ -51,28 +51,28 @@
 				</div>
 				<div class="span4">
 					<div class="control-group">
-			            <%= t("customers.is_customer") %>
+			            <%= show_label_tag t("customers.is_customer") %>
 			            <div class="controls">
 				          <%= format_boolean @customer.is_customer %>
 			            </div>
 			        </div>
 	
 					<div class="control-group">
-			            <%= t("customers.complete") %>
+			            <%= show_label_tag t("customers.complete") %>
 			            <div class="controls">
 				          <%= format_boolean @customer.complete %>
 			            </div>
 			        </div>
 	
 					<div class="control-group">
-			            <%= t("customer_pjs.segments") %>
+			            <%= show_label_tag t("customer_pjs.segments") %>
 			            <div class="controls">
 				          <%= format_namedlist @customer.person.segments %>
 			            </div>
 			        </div>
 
 					<div class="control-group">
-			            <%= t("customer_pjs.activities") %>
+			            <%= show_label_tag t("customer_pjs.activities") %>
 			            <div class="controls">
 				          <%= format_namedlist @customer.person.activities %>
 			            </div>
@@ -91,6 +91,7 @@
 	    </div>
 	  </li>
 	</ul>
+</section>
 <script>
 
 $(function(){
@@ -118,3 +119,5 @@ $(function(){
 
 
 </script>
+
+</section>
