@@ -1,18 +1,6 @@
 class Ability
   include CanCan::Ability
 
-  @@UPDATE = 1
-  cattr_reader :CREATE
-  
-  @@UPDATE = 2
-  cattr_reader :READ  
-
-  @@UPDATE = 3
-  cattr_reader :UPDATE
-
-  @@DELETE = 4
-  cattr_reader :DELETE
-
   def initialize(user)
     
     user ||= User.new # guest user (not logged in)
@@ -20,17 +8,23 @@ class Ability
       can :manage, :all
     else
       
+      abilities = []
+      abilities << user.abilities  if (user.abilities)
+      abilities << user.groups.collect { |g| g.abilities }
+      abilities.flatten
+      abilities.uniq
+      
       user.abilities.each do |ab|
-        if (ab.model=="all")
-          model = :all
-        else        
-          model = eval(ab.model)
+        if (ab.module=="all")
+          resource = :all
+        else
+          resource = eval(ab.module)
         end
         
-        can :create, model  if ab.ability.id == CREATE
-        can :read, model   if ab.ability.id == READ
-        can :update, model if ab.ability.id == UPDATE
-        can :delete, model if ab.ability.id == DELETE
+        can :create, resource if ab.ability  == SystemAbility.CREATE
+        can :read,   resource if ab.ability  == SystemAbility.READ
+        can :update, resource if ab.ability  == SystemAbility.UPDATE
+        can :delete, resource if ab.ability  == SystemAbility.DELETE
       end 
     end
     #

@@ -10,7 +10,11 @@
 #
 
 class User < ActiveRecord::Base
-  
+  #attr_readonly :admin
+  attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me, :user_groups, 
+                  :primary_group, :secundary_groups
+
+  #scope
   default_scope where("enabled = TRUE")
   
   # Include default devise modules. Others available are:
@@ -18,7 +22,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable, :registerable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
+  #RELATIONSHIPS<===================================================================
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
   
@@ -31,12 +36,15 @@ class User < ActiveRecord::Base
                                      dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   
-  has_many :abilities, class_name: "UserAbility"
-
+  has_many :abilities, class_name: "UserAbility", :as => :skilled
   
-  #attr_readonly :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me
+  #GROUPS<=================
+  belongs_to :primary_group, class_name: "UsersGroup"
+  #has_many :user_groups, foreign_key: "primary_group_id"
+  has_many :user_groups
+  has_many :secundary_groups, through: :user_groups, source: :users_group
   
+  #VALIDATIONS<============================================================
   #BASICS
   VALID_NAME_REGEX = /\A\w+.*\s.*\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -47,7 +55,6 @@ class User < ActiveRecord::Base
   #PASSWORD  
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  
   
   public
   
@@ -66,6 +73,13 @@ class User < ActiveRecord::Base
     
     def unfollow!(other_user)
       relationships.find_by_followed_id(other_user.id).destroy
+    end
+    
+    def groups
+      ret = []
+      ret << self.primary_group if (self.primary_group)
+      ret = self.secundary_groups
+      ret.flatten.uniq
     end
   
   private

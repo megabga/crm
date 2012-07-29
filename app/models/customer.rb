@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   attr_accessible :doc, :doc_rg, :name, :birthday, :name_sec, :address, :state_id, :city_id, :district_id,
-                  :is_customer, :segment_id, :activity_id, :person_type, :person_id, :postal, :emails, :complete,
-                  :disable, :phone, :fax, :social_link, :site
+                  :is_customer, :person, :postal, :emails, :complete, :state, :city, :district, 
+                  :phone, :fax, :social_link, :site, :enabled, :emails
   #attr_protected 
   
   default_scope where("enabled = TRUE")

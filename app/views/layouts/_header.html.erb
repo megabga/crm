@@ -33,7 +33,7 @@
                 <li><%= link_to t("users.settings.link"), edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to t("sign.out.link"), signout_path, method: "delete" %>
+                  <%= link_to t("sign.out.link"), destroy_user_session_path, method: "delete" %>
                 </li>
 	         </ul>
 	       </div>

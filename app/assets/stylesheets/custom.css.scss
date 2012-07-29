@@ -198,7 +198,10 @@ input, textarea, select, .uneditable-input {
 			background: #ffffff;
 		}
 	}
-		
+	
+	.controls {
+		min-height: 13px;
+	}
 }
 
 /* users index */

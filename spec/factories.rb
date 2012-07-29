@@ -31,8 +31,8 @@ FactoryGirl.define do
   end
   
   factory :contact do
-    name Faker::Name.name
-    birthday 23.years.ago
+    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:birthday) { |n| (n+15).years.ago }
     customer
   end
   
@@ -50,6 +50,30 @@ FactoryGirl.define do
     factory :module_customer do
       name "Customer"
     end
+  end
+  
+  factory :state do
+    name Faker::Name.name
+  end
+    
+  factory :city do
+    name Faker::Name.name
+  end
+  
+  factory :district do
+    name Faker::Name.name
+  end
+  
+  factory :business_segment do
+    name Faker::Name.name
+  end
+  
+  factory :business_activity do
+    name Faker::Name.name
+  end
+  
+  factory :users_group do
+    sequence(:name)  { |n| "Group #{n}" }
   end
   
 end
