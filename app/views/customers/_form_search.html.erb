@@ -1,0 +1,96 @@
+<div class="row">
+	<div class="span9 offset1">
+	  <%= form_tag customers_path, :class => "well form-search", :method => :get, :name => :search do  %>
+		<fieldset>
+		  <legend><%= t("customers.index.title") %></legend>
+		  <div class="row">
+			<div class="span4">
+				
+			  <div class="control-group">
+	            <%= label_tag :name, t("helpers.label.customers.search.names"), :class => "control-label" %>
+	            <div class="controls">
+		          <%= text_field_tag :name, params[:name] %>
+	            </div>
+	          </div>
+			  <% if (mode == :advanced) then %>
+			  <div class="control-group">
+	            <%= label_tag :segment, t("helpers.label.customers.search.segment"), :class => "control-label" %>
+	            <div class="controls">
+		          <%= autocomplete_field_tag :segment, '', autocomplete_business_segment_name_customers_path, :size => 75, :id_element => '#segment_id' %>
+				  <%= hidden_field_tag :segment_id %>
+	            </div>
+	          </div>
+
+			  <div class="control-group">
+	            <%= label_tag :activity, t("helpers.label.customers.search.activity"), :class => "control-label" %>
+	            <div class="controls">
+		          <%= autocomplete_field_tag :activity, '', autocomplete_business_activity_name_customers_path, :size => 75, :id_element => '#activity_id' %>
+				  <%= hidden_field_tag :activity_id %>
+	            </div>
+	          </div>
+	
+				<div class="control-group">
+		            <%= label_tag :bairro, t("helpers.label.customers.search.bairro"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= search_field :customer, :bairro %>
+		            </div>
+		          </div>
+
+				  <div class="control-group">
+		            <%= label_tag :total_employes, t("helpers.label.customers.search.employes_count"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= number_field_tag :total_employes %>
+		            </div>
+		          </div>
+			   <% end %>
+			</div>
+			<% if (mode == :advanced) then %>
+			<div class="span4">
+				
+				  
+				  <div class="control-group">
+		            <%= label_tag :is_customer, t("helpers.label.customers.search.is_customer"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= check_box_tag :is_customer, "y", params[:is_customer] %>
+		            </div>
+		          </div>
+		
+				  <!-- div class="control-group">
+		            <%= label_tag :type, t("helpers.label.customers.search.type"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= radio_button_tag :type, :fisica %> <%= label_tag :type_fisica, t("helpers.label.customers.search.type_fisica")  %>
+			          <%= radio_button_tag :type, :juridica %> <%= label_tag :type_juridica, t("helpers.label.customers.search.type_juridica") %>
+		            </div>
+		          </div -->
+
+				  <div class="control-group">
+		            <%= label_tag :setor, t("helpers.label.customers.search.setor"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= text_field_tag :setor %>
+		            </div>
+		          </div>
+		
+				  <div class="control-group">
+		            <%= label_tag :cargo, t("helpers.label.customers.search.cargo"), :class => "control-label" %>
+		            <div class="controls">
+			          <%= text_field_tag :cargo %>
+		            </div>
+		          </div>
+
+				  
+			</div>
+			<% end %>
+			<div class="span8">
+				<div class="form-actions">
+				<%= submit_tag t("helpers.forms.search"), :class => "btn btn-primary" %>
+				<% if (mode != :advanced) then %>
+				<%= link_to t("helpers.label.customers.search.advanced"), customers_path(:search_mode_advanced => true), :class => "btn" %>
+				<% end  %>
+	          </div>
+			</div>
+		  </div>
+		</fieldset>
+	  <% end %>
+	</div>
+	
+</div>
