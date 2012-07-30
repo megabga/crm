@@ -5,7 +5,7 @@ describe UserAbility do
   let!(:user) { FactoryGirl.create(:user) }
   
   before do
-    @user_ability = UserAbility.create(:skilled => user, 
+    @user_ability = UserAbility.create!(:skilled => user, 
                                     :ability => SystemAbility.READ,
                                     :module => SystemModule.CUSTOMER)
                                     

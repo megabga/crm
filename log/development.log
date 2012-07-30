@@ -6073,3 +6073,4 @@ Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
 
 Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-07-29 21:09:13 -0300
 Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
