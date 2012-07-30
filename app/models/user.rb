@@ -39,8 +39,7 @@ class User < ActiveRecord::Base
   has_many :abilities, class_name: "UserAbility", :as => :skilled
   
   #GROUPS<=================
-  belongs_to :primary_group, class_name: "UsersGroup"
-  #has_many :user_groups, foreign_key: "primary_group_id"
+  belongs_to :primary_group, class_name: "UsersGroup", foreign_key: "primary_group_id"
   has_many :user_groups
   has_many :secundary_groups, through: :user_groups, source: :users_group
   
@@ -53,8 +52,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } #:email => true
   
   #PASSWORD  
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, :if => :need_password?
+  validates :password_confirmation, presence: true, :if => :need_password?
   
   public
   
@@ -78,14 +77,25 @@ class User < ActiveRecord::Base
     def groups
       ret = []
       ret << self.primary_group if (self.primary_group)
-      ret = self.secundary_groups
+      ret << self.secundary_groups if (self.secundary_groups)
       ret.flatten.uniq
+    end
+    
+    def all_abilities
+      abilities = []
+      abilities << self.abilities  if (self.abilities)
+      abilities << self.groups.collect { |g| g.abilities } if (self.groups)
+      abilities.flatten.flatten.uniq
     end
   
   private
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+    
+    def need_password?
+      return self.new_record? || (password.to_s.strip.length != 0) || (password_confirmation.to_s.strip.length != 0)
     end
   
   

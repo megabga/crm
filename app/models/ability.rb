@@ -8,23 +8,17 @@ class Ability
       can :manage, :all
     else
       
-      abilities = []
-      abilities << user.abilities  if (user.abilities)
-      abilities << user.groups.collect { |g| g.abilities }
-      abilities.flatten
-      abilities.uniq
+      abilities = user.all_abilities
       
-      user.abilities.each do |ab|
+      abilities.each do |ab|
         if (ab.module=="all")
           resource = :all
         else
-          resource = eval(ab.module)
+          resource = eval(ab.module.name)
         end
-        
-        can :create, resource if ab.ability  == SystemAbility.CREATE
-        can :read,   resource if ab.ability  == SystemAbility.READ
-        can :update, resource if ab.ability  == SystemAbility.UPDATE
-        can :delete, resource if ab.ability  == SystemAbility.DELETE
+      
+        can ab.ability.name.downcase.to_sym, resource
+        Rails.logger.debug ("ability: :%s, resource: %s" % [ab.ability.name.downcase.to_sym.to_s, resource.to_s])
       end 
     end
     #

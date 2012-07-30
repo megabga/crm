@@ -223,11 +223,11 @@ ActiveRecord::Schema.define(:version => 20120729121922) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "primary_group"
+    t.integer  "primary_group_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["primary_group"], :name => "index_users_on_primary_group"
+  add_index "users", ["primary_group_id"], :name => "index_users_on_primary_group_id"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
