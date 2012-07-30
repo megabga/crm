@@ -29,15 +29,20 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   
-  it { should respond_to(:authenticate) }
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
   
+  #colaboration
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }  
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
   it { should respond_to(:followers) }
+  
+  #groups
+  it { should respond_to :groups }
+  it { should respond_to :primary_group }
+  it { should respond_to :secundary_groups }
     
   it { should respond_to(:admin) }
 
@@ -48,7 +53,6 @@ describe User do
     before { @user.name = " " }
     it { should_not be_valid }
   end
-  
   
   describe "when email format is invalid" do
     it "should be invalid" do
@@ -98,20 +102,23 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "with invalid password" do
-    let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-
-    it { should_not == user_for_invalid_password }
-    specify { user_for_invalid_password.should be_false }
-  end
-  
   describe "with a password that's too short" do
-      before { @user.password = @user.password_confirmation = "a" * 5 }
-      it { should be_invalid }
+    before { @user.password = @user.password_confirmation = "a" * 5 }
+    it { should be_invalid }
+  end
+
+  describe "email address with mixed case" do
+    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+
+    it "should be saved as all lower-case" do
+      @user.email = mixed_case_email
+      @user.save
+      @user.reload.email.should == mixed_case_email.downcase
     end
+  end
 
   #AUTHENTICATION <================================================
-  
+=begin  
   describe "return value of authenticate method" do
     before { @user.save }
     let(:found_user) { User.find_by_email(@user.email) }
@@ -127,16 +134,7 @@ describe User do
       specify { user_for_invalid_password.should be_false }
     end
   end
-  
-  describe "email address with mixed case" do
-    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
-
-    it "should be saved as all lower-case" do
-      @user.email = mixed_case_email
-      @user.save
-      @user.reload.email.should == mixed_case_email.downcase
-    end
-  end
+=end
 
   #REMEMBER <================================================
   
@@ -224,4 +222,24 @@ describe User do
     
   end
 
+
+  #User and Groups<=============================================
+  
+  describe "have a primary group or not " do
+    it(:primary_group) { @user.primary_group = UsersGroup.first }
+    it { should be_valid }
+  end
+  
+  describe "have many groups" do
+    let(:group_primary) { UsersGroup.first }
+    let(:group_secs) { [FactoryGirl.create(:users_group), FactoryGirl.create(:users_group)] }
+    before do
+      @user.primary_group = group_primary
+      @user.secundary_groups = group_secs
+      @user.save!
+    end
+    
+    it {   }
+    
+  end
 end

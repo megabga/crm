@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe Email do
   
-  let!(:email) { FactoryGirl::create(:email) }
-  
+  before do
+    @email = Email.new(email:Faker::Internet.email, 
+                       emailable: FactoryGirl.create(:customer))
+  end
   subject { @email }
   
   it { respond_to :emailable }
@@ -13,7 +15,7 @@ describe Email do
   it { should be_valid }
   
   describe "when emailable is not present" do
-    before { email.followed_id = nil }
+    before { @email.emailable_id = nil }
     it { should_not be_valid }
   end
   

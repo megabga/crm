@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723104639) do
+ActiveRecord::Schema.define(:version => 20120729121922) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20120723104639) do
     t.string   "address",     :limit => 80
     t.integer  "district_id"
     t.integer  "city_id"
-    t.string   "state_id",    :limit => 2
+    t.integer  "state_id"
     t.string   "postal",      :limit => 8
     t.string   "notes",       :limit => 500
     t.date     "birthday"
@@ -189,14 +189,27 @@ ActiveRecord::Schema.define(:version => 20120723104639) do
   create_table "user_abilities", :force => true do |t|
     t.integer  "module_id"
     t.integer  "ability_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "skilled_id"
+    t.string   "skilled_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  create_table "user_groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "users_group_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "user_groups", ["user_id", "users_group_id"], :name => "index_user_groups_on_user_id_and_users_group_id", :unique => true
+  add_index "user_groups", ["user_id"], :name => "index_user_groups_on_user_id"
+  add_index "user_groups", ["users_group_id"], :name => "index_user_groups_on_users_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",                   :limit => 25
     t.string   "email",                  :limit => 100
+    t.boolean  "enabled",                               :default => true
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
     t.string   "remember_token"
@@ -210,10 +223,20 @@ ActiveRecord::Schema.define(:version => 20120723104639) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "primary_group_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["primary_group_id"], :name => "index_users_on_primary_group_id"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_groups", :force => true do |t|
+    t.string   "name"
+    t.boolean  "enabled",    :default => true
+    t.boolean  "system",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
 end

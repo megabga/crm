@@ -1,18 +1,6 @@
 class Ability
   include CanCan::Ability
 
-  @@UPDATE = 1
-  cattr_reader :CREATE
-  
-  @@UPDATE = 2
-  cattr_reader :READ  
-
-  @@UPDATE = 3
-  cattr_reader :UPDATE
-
-  @@DELETE = 4
-  cattr_reader :DELETE
-
   def initialize(user)
     
     user ||= User.new # guest user (not logged in)
@@ -20,17 +8,17 @@ class Ability
       can :manage, :all
     else
       
-      user.abilities.each do |ab|
-        if (ab.model=="all")
-          model = :all
-        else        
-          model = eval(ab.model)
+      abilities = user.all_abilities
+      
+      abilities.each do |ab|
+        if (ab.module=="all")
+          resource = :all
+        else
+          resource = eval(ab.module.name)
         end
-        
-        can :create, model  if ab.ability.id == CREATE
-        can :read, model   if ab.ability.id == READ
-        can :update, model if ab.ability.id == UPDATE
-        can :delete, model if ab.ability.id == DELETE
+      
+        can ab.ability.name.downcase.to_sym, resource
+        Rails.logger.debug ("ability: :%s, resource: %s" % [ab.ability.name.downcase.to_sym.to_s, resource.to_s])
       end 
     end
     #

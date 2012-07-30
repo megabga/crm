@@ -10,8 +10,8 @@ describe CustomerPj do
                               name: "Example Customer", name_sec: "Name Sec",
                               address: "Rua B, Plano A",
                               birthday: "19/01/1900",
-                              state_id: FactoryGirl.create(:state),
-                              city_id: FactoryGirl.create(:city),
+                              state: FactoryGirl.create(:state),
+                              city: FactoryGirl.create(:city),
                               district: FactoryGirl.create(:district))
                               
      @customer.person = CustomerPj.new(fax: "859998887", total_employes: 230)

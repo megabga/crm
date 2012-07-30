@@ -16,6 +16,7 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
+    load "#{Rails.root}/db/seeds.rb" 
     I18n.locale = :"pt-BR"
     
     config.include Devise::TestHelpers, :type => :controller
@@ -94,7 +95,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 RSpec.configure do |config|
   
   # SO SO BLAH config.include Rails.application.routes.url_helpers
-  
+  load "#{Rails.root}/db/seeds.rb" 
   I18n.locale = :"pt-BR"
   
   config.include Devise::TestHelpers, :type => :controller
