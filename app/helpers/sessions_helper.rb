@@ -11,10 +11,6 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
   
-  def signed_in?
-    !current_user.nil?
-  end
-  
   
   def current_user=(user)
     @current_user = user
@@ -35,8 +31,12 @@ module SessionsHelper
   end
 =end
 
+  def signed_in?
+    !current_user.nil?
+  end
+
   def signed_in_user
-    unless user_signed_in?
+    unless signed_in?
       store_location
       redirect_to new_user_session_path, notice: t("session.erros.restrict_redirected")
     end

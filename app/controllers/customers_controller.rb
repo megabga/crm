@@ -12,7 +12,6 @@ class CustomersController < ApplicationController
   end
   
   def show
-    #@customer  = Customer.find params[:id]
     render "show."+@customer.person.prefix
   end
   
@@ -21,34 +20,25 @@ class CustomersController < ApplicationController
   end
   
   def new
-    #@customer = Customer.new
     @person = CustomerPj.new
     @customer.person = @person
     @segments = BusinessSegment.all
-    #@customer.person.customer_segments.build
-    #@customer.person.segments.build
-    #@customer.person.activities.build
     render "new."+preferences_customer_type?.to_s
   end
   
   def create
-    logger.error "============>#create"
     if (params[:customer]==nil)
       return
     end
-    filter_inputs params[:customer] if params[:customer]
     
-#    params_pj = params[:customer][:customer_pj]
-#    params[:customer].delete :customer_pj
+    filter_inputs params[:customer] if params[:customer]
     
     @customer = Customer.new(params[:customer])
     @person = CustomerPj.new(params[:customer_pj])
     @customer.person = @person
     
-    debugger
-    
-    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid } : []
-    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid } : []
+    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
+    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
     
     if @customer.save
       flash[:success] = t("helpers.forms.new_sucess")
@@ -67,13 +57,13 @@ class CustomersController < ApplicationController
     #@customer = Customer.find(params[:id])
     @person = @customer.person
     
-    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid } : []
-    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid } : []
+    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
+    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
+    
+    @person.save
     
     if @customer.update_attributes(params[:customer]) &&
     @person.update_attributes(params_pj)
-    
-      debugger
       
       if @customer.save
         flash[:success] = t("helpers.forms.new_sucess")

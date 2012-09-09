@@ -21,7 +21,6 @@ class CustomerPj < ActiveRecord::Base
   #many-to-many helpers <-----------------------------------
   
   def new_customer_segments_attributes=(segment_attributes)
-    logger.debug "new_customer_segment"
     segment_attributes.each do |attributes|
       segments.build(attributes)
     end
@@ -30,7 +29,6 @@ class CustomerPj < ActiveRecord::Base
   #after_update :save_customer_segments
   
   def existing_customer_segment_attributes=(segment_attributes)
-    logger.debug "existing_customer_segment"
     segments.reject(&:new_record?).each do |segment|
       attributes = segment_attributes[segment.id.to_s]
       if attributes

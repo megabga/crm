@@ -48,6 +48,8 @@ describe User do
 
   it { should be_valid }
   it { should_not be_admin }
+  
+  it { respond_to :able? }
 
   describe "when name is not present" do
     before { @user.name = " " }
@@ -176,7 +178,7 @@ describe User do
     
     it "should destroy associated microposts" do
       microposts = @user.microposts
-      @user.destroy
+      @user.destroy_fully
       microposts.each do |micropost|
         Micropost.find_by_id(micropost.id).should be_nil
       end
@@ -226,20 +228,34 @@ describe User do
   #User and Groups<=============================================
   
   describe "have a primary group or not " do
-    it(:primary_group) { @user.primary_group = UsersGroup.first }
+    it(:primary_group) { @user.primary_group = UserGroup.first }
     it { should be_valid }
   end
   
   describe "have many groups" do
-    let(:group_primary) { UsersGroup.first }
-    let(:group_secs) { [FactoryGirl.create(:users_group), FactoryGirl.create(:users_group)] }
+    let(:group_primary) { UserGroup.first }
+    let(:group_secs) { [FactoryGirl.create(:user_group), FactoryGirl.create(:user_group)] }
     before do
       @user.primary_group = group_primary
       @user.secundary_groups = group_secs
       @user.save!
     end
     
-    it {   }
+    its (:groups) { should include(group_secs[0]) }
+    its (:groups) { should include(group_secs[1]) }
     
+  end
+  
+
+  
+  describe "user able?" do
+    before do
+      able_create(@user, SystemModule.CUSTOMER)
+      able_read(@user, SystemModule.USER)
+    end
+    
+    it { @user.able?(SystemModule.CUSTOMER, SystemAbility.CREATE).should be_true }
+    it { @user.able?(SystemModule.USER, SystemAbility.READ).should be_true }
+    it { @user.able?(SystemModule.USER, SystemAbility.CREATE).should_not be_true }
   end
 end

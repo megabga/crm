@@ -37,6 +37,7 @@ group :development, :test do
   gem 'spork', '0.9.0'
   gem 'ruby-debug19'
   gem 'linecache19'
+  gem 'factory_girl_rails', '1.4.0'
 end
 
 # Gems used only for assets and not required
@@ -56,7 +57,6 @@ group :test do
   #MAC OS Especific
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
-  gem 'factory_girl_rails', '1.4.0'
 
   #Cucumber
   gem 'cucumber-rails', '1.2.1', require: false

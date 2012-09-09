@@ -6,6 +6,10 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+
+	<% if current_user.admin? %>
+	  <%= link_to t("users.abilities.link"), user_abilities_path(@user), class: "btn btn-primary"  %>
+	<% end %>
     </section>
   </aside>
 

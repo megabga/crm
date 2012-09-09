@@ -11,4 +11,8 @@ module UsersHelper
   def firstname(user)
     user.name.split[0]
   end
+  
+  def current_user?(user)
+    current_user!=nil && current_user.email == user.email
+  end
 end

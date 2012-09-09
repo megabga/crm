@@ -12,6 +12,8 @@ describe "User pages" do
     after(:all)  { User.delete_all }
 
     before(:each) do
+      able(user, "read", "user")
+      able(user, "create", "user")
       sign_in user
       visit users_path
     end
@@ -38,15 +40,16 @@ describe "User pages" do
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
+          sign_out
           sign_in admin
           visit users_path
         end
-
-        it { should have_link(I18n.t('helpers.forms.delete'), href: user_path(User.first)) }
+        
+        it { should have_link(I18n.t('helpers.forms.disable'), href: user_path(User.first)) }
         it "should be able to delete another user" do
-          expect { click_link(I18n.t('helpers.forms.delete')) }.to change(User, :count).by(-1)
+          expect { click_link(I18n.t('helpers.forms.disable')) }.to change(User, :count).by(-1)
         end
-        it { should_not have_link(I18n.t('helpers.forms.delete'), href: user_path(admin)) }
+        it { should_not have_link(I18n.t('helpers.forms.disable'), href: user_path(admin)) }
       end
     end
     
@@ -57,7 +60,12 @@ describe "User pages" do
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
 
-    before { visit user_path(user) }
+    before do
+       able_update(user, SystemModule.USER)
+       able_create(user, SystemModule.USER)
+       sign_in user
+       visit user_path(user);
+    end
 
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
@@ -72,6 +80,8 @@ describe "User pages" do
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
+      able_update(user, SystemModule.USER)
+      able_create(user, SystemModule.USER)
       sign_in user
       visit edit_user_path(user)
     end
@@ -89,13 +99,15 @@ describe "User pages" do
         fill_in I18n.t("users.name"),             with: new_name
         fill_in I18n.t("users.email"),            with: new_email
         fill_in I18n.t("users.password"),         with: user.password
-        fill_in I18n.t("users.confirm.password"), with: user.password
-        click_button I18n.t("helpers.forms.save")
+        fill_in I18n.t("users.password_confirmation"), with: user.password
+        click_button autotitle_update("User")
+        user.reload
+        sign_in user
+        visit user_path(user)
       end
 
       it { should have_selector('title', text: new_name) }
-      it { should have_selector('div.alert.alert-success') }
-      it { should have_link(I18n.t("sign.out.link"), href: signout_path) }
+      it { should have_link(I18n.t("sign.out.link"), href: destroy_user_session_path) }
       specify { user.reload.name.should  == new_name }
       specify { user.reload.email.should == new_email }
     end

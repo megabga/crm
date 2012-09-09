@@ -92,7 +92,15 @@ pt-BR:
       search:
           title: "Filtro Contatos"
       
-
+    histories: &attr_histories
+          title: "Histórico do Cliente"
+          link: "Histórico"
+          side:
+              title: "Histórico"
+          show:
+              title: "Visualizando Histórico"
+              link: "Ver histórico"
+                  
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
     doc_rg: "Inscrição Estadual"
@@ -111,11 +119,11 @@ pt-BR:
   microposts:
     title: "Mensagens"
 
-  users:
+  users: &attr_users
     name: "Nome do Usuário"
     email: "e-mail"
     password: "Senha"
-    password_confirm: "Confirmação da Senha"
+    password_confirmation: "Confirmação da Senha"
     title: "Usuários"
     link: "Usuários"
     edit:
@@ -127,7 +135,12 @@ pt-BR:
     settings:
       title: "Preferencias do Usuário"
       link: "Preferências"
-      
+    abilities: &attr_user_abilities
+      module: "Módulo"
+      ability: "Permissão"
+      user: "Usuário"
+      link: "Permissões de Acesso"
+      title: "Permissões de Acesso para %{user}"
       
   business_segments:
     link: "Segmentos"
@@ -177,6 +190,21 @@ pt-BR:
   help:
     link: Ajuda
   
+  #Guara CRM System <========================
+  system:
+    modules: &system_modules
+      customer: "Cliente"
+      contact: "Contato"
+      business_segment: "Segmento"
+      business_activity: "Atividade"
+      user: "Usuário"
+    abilities:
+      READ: "Ler"
+      CREATE: "Criar"
+      UPDATE: "Atualizar"
+      DELETE: "Apagar"
+      DISABLE: "Desabilitar"
+  
   #Rails <===================================
   
   activerecord:
@@ -186,8 +214,7 @@ pt-BR:
         
     attributes:
       user:
-        email: 'e-mail'
-        password: 'Senha'
+        <<: *attr_users
       customer:
           <<: *attr_customer
       
@@ -197,11 +224,8 @@ pt-BR:
       contact:
           <<: *attr_contacts
       
-    models:
-      customer: "Cliente"
-      contact: "Contato"
-      business_segment: "Segmento"
-      business_activity: "Atividade"
+    models: 
+      <<: *system_modules
       
   
   helpers:
@@ -211,6 +235,7 @@ pt-BR:
     forms:
       cancel: "Cancelar"
       edit: "Editar"
+      update: "Atualizar"
       add: "Adicionar"
       create: "Criar"
       new: "Novo"
@@ -224,6 +249,7 @@ pt-BR:
       errors: "O cadastro possui "
       error: "erro"
       search: "Pesquisar"
+      areyousure: "Tem certeza?"
       
     label:
       customers:
@@ -236,7 +262,6 @@ pt-BR:
           type_juridica: "Jurídica"
           submit: "Pesquisar"
           cancel: "Cancelar"
-          
       session:
         <<: *attr_session
   # ====================== Rails >

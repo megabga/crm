@@ -10,18 +10,17 @@
 #
 
 class User < ActiveRecord::Base
+  
+  include ActiveDisablable
   #attr_readonly :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me, :user_groups, 
+  attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me, :users_has_groups, 
                   :primary_group, :secundary_groups
-
-  #scope
-  default_scope where("enabled = TRUE")
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable, :registerable
+  # :lockable, and :omniauthable, :registerable
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   #RELATIONSHIPS<===================================================================
   before_save { |user| user.email = email.downcase }
@@ -39,9 +38,9 @@ class User < ActiveRecord::Base
   has_many :abilities, class_name: "UserAbility", :as => :skilled
   
   #GROUPS<=================
-  belongs_to :primary_group, class_name: "UsersGroup", foreign_key: "primary_group_id"
-  has_many :user_groups
-  has_many :secundary_groups, through: :user_groups, source: :users_group
+  belongs_to :primary_group, class_name: "UserGroup", foreign_key: "primary_group_id"
+  has_many :users_has_groups, class_name: "UsersHasGroups"
+  has_many :secundary_groups, through: :users_has_groups, source: :user_group
   
   #VALIDATIONS<============================================================
   #BASICS
@@ -86,6 +85,24 @@ class User < ActiveRecord::Base
       abilities << self.abilities  if (self.abilities)
       abilities << self.groups.collect { |g| g.abilities } if (self.groups)
       abilities.flatten.flatten.uniq
+    end
+    
+    def able?(module_, ability)
+      all_abilities.select { |ab| ab.module.id == module_.id && ab.ability.id == ability.id }.count > 0 
+    end
+    
+    def define_abilities(modules_and_abilities)
+      self.abilities.each do |u_ability|
+        u_ability.delete
+      end
+      labilities = []
+      
+      modules_and_abilities.each do |module_and_ability|
+        labilities << abilities.build(module_and_ability)
+      end
+      
+      self.abilities = labilities
+      
     end
   
   private

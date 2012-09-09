@@ -4,15 +4,18 @@ class Customer < ActiveRecord::Base
                   :phone, :fax, :social_link, :site, :enabled, :emails
   #attr_protected 
   
+  include ActiveDisablable
+  
   default_scope where("enabled = TRUE")
+  default_scope order: "name"
   
   
   #=========================== associations <--------------------------------------------
   
   belongs_to :person, :polymorphic => true, dependent: :destroy
-  has_many :histories
-  has_many :emails, :as => :emaiable
-  has_many :contacts
+  has_many :histories, dependent: :destroy
+  has_many :emails, :as => :emaiable, dependent: :destroy
+  has_many :contacts, dependent: :destroy
   
   belongs_to :state
   belongs_to :city
@@ -21,7 +24,7 @@ class Customer < ActiveRecord::Base
   #=========================== VALIDATE <------------------------------------------------
   
   
-  VALID_NAME_REGEX = /\A\w[\w ]*\z/i
+  VALID_NAME_REGEX = /\A([A-z0-9\s.,;\'\"\-\/])+\z/i
   
   validates :doc, :customer_cnpj => true
   validates :doc, :presence => true, :uniqueness => true, :if => :doc_needs?

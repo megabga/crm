@@ -18,13 +18,16 @@ GUARACRM::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
   
   #authenticate
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  #match '/signup',  to: 'users#new'
+  #match '/signin',  to: 'sessions#new'
+  #match '/signout', to: 'sessions#destroy', via: :delete
+  
+  #match '/sigup', to: ''
   
   #resources
   resources :users do
   #  resources :sessions
+    resources :abilities
   end
   #resources :sessions #,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]

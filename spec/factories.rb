@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:name)  { Faker::Name.name }
     sequence(:email) { |n| "person_#{n}@example.com"}   
     password "foobar"
     password_confirmation "foobar"
@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
   
   factory :customer do
-    name Faker::name
+    sequence(:name) { |n|   "#{Faker::Name.name}#{n}" }
     birthday 100.years.ago
     doc '0'*14
     complete false
@@ -53,27 +53,55 @@ FactoryGirl.define do
   end
   
   factory :state do
-    name Faker::Name.name
+    name { Faker::Name.name }
   end
     
   factory :city do
-    name Faker::Name.name
+    name { Faker::Name.name }
   end
   
   factory :district do
-    name Faker::Name.name
+    name { Faker::Name.name }
   end
   
   factory :business_segment do
-    name Faker::Name.name
+    name { Faker::Name.name }
   end
   
   factory :business_activity do
-    name Faker::Name.name
+    name { Faker::Name.name }
   end
   
-  factory :users_group do
+  factory :user_ability do
+    skilled_id
+    skilled_type "User"
+    ability_id
+    module_id
+  end
+  
+  factory :user_group do
     sequence(:name)  { |n| "Group #{n}" }
+    factory :group_able_users do
+      after_build do |g|
+      
+      end
+    end
+  end
+  
+  
+  
+  factory :history do
+    before_build do |h|
+      contact_id FactoryGirl.create(:contact)
+      user_id FactoryGirl.create(:user)
+      activity_id FactoryGirl.create(:activity)
+      feedback_id FactoryGirl.create(:feedback)
+    end
+    
+    customer_id
+    datetime 1.hour.ago
+    notes Faker::Name.name
+    status_id
   end
   
 end

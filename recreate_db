@@ -4,3 +4,4 @@ rake db:migrate
 rake db:test:prepare
 rake db:populate
 rake db:seed
+rake db:seed RAILS_ENV=test

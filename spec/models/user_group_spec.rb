@@ -1,30 +1,26 @@
 require 'spec_helper'
 
 describe UserGroup do
+
+  before do
+    @users_group = UserGroup.new( name: "Operators" )
+  end
   
-  let(:user) { FactoryGirl.create(:user) }
-  let(:group) { FactoryGirl.create(:users_group) }
-  let(:groups) { user.user_groups.build(users_group_id: group.id) }
-
-  subject { groups }
-
+  subject { @users_group }
+  
+  it { should respond_to :name }
+  it { should respond_to :abilities }
   it { should be_valid }
   
-  describe "grouping methods" do    
-     it { should respond_to(:user) }    
-     it { should respond_to(:users_group) }
-     its(:user) { should == user }
-     its(:users_group) { should == group }
-   end
+  describe "Have abilities" do
+    before do      
+      @user_abillity_1 = @users_group.abilities.build(:ability => SystemAbility.READ,   :module => SystemModule.CUSTOMER)
+      @user_abillity_2 = @users_group.abilities.build(:ability => SystemAbility.CREATE, :module => SystemModule.CUSTOMER)
+    end
+    it { should be_valid }
+    
+    its (:abilities) { should == [@user_abillity_1, @user_abillity_2] }
+    
+  end
 
-   describe "when user id is not present" do
-     before { groups.user_id = nil }
-     it { should_not be_valid }
-   end
-
-   describe "when follower id is not present" do
-     before { groups.users_group_id = nil }
-     it { should_not be_valid }
-   end
-  
 end
