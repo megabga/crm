@@ -90,18 +90,27 @@ FactoryGirl.define do
   
   
   
-  factory :history do
+  factory :task do
     before_build do |h|
-      contact_id FactoryGirl.create(:contact)
+      contact FactoryGirl.create(:contact)
       user_id FactoryGirl.create(:user)
-      activity_id FactoryGirl.create(:activity)
+      task_type_id FactoryGirl.create(:task_type)
       feedback_id FactoryGirl.create(:feedback)
     end
     
-    customer_id
-    datetime 1.hour.ago
-    notes Faker::Name.name
-    status_id
+    iterested
+    due_time 1.hour.ago
+    notes { Faker::Lorem.paragraph(2)[0..139] }
+    description { Faker::Lorem.paragraph(10) }
+    status SystemTaskStatus.OPENED
+  end
+  
+  factory :status do
+    name { Faker::Name.first }
+  end
+  
+  factory :task_type do
+    name { Faker::Name.first }
   end
   
 end

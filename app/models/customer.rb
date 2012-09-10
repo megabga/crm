@@ -13,7 +13,7 @@ class Customer < ActiveRecord::Base
   #=========================== associations <--------------------------------------------
   
   belongs_to :person, :polymorphic => true, dependent: :destroy
-  has_many :histories, dependent: :destroy
+  has_many :tasks, dependent: :destroy, :as => :interested
   has_many :emails, :as => :emaiable, dependent: :destroy
   has_many :contacts, dependent: :destroy
   

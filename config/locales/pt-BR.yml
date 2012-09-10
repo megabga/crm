@@ -92,7 +92,7 @@ pt-BR:
       search:
           title: "Filtro Contatos"
       
-    histories: &attr_histories
+    tasks: &attr_histories
           title: "Histórico do Cliente"
           link: "Histórico"
           side:

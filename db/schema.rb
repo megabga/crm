@@ -137,19 +137,6 @@ ActiveRecord::Schema.define(:version => 20120729121922) do
     t.datetime "updated_at",                                      :null => false
   end
 
-  create_table "histories", :force => true do |t|
-    t.integer  "customer_id"
-    t.integer  "contact_id"
-    t.integer  "user_id"
-    t.datetime "datetime"
-    t.integer  "activity_id"
-    t.string   "notes"
-    t.integer  "feedback_id"
-    t.integer  "status_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -187,6 +174,23 @@ ActiveRecord::Schema.define(:version => 20120729121922) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "interested_id"
+    t.string   "interested_type"
+    t.integer  "contact_id"
+    t.string   "contact_type"
+    t.integer  "user_id"
+    t.datetime "due_time"
+    t.datetime "finish_time"
+    t.integer  "activity_id"
+    t.string   "notes",           :limit => 140
+    t.string   "description",     :limit => 1000
+    t.integer  "feedback_id"
+    t.integer  "status_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "user_abilities", :force => true do |t|
