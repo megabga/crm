@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :user do
     sequence(:name)  { Faker::Name.name }
     sequence(:email) { |n| "person_#{n}@example.com"}   
@@ -15,6 +16,10 @@ FactoryGirl.define do
     birthday 100.years.ago
     doc '0'*14
     complete false
+    
+    factory :interested do
+      #specialized
+    end
   end
   
   
@@ -87,30 +92,27 @@ FactoryGirl.define do
       end
     end
   end
-  
-  
-  
+
+
+=begin
   factory :task do
-    before_build do |h|
-      contact FactoryGirl.create(:contact)
-      user_id FactoryGirl.create(:user)
-      task_type_id FactoryGirl.create(:task_type)
-      feedback_id FactoryGirl.create(:feedback)
+    after_build do |h|
+      contact { FactoryGirl.create(:contact) }
+      task_type_id { FactoryGirl.create(:task_type) }
     end
     
-    iterested
+    interested
+    user
+    
+    name { Faker::Lorem.sentence(3) }
     due_time 1.hour.ago
     notes { Faker::Lorem.paragraph(2)[0..139] }
     description { Faker::Lorem.paragraph(10) }
     status SystemTaskStatus.OPENED
   end
-  
+
   factory :status do
     name { Faker::Name.first }
   end
-  
-  factory :task_type do
-    name { Faker::Name.first }
-  end
-  
+=end
 end

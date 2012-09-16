@@ -4,13 +4,22 @@ require 'devise/orm/active_record'
 module ActiveDisablable
   
   def self.included(base)
-    #base.extend(ClassMethods)
-    base.send(:default_scope) { base.where("enabled = TRUE") }
+    base.extend(ClassMethods)
+    base.send(:default_scope) { base.where(:enabled => true) }
   end
   
-  #module ClassMethods
-  #  
-  #end
+  module ClassMethods
+    def all_include_disabled
+      unscoped
+    end
+    
+    def all_disabled
+      where(:enabled => false) 
+    end
+    
+  end
+  
+  
   
   def disable
     self.enabled = false
@@ -24,8 +33,12 @@ module ActiveDisablable
     self.enabled
   end
   
+  def is_disabled?
+    !self.enabled
+  end  
+  
   def destroy
-    if (@destroy_fully)
+    if (@destroy_fully || self.is_disabled?)
       super
     else
       disable

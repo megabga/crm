@@ -26,9 +26,9 @@ describe CustomerPj do
   
   subject { @customer.person }
   
-  it { respond_to :fax }
-  it { respond_to :segments }
-  it { respond_to :activities }
+  it { should respond_to :fax }
+  it { should respond_to :segments }
+  it { should respond_to :activities }
   
   it { should be_valid }
   

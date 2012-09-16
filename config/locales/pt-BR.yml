@@ -1,8 +1,9 @@
 
 pt-BR:
-    
-  yes: "Sim"
-  no: "Não"
+  commons: &commons
+    yes: "Sim"
+    no: "Não"
+    empty: "Vazio"
   
   crm:
     title:
@@ -92,14 +93,14 @@ pt-BR:
       search:
           title: "Filtro Contatos"
       
-    tasks: &attr_histories
-          title: "Histórico do Cliente"
-          link: "Histórico"
-          side:
-              title: "Histórico"
-          show:
-              title: "Visualizando Histórico"
-              link: "Ver histórico"
+  tasks: &attr_tasks
+    title: "Histórico do Cliente"
+    link: "Histórico"
+    side:
+      title: "Histórico"
+    show:
+      title: "Visualizando Histórico"
+      link: "Ver histórico"
                   
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
@@ -147,6 +148,10 @@ pt-BR:
     
   business_activities:
     link: "Atividades"
+    
+  tasks:
+    status:
+      not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolved}"
   #SECTIONS <===================================
   
   account:
@@ -229,8 +234,7 @@ pt-BR:
       
   
   helpers:
-    yes: "Sim"
-    no: "Não"
+    <<: *commons
     
     forms:
       cancel: "Cancelar"

@@ -25,26 +25,20 @@ def sign_out()
 end
 
 def able(user, ability_str, module_str)
-  ability_model = SystemAbility.find_by_name(ability_str.upcase)
-  module_model = SystemModule.find_by_name(module_str.titleize)
+  ability_model = SystemAbility.find_by_name(ability_str.to_s.upcase)
+  module_model = SystemModule.find_by_name(module_str.to_s.titleize)
   user.abilities.build(:module => module_model, :ability => ability_model).save
 end
 
 
 ### Botões automáticos
-def autotitle_update(model_)
-  "%s %s" % [I18n.t('helpers.forms.update'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
-end
-def autotitle_create(model_)
-  "%s %s" % [I18n.t('helpers.forms.create'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+def autotitle(model_, operation)
+  "%s %s" % [I18n.t('helpers.forms.%s' % operation.to_s.downcase), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
 end
 
-def autotitle_new(model_)
-  "%s %s" % [I18n.t('helpers.forms.new'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+def clear_test_dummy
+  User.unscoped.where('email like ?', 'person%').each { |u| u.destroy_fully }
 end
-
-
-
 
 
 
@@ -77,4 +71,15 @@ end
 
 def able_read_to(user, module_to)
   able_read(user, SystemModule.find_by_name(module_to.titleize))
+end
+
+def autotitle_update(model_)
+  "%s %s" % [I18n.t('helpers.forms.update'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+end
+def autotitle_create(model_)
+  "%s %s" % [I18n.t('helpers.forms.create'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+end
+
+def autotitle_new(model_)
+  "%s %s" % [I18n.t('helpers.forms.new'), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
 end

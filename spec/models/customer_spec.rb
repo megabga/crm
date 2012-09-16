@@ -15,11 +15,11 @@ describe Customer do
    
    subject { @customer }
    
-   it { respond_to :emails }
-   it { respond_to :complete? }
+   it { should respond_to :emails }
+   it { should respond_to :complete? }
    
-   it { respond_to :contacts }
-   
+   it { should respond_to :contacts }
+   it { should be_valid }
    
    describe "when record is complete" do
      describe "require essencials fields" do

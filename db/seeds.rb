@@ -1,7 +1,8 @@
 #encoding: utf-8
 
 SystemAbility.create([{ id:1, name: 'CREATE' }, { id:2, name: 'READ' }, { id:3, name: 'UPDATE' }, { id:4, name: 'DELETE' }])
-SystemModule.create([{ name: 'All' }, 
+SystemModule.create([
+                     { name: 'All' }, 
                      { name: 'User' },
                      { name: 'Customer' },
                      { name: 'Contact' },
@@ -14,12 +15,26 @@ SystemModule.create([{ name: 'All' },
                      { name: 'Micropost' },
                      { name: 'State' }, 
                      { name: 'City' }, 
-                     { name: 'District' },])
+                     { name: 'District' },
+                  ])
                      
+SystemTaskStatus.create([
+                         { name: "OPENED" },
+                         { name: "IN_PROGRESS" },
+                         { name: "PAUSED" },
+                         { name: "CLOSED" },
+                       ])
+                       
+SystemTaskResolution.create([
+                          { name: "RESOLVED" },
+                          { name: "CANCELED" },
+                          { name: "BLOCKED" }
+                       ])
                      
 ### States
 
-State.create([{ acronym: "AC", name: "Acre"},
+State.create  ([
+                  { acronym: "AC", name: "Acre"},
                   { acronym: 'AL', name: 'Alagoas' },
                   { acronym: 'AM', name: 'Amazonas' },
                   { acronym: 'AP', name: 'Amapá' },
@@ -50,7 +65,7 @@ State.create([{ acronym: "AC", name: "Acre"},
 
 
 ### City
-City.create(name: 'Fortaleza', state: State.find_by_acronym('CE'))
+City.create( name: 'Fortaleza', state: State.find_by_acronym('CE') )
 
 #segmento
 BusinessSegment.create(name:'Segmento Padrão')

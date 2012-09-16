@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729121922) do
+ActiveRecord::Schema.define(:version => 20120911070836) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -176,19 +176,47 @@ ActiveRecord::Schema.define(:version => 20120729121922) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "system_task_resolutions", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "system_task_status", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "task_feedbacks", :force => true do |t|
+    t.integer  "task_id"
+    t.datetime "date"
+    t.string   "notes"
+    t.integer  "user_id"
+    t.integer  "status_id"
+    t.integer  "resolution_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "task_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "enabled"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tasks", :force => true do |t|
+    t.string   "name",            :limit => 60
     t.integer  "interested_id"
     t.string   "interested_type"
     t.integer  "contact_id"
     t.string   "contact_type"
-    t.integer  "user_id"
     t.datetime "due_time"
     t.datetime "finish_time"
-    t.integer  "activity_id"
     t.string   "notes",           :limit => 140
     t.string   "description",     :limit => 1000
-    t.integer  "feedback_id"
+    t.integer  "user_id"
     t.integer  "status_id"
+    t.integer  "type_id"
+    t.integer  "assigned_id"
+    t.integer  "resolution_id"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end

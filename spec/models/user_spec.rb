@@ -13,6 +13,8 @@ require 'spec_helper'
 
 describe User do
 
+  before(:all) { clear_test_dummy }
+
   before do
     @user = User.new(name: "Example User", email: "user@example.com", 
                      password: "foobar", password_confirmation: "foobar")
@@ -258,4 +260,15 @@ describe User do
     it { @user.able?(SystemModule.USER, SystemAbility.READ).should be_true }
     it { @user.able?(SystemModule.USER, SystemAbility.CREATE).should_not be_true }
   end
+  
+  
+  describe "tasks" do
+    before do
+      task = FactoryGirl.create(:task_for_user, @user)
+    end
+    
+    it { @user.tasks.should include(task) }
+  end
+  
+  
 end

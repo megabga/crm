@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
   #attr_protected 
   
   include ActiveDisablable
+  include StringHelper
   
   default_scope where("enabled = TRUE")
   default_scope order: "name"
@@ -14,7 +15,7 @@ class Customer < ActiveRecord::Base
   
   belongs_to :person, :polymorphic => true, dependent: :destroy
   has_many :tasks, dependent: :destroy, :as => :interested
-  has_many :emails, :as => :emaiable, dependent: :destroy
+  has_many :emails, :as => :emailable, dependent: :destroy
   has_many :contacts, dependent: :destroy
   
   belongs_to :state
@@ -59,7 +60,7 @@ class Customer < ActiveRecord::Base
   end
   
   def format_address
-    address + ", " + (self.district ? self.district.name : "") + ", " + (self.city ? self.city.name : "") + ", " + (self.state ? self.state.name : "")
+    (self.address ? self.address : "") + ", " + name_or_empty(self.district) + ", " + name_or_empty(self.city) + ", " + name_or_empty(self.state)
   end
   
   def doc_needs?

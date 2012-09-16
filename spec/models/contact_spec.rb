@@ -10,12 +10,11 @@ describe Contact do
    
    subject { @contact }
 
-   it { respond_to :name }
-   it { respond_to :birthday }
-   it { respond_to :phone }
-   it { respond_to :customer }
-   it { respond_to :contacts }
-   it { respond_to :emails }
+   it { should respond_to :name }
+   it { should respond_to :birthday }
+   it { should respond_to :phone }
+   it { should respond_to :customer }
+   it { should respond_to :emails }
    
    it { should be_valid }
    
