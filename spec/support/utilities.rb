@@ -32,9 +32,9 @@ end
 
 
 ### Botões automáticos
-def autotitle(model_, operation)
-  "%s %s" % [I18n.t('helpers.forms.%s' % operation.to_s.downcase), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
-end
+#def autotitle(model_, operation)
+#  "%s %s" % [I18n.t('helpers.forms.%s' % operation.to_s.downcase), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+#end
 
 def clear_test_dummy
   User.unscoped.where('email like ?', 'person%').each { |u| u.destroy_fully }
