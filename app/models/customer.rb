@@ -7,7 +7,6 @@ class Customer < ActiveRecord::Base
   include ActiveDisablable
   include StringHelper
   
-  default_scope where("enabled = TRUE")
   default_scope order: "name"
   
   

@@ -92,9 +92,7 @@ FactoryGirl.define do
       end
     end
   end
-
-
-=begin
+  
   factory :task do
     after_build do |h|
       contact { FactoryGirl.create(:contact) }
@@ -110,9 +108,9 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph(10) }
     status SystemTaskStatus.OPENED
   end
-
+  
   factory :status do
     name { Faker::Name.first }
   end
-=end
+
 end

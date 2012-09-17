@@ -1,4 +1,6 @@
-include Rails.application.routes.url_helpers
+
+#esta linha me fez perder horas debugando
+#include Rails.application.routes.url_helpers
 
 class Task < ActiveRecord::Base
   
@@ -8,7 +10,7 @@ class Task < ActiveRecord::Base
   
   attr_accessible :name, :interested, :user, :contact, :status, :resolution, :due_time, :finish_time, :notes,
                   :description, :type, :assigned
-  
+
   belongs_to :interested, :polymorphic => true
   belongs_to :contact, :polymorphic => true
   belongs_to :status, class_name: "SystemTaskStatus"
@@ -18,7 +20,7 @@ class Task < ActiveRecord::Base
   belongs_to :assigned, class_name: "User"
   
   has_many :feedbacks, class_name: "task_feedback"
-  
+
   
   #=========================== VALIDATE <------------------------------------------------
   
@@ -26,7 +28,7 @@ class Task < ActiveRecord::Base
   
   validates :name, :presence => true, length: { maximum: 60 }, format: { with: VALID_NAME_REGEX }, uniqueness: true
   validate :valid_status?
-  validates_presence_of :status, :notes
+  validates_presence_of :status, :notes, :user
   
   
   private

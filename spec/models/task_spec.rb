@@ -5,11 +5,11 @@ describe Task do
   
   before(:all) { clear_test_dummy }
   
+  let(:customer_pj) { FactoryGirl.create(:customer_pj) }
+  let(:contact) { FactoryGirl.create(:contact, customer: customer_pj.customer) }
+  let(:user) { user = FactoryGirl.create(:user) }
+  
   before do
-    
-    customer_pj = FactoryGirl.create(:customer_pj)
-    contact = FactoryGirl.create(:contact, customer: customer_pj.customer)
-    user = FactoryGirl.create(:user)
     
     @task = Task.create(name: "task "+Faker::Lorem.sentence(4),
                        interested: customer_pj,
@@ -24,6 +24,7 @@ describe Task do
                        resolution: nil,
                        type: FactoryGirl.create(:task_type)
                        )
+    
   end
   
   subject { @task }
@@ -134,8 +135,8 @@ describe Task do
     end
   end
   
-  describe "'s associated with a CUSTOMER destroyed, must also be destroyed"
-    it { expect(customer_pj.destroy_fully).to change(Task).by(-1) }
+  describe "associated with a CUSTOMER destroyed, must also be destroyed" do
+    it { expect { customer_pj.customer.destroy_fully }.to change{ Task.count }.by(-1) }
   end
 
 end

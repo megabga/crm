@@ -29,16 +29,22 @@ describe "Customer Task Pages" do
 
   describe "side panel with the history of the tasks related to customer" do
     before do
-      visit customer_path(customer_pj)
+      visit customer_path(customer_pj.customer)
     end
     
-    it { sould have_content(I18n.t("customers.tasks.side.title")) }
+    it { should have_content(I18n.t("tasks.side.title")) }
+    it { should have_content(I18n.t("tasks.side.new.link") }
     
+    describe "click on new link on side panel" do
+      before do
+        click_in I18n.t("tasks.side.new.link")
+      end
+      it { have_css("div.task.new") }
+      it { find("div.task.new").should be_visible }
+    end    
     
   end
 
-  describe "" do
-    
-  end
+
 
 end

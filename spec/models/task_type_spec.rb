@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe TaskType do
 
-  before do
-    type = TaskType.crate(name: Faker::Name.first)
-  end
+  let(:type) { TaskType.create(name: Faker::Name.first_name) }
   
   subject { type }
   

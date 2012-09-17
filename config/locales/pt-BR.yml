@@ -101,7 +101,13 @@ pt-BR:
     show:
       title: "Visualizando Histórico"
       link: "Ver histórico"
-                  
+    status:
+      not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolved}"                  
+    new:
+      title: "Nova Tarefa"
+      link: "Criar"
+      
+      
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
     doc_rg: "Inscrição Estadual"
@@ -148,10 +154,7 @@ pt-BR:
     
   business_activities:
     link: "Atividades"
-    
-  tasks:
-    status:
-      not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolved}"
+
   #SECTIONS <===================================
   
   account:

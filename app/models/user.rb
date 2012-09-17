@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   
   has_many :abilities, class_name: "UserAbility", :as => :skilled
   
+  has_many :tasks
+  
   #GROUPS<=================
   belongs_to :primary_group, class_name: "UserGroup", foreign_key: "primary_group_id"
   has_many :users_has_groups, class_name: "UsersHasGroups"

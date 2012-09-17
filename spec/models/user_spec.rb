@@ -264,7 +264,7 @@ describe User do
   
   describe "tasks" do
     before do
-      task = FactoryGirl.create(:task_for_user, @user)
+      task = FactoryGirl.create(:task, user: @user)
     end
     
     it { @user.tasks.should include(task) }
