@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '2.0.3'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'rails3-jquery-autocomplete'
+gem 'formtastic-bootstrap'
 
 #test support
 gem 'faker', '1.0.1'
@@ -52,6 +53,7 @@ gem 'jquery-rails', '2.0.0'
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'capybara-webkit'
   gem "launchy"
   gem 'ZenTest'
   #MAC OS Especific
@@ -59,7 +61,7 @@ group :test do
   gem 'growl', '1.0.3'
 
   #Cucumber
-  gem 'cucumber-rails', '1.2.1', require: false
+  gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
 end
 

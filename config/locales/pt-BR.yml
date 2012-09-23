@@ -105,7 +105,10 @@ pt-BR:
       not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolved}"                  
     new:
       title: "Nova Tarefa"
-      link: "Criar"
+      link: "Nova Tarefa"
+    
+    
+    
       
       
   customer_pjs: &attr_customer_pj

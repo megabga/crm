@@ -12,6 +12,7 @@ class CustomersController < ApplicationController
   end
   
   def show
+    @task = @customer.tasks.build
     render "show."+@customer.person.prefix
   end
   

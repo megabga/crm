@@ -32,16 +32,22 @@ end
 
 
 ### Botões automáticos
-#def autotitle(model_, operation)
-#  "%s %s" % [I18n.t('helpers.forms.%s' % operation.to_s.downcase), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
-#end
+def autotitle(model_, operation)
+  "%s %s" % [I18n.t('helpers.forms.%s' % operation.to_s.downcase), I18n.t('activerecord.models.%s' % model_.to_s.downcase)]
+end
 
 def clear_test_dummy
   User.unscoped.where('email like ?', 'person%').each { |u| u.destroy_fully }
 end
 
+def wait_until_visible(element)
+  wait_until { page.find(element).visible? }
+end
 
-
+#TODO: work any context
+def wait_animations()
+  wait_until { page.evaluate_script('$(":animated").length') == 0 }  
+end
 
 
 

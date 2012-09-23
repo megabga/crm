@@ -260,3 +260,21 @@ aside {
 
 
 
+/* tasks */
+
+.tasks {
+	.disabled {
+		display: none;
+	}
+	
+	.enabled {
+		display: block;
+	}
+	.side {
+		.new {
+			background-color: #f1f1f1;
+		}
+	}
+}
+
+

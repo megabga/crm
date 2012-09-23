@@ -24,7 +24,7 @@ class Task < ActiveRecord::Base
   
   #=========================== VALIDATE <------------------------------------------------
   
-  VALID_NAME_REGEX = /\A[A-z0-9.,;\'\"\-\/]{3,}\s{1,}([A-z0-9.,;\'\"\-\/]\s*)*\z/i
+  VALID_NAME_REGEX = /\A([A-z0-9.,;\'\"\-\/]\s*)+\z/i
   
   validates :name, :presence => true, length: { maximum: 60 }, format: { with: VALID_NAME_REGEX }, uniqueness: true
   validate :valid_status?

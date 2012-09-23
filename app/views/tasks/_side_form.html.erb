@@ -1,0 +1,52 @@
+<%= form_for [@customer, @task]  do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<fieldset>
+  <legend><%= title %></legend>
+
+ <div class="row">
+  <div class="span6">
+    <div class="control-group">
+    <%= f.label :name %>	  
+	  <div class="control">
+    <%= f.text_field :name %>		
+	  </div>
+	</div>
+	
+    <div class="control-group">
+    <%= f.label :due_time %>	  
+	  <div class="control">
+    <%= f.text_field :name %>		
+	  </div>
+	</div>
+	
+    <div class="control-group">
+    <%= f.label :notes %>	  
+	  <div class="control">
+    <%= f.memo_field :notes %>		
+	  </div>
+	</div>
+	
+    <div class="control-group">
+    <%= f.label :name %>	  
+	  <div class="control">
+    <%= f.text_field :name %>		
+	  </div>
+	</div>
+	
+    <div class="control-group">
+    <%= f.label :name %>	  
+	  <div class="control">
+    <%= f.text_field :name %>		
+	  </div>
+	</div>
+	
+    <div class="control-group">
+    <%= f.label :name %>	  
+	  <div class="control">
+    <%= f.text_field :name %>		
+	  </div>
+	</div>
+  </div>
+</fieldset>
+
+<% end %>

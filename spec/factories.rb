@@ -102,11 +102,11 @@ FactoryGirl.define do
     interested
     user
     
-    name { Faker::Lorem.sentence(3) }
+    name { ("three"+Faker::Lorem.sentence(3))[0..59] }
     due_time 1.hour.ago
     notes { Faker::Lorem.paragraph(2)[0..139] }
     description { Faker::Lorem.paragraph(10) }
-    status SystemTaskStatus.OPENED
+    status { SystemTaskStatus.OPENED }
   end
   
   factory :status do
