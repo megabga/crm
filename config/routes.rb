@@ -44,7 +44,18 @@ GUARACRM::Application.routes.draw do
     resources :tasks
   end
   
-  resources :lab_ajax
+  namespace :tests do
+    resources :ajaxes do
+      collection do
+        get 'add_and_update'
+        get 'add'
+        get 'all'
+      end
+    end
+    
+    resources :lab_ajax
+  end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

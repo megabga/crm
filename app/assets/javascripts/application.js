@@ -64,7 +64,6 @@ $(document).ready(function(){
 
       try {
         // Populate errorText with the comment errors
-		alert(xhr.responseText);
         errors = $.parseJSON(xhr.responseText);
       } catch(err) {
         // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
@@ -79,6 +78,8 @@ $(document).ready(function(){
       }
 
       errorText += "</ul>";
+
+	  $(document).scrollTop();
 
       // Insert error list into form
       $form.find('div.validation-error').html(errorText);

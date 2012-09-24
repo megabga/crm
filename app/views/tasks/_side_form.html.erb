@@ -1,5 +1,5 @@
 
-<%= semantic_form_for [@customer, @task], :remote => (remote || false), :html => {  :'data-type' => 'html', :class => "remote_form" } do |f| %>
+<%= semantic_form_for [@customer, @task], :remote => (remote || false), :html => { :class => "remote_form" }, :method => :post do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 <fieldset>
   <legend><%= title %></legend>

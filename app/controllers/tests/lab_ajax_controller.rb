@@ -1,5 +1,5 @@
 
-class LabAjaxController < ApplicationController
+class Tests::LabAjaxController < ApplicationController
    
   def multiselection
     @customer = Customer.new

@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   load_and_authorize_resource :through => :customer
   respond_to :html, :xml, :json
   
+  include FormAjaxHelper
+  
   def index
   end
   
@@ -23,28 +25,11 @@ class TasksController < ApplicationController
     @task = @customer.tasks.build(params[:task])
     respond_to do |format|
       if @task.save
-        respond_with do |format|
-          format.html do
-            if request.xhr?
-              render :partial => "tasks/show", :locals => { :comment => @task }, :layout => false, :status => :created
-            else
-              redirect_to @comment
-            end
-          end
-        end
+        format.js { render :locals => { :task => @task }, :layout => false, :status => :created }
+        format.html { redirect_to @comment } 
       else
-        respond_with do |format|
-          format.html do
-            if request.xhr?
-              puts "ERros in json - "+@task.errors.to_json
-              #.map {|v| v[1].force_encoding('UTF-8'); v }
-              #render :json => @task.errors, :content_type => "application/json" #, :status => :unprocessable_entity
-              render :json => "aabb"# , :status => :unprocessable_entity
-            else
-              render :action => :new, :status => :unprocessable_entity
-            end
-          end
-        end
+        format.js { render :json => format_errors("tasks", @task.errors), :content_type => "application/json", :status => :unprocessable_entity }
+        format.html { render :action => :new, :status => :unprocessable_entity }
       end
     end
   end
