@@ -48,4 +48,15 @@ $(function() {
     
 });
 
+function record_created() {
+	$(".tasks.side .new .form form")[0].reset()
+	$(".tasks.side .new .form").modal('hide');
+	showMessage("<%= t("helpers.forms.new_sucess") %>");
+	update_tasks();
+}
+
+function update_tasks() {
+	alert('peding');
+}
+
 </script>

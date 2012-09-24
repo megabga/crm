@@ -68,7 +68,7 @@ describe "Customer Task Pages" do
         
         it { expect{ click_on I18n.t("helpers.forms.save") }.to change(Task, :count).by(+1) }
       end
-    end    
+    end
     
   end
 

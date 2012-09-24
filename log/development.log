@@ -56094,3 +56094,3341 @@ Processing by TasksController#create as JS
   [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
   [1m[35m (0.1ms)[0m  ROLLBACK
 Completed 422 Unprocessable Entity in 26ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:13:34 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.3ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (0.9ms)
+  [1m[35mBusinessSegment Load (0.4ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.3ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[35mTaskType Load (0.3ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.4ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (46.2ms)
+  Rendered tasks/_side_panel.html.erb (47.0ms)
+  Rendered customers/show.pj.html.erb within layouts/application (82.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (5.3ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 393ms (Views: 135.9ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:13:35 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:13:37 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 31ms (Views: 0.3ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:13:50 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"teste", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"eu", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.6ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'teste' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 27ms (Views: 0.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:14:04 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.6ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.3ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (1.2ms)
+  [1m[35mBusinessSegment Load (0.4ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.2ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[35mTaskType Load (0.4ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.2ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (44.8ms)
+  Rendered tasks/_side_panel.html.erb (45.5ms)
+  Rendered customers/show.pj.html.erb within layouts/application (120.4ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (7.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 330ms (Views: 139.1ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /custom.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:14:05 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:14:12 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"teste", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"teste", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'teste' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (37.5ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:14:12 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "teste"], ["notes", "teste"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:14:12 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 77ms
+
+ActionView::MissingTemplate (Missing template tasks/create, application/create with {:locale=>[:"pt-BR"], :formats=>[:js, :html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/brunoguerra/dropbox/Dropbox/CMGB/app/app/views"
+  * "/Users/brunoguerra/.rvm/gems/ruby-1.9.2-p320/gems/devise-2.1.0/app/views"
+):
+  app/controllers/tasks_controller.rb:32:in `block (2 levels) in create'
+  app/controllers/tasks_controller.rb:30:in `create'
+
+
+  Rendered /Users/brunoguerra/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.2.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.7ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:25:53 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (1.4ms)
+  [1m[36mBusinessSegment Load (0.3ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.4ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  [1m[36mTaskType Load (0.2ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (105.0ms)
+  Rendered tasks/_side_panel.html.erb (106.0ms)
+  Rendered customers/show.pj.html.erb within layouts/application (158.3ms)
+Compiled custom.css  (1056ms)  (pid 21047)
+Compiled tasks.css  (3ms)  (pid 21047)
+Compiled application.css  (17ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (8.1ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 1597ms (Views: 1380.7ms | ActiveRecord: 26.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /application.css - 304 Not Modified (44ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /tasks.css - 200 OK (2ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /custom.css - 200 OK (12ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons-halflings.png" for 127.0.0.1 at 2012-09-24 04:25:55 -0300
+Served asset /glyphicons-halflings.png - 304 Not Modified (0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.6ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.4ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.5ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (22.7ms)
+  Rendered tasks/_side_panel.html.erb (23.6ms)
+  Rendered customers/show.pj.html.erb within layouts/application (32.5ms)
+Compiled tasks.css  (47ms)  (pid 21047)
+Compiled application.css  (5ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (5.0ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 175ms (Views: 162.6ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /custom.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:09 -0300
+Served asset /application.css - 304 Not Modified (36ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /tasks.css - 200 OK (5ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /jquery-ui.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:26:10 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.7ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.5ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (20.6ms)
+  Rendered tasks/_side_panel.html.erb (21.3ms)
+  Rendered customers/show.pj.html.erb within layouts/application (29.6ms)
+Compiled tasks.css  (2ms)  (pid 21047)
+Compiled application.css  (6ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (5.5ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 190ms (Views: 177.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /custom.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /application.css - 304 Not Modified (44ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /tasks.css - 200 OK (4ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:18 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:26:19 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:26:25 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.7ms)
+  [1m[36mBusinessSegment Load (0.6ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.4ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.5ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (22.4ms)
+  Rendered tasks/_side_panel.html.erb (23.1ms)
+  Rendered customers/show.pj.html.erb within layouts/application (80.4ms)
+Compiled tasks.css  (1ms)  (pid 21047)
+Compiled application.css  (5ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (4.7ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 178ms (Views: 163.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /application.css - 304 Not Modified (38ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /custom.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /tasks.css - 200 OK (13ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:26:26 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:26:41 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.3ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.7ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.5ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (20.7ms)
+  Rendered tasks/_side_panel.html.erb (21.4ms)
+  Rendered customers/show.pj.html.erb within layouts/application (29.6ms)
+Compiled tasks.css  (2ms)  (pid 21047)
+Compiled application.css  (6ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (5.5ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 183ms (Views: 171.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /application.css - 304 Not Modified (54ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /tasks.css - 200 OK (4ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /bootstrap.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:26:42 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:26:46 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.5ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 422 Unprocessable Entity in 31ms (Views: 0.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.6ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.3ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (21.4ms)
+  Rendered tasks/_side_panel.html.erb (22.0ms)
+  Rendered customers/show.pj.html.erb within layouts/application (30.9ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 112ms (Views: 98.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /application.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /custom.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:27:51 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:27:52 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:27:55 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.5ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.5ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Completed 422 Unprocessable Entity in 20ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:28:03 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"asdasd", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asd", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.5ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = 'asdasd' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:28:03 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "asdasd"], ["notes", "asd"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:28:03 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.3ms)
+Completed 201 Created in 27ms (Views: 2.2ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:48:25 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"asdasd", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asd", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.5ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'asdasd' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 20ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:48:29 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"asdasd", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asd", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.5ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'asdasd' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 19ms (Views: 0.1ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:48:35 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"teste 5", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asd", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'teste 5' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:48:35 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "teste 5"], ["notes", "asd"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:48:35 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.3ms)
+Completed 201 Created in 23ms (Views: 1.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.6ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.6ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.5ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.3ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (21.9ms)
+  Rendered tasks/_side_panel.html.erb (23.3ms)
+  Rendered customers/show.pj.html.erb within layouts/application (33.1ms)
+Compiled application.js  (7ms)  (pid 21047)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (4.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 323ms (Views: 306.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /custom.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:38 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /application.js - 200 OK (39ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:48:39 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.5ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (7.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (1.0ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.4ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.3ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.3ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (86.7ms)
+  Rendered tasks/_side_panel.html.erb (88.1ms)
+  Rendered customers/show.pj.html.erb within layouts/application (97.6ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (4.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 151ms (Views: 126.2ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /custom.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:16 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:49:17 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:49:20 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.5ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 422 Unprocessable Entity in 22ms (Views: 0.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:49:29 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"teste 999", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"teste", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.4ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = 'teste 999' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:49:29 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "teste 999"], ["notes", "teste"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:49:29 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.0ms)
+Completed 201 Created in 23ms (Views: 1.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:51:08 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.2ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (2.3ms)
+  [1m[35mBusinessSegment Load (0.3ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.2ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  [1m[35mTaskType Load (0.3ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.2ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (69.5ms)
+  Rendered tasks/_side_panel.html.erb (70.5ms)
+  Rendered customers/show.pj.html.erb within layouts/application (209.4ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (56.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 560ms (Views: 317.0ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:09 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /custom.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /tasks.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:51:10 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:51:13 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.2ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 34ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:51:21 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"tst 1", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"testes ", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.6ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'tst 1' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:51:21 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "tst 1"], ["notes", "testes "], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:51:21 UTC +00:00], ["user_id", 2]]
+  [1m[36m (183.1ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.4ms)
+Completed 201 Created in 211ms (Views: 2.7ms | ActiveRecord: 186.1ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.7ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.5ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.6ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.5ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (23.9ms)
+  Rendered tasks/_side_panel.html.erb (25.2ms)
+  Rendered customers/show.pj.html.erb within layouts/application (33.9ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 119ms (Views: 55.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /custom.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:55 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:52:56 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:52:58 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.5ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Completed 422 Unprocessable Entity in 21ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:53:05 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"tt 1", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"notas", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.5ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = 'tt 1' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:53:05 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "tt 1"], ["notes", "notas"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:53:05 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.4ms)
+Completed 201 Created in 24ms (Views: 1.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.6ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.4ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[35mBusinessSegment Load (0.6ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.4ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[35mTaskType Load (0.4ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.5ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (21.6ms)
+  Rendered tasks/_side_panel.html.erb (22.9ms)
+  Rendered customers/show.pj.html.erb within layouts/application (31.6ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 69ms (Views: 54.7ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /application.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /custom.css - 304 Not Modified (62ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:54:28 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:54:34 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"111", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"notes", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = '111' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:54:34 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "111"], ["notes", "notes"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:54:34 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.5ms)
+Completed 201 Created in 28ms (Views: 2.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:55:56 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.2ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.3ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (1.0ms)
+  [1m[36mBusinessSegment Load (0.3ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.3ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.1ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.2ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (91.9ms)
+  Rendered tasks/_side_panel.html.erb (93.1ms)
+  Rendered customers/show.pj.html.erb within layouts/application (134.5ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (6.9ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 340ms (Views: 152.8ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /application.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /custom.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /tasks.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:55:57 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:56:02 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"1231231", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"112313", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = '1231231' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:56:02 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "1231231"], ["notes", "112313"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:56:02 UTC +00:00], ["user_id", 2]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.4ms)
+Completed 201 Created in 40ms (Views: 2.1ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.4ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (1.0ms)
+  [1m[35mBusinessSegment Load (0.6ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.6ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  [1m[35mTaskType Load (0.3ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.5ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (21.4ms)
+  Rendered tasks/_side_panel.html.erb (22.2ms)
+  Rendered customers/show.pj.html.erb within layouts/application (31.1ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 65ms (Views: 50.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /application.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /custom.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /tasks.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:56:14 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:56:15 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:56:23 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"testes", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"testes", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.6ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'testes' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:56:23 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "testes"], ["notes", "testes"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:56:23 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.1ms)
+Completed 201 Created in 26ms (Views: 1.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.3ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.5ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.6ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.4ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  [1m[36mTaskType Load (0.8ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.5ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (23.2ms)
+  Rendered tasks/_side_panel.html.erb (24.6ms)
+  Rendered customers/show.pj.html.erb within layouts/application (32.7ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (4.3ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 130ms (Views: 115.9ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /application.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /custom.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:57:19 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:57:20 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:57:26 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"y777", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"qeqweq", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.3ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = 'y777' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.3ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:57:26 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "y777"], ["notes", "qeqweq"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:57:26 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.0ms)
+Completed 201 Created in 27ms (Views: 1.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 04:58:59 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.5ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[35mBusinessSegment Load (0.6ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.5ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  [1m[35mTaskType Load (0.4ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.5ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (83.6ms)
+  Rendered tasks/_side_panel.html.erb (84.8ms)
+  Rendered customers/show.pj.html.erb within layouts/application (94.8ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 132ms (Views: 118.9ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 04:58:59 -0300
+Served asset /custom.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 04:59:00 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:59:04 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.2ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 25ms (Views: 0.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:59:06 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.3ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = '' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 24ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:59:12 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"testes", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asdas", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'testes' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.3ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 23ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 04:59:16 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"testes b", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"asdas", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.5ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'testes b' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 07:59:16 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "testes b"], ["notes", "asdas"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 07:59:16 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.0ms)
+Completed 201 Created in 23ms (Views: 1.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCustomerPj Load (0.4ms)[0m  SELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1
+  Rendered customers/_navbar.html.erb (0.8ms)
+  [1m[36mBusinessSegment Load (0.5ms)[0m  [1mSELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name[0m
+  [1m[35mBusinessActivity Load (0.7ms)[0m  SELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[36mTaskType Load (0.4ms)[0m  [1mSELECT "task_types".* FROM "task_types" [0m
+  [1m[35mContact Load (0.4ms)[0m  SELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't'[0m
+  Rendered tasks/_side_form.html.erb (22.8ms)
+  Rendered tasks/_side_panel.html.erb (24.1ms)
+  Rendered customers/show.pj.html.erb within layouts/application (33.2ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  Rendered layouts/_header.html.erb (4.8ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 71ms (Views: 56.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /custom.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 05:01:28 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 05:01:42 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"tst 8989", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"notas de tesas;lka;sd", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[35mCustomer Load (0.4ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1  [["id", "945"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mTask Exists (0.4ms)[0m  SELECT 1 FROM "tasks" WHERE "tasks"."name" = 'tst 8989' LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.2ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 08:01:42 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "tst 8989"], ["notes", "notas de tesas;lka;sd"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 08:01:42 UTC +00:00], ["user_id", 2]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  Rendered tasks/create.js.erb (0.0ms)
+Completed 201 Created in 25ms (Views: 1.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/customers/945" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"945"}
+  [1m[36mCustomer Load (0.6ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mCustomerPj Load (0.4ms)[0m  [1mSELECT "customer_pjs".* FROM "customer_pjs" WHERE "customer_pjs"."id" = 945 LIMIT 1[0m
+  Rendered customers/_navbar.html.erb (0.9ms)
+  [1m[35mBusinessSegment Load (0.6ms)[0m  SELECT "business_segments".* FROM "business_segments" INNER JOIN "customer_segments" ON "business_segments"."id" = "customer_segments"."segment_id" WHERE "customer_segments"."customer_pj_id" = 945 ORDER BY business_segments.name
+  [1m[36mBusinessActivity Load (0.5ms)[0m  [1mSELECT "business_activities".* FROM "business_activities" INNER JOIN "customer_activities" ON "business_activities"."id" = "customer_activities"."activity_id" WHERE "customer_activities"."customer_pj_id" = 945[0m
+  Rendered contacts/_side_panel.html.erb (0.0ms)
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  [1m[35mTaskType Load (0.4ms)[0m  SELECT "task_types".* FROM "task_types" 
+  [1m[36mContact Load (0.3ms)[0m  [1mSELECT "contacts".* FROM "contacts" WHERE "contacts"."customer_id" = 945[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't'
+  Rendered tasks/_side_form.html.erb (21.3ms)
+  Rendered tasks/_side_panel.html.erb (22.5ms)
+  Rendered customers/show.pj.html.erb within layouts/application (31.0ms)
+  Rendered layouts/_shim.html.erb (0.0ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 125ms (Views: 109.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/abilities.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /abilities.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/fcbk.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /fcbk.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_bootstrap.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery_bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /tasks.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /tests/ajaxes.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery-ui-timepicker-addon.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fcbk.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /fcbk.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.mask.1.3.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /jquery.mask.1.3.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/tests/ajaxes.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /tests/ajaxes.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/autocomplete-rails.js?body=1" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /autocomplete-rails.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom/nav_logo.png" for 127.0.0.1 at 2012-09-24 05:02:30 -0300
+Served asset /custom/nav_logo.png - 304 Not Modified (0ms)
+
+
+Started POST "/customers/945/tasks" for 127.0.0.1 at 2012-09-24 05:02:40 -0300
+Processing by TasksController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8GLi3Cbxb21PX/9ATzrtYcN1C311JrYMCVNfLmIA3ug=", "task"=>{"name"=>"ttt22", "due_time"=>"", "type_id"=>"", "contact_id"=>"", "assigned_id"=>"", "notes"=>"notas de então", "description"=>""}, "commit"=>"Salvar Tarefa", "customer_id"=>"945"}
+  [1m[36mCustomer Load (0.5ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."enabled" = 't' AND "customers"."id" = $1 ORDER BY name LIMIT 1[0m  [["id", "945"]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."enabled" = 't' AND "users"."id" = 2 LIMIT 1
+  [1m[36mSystemTaskStatus Load (0.4ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mTask Exists (0.4ms)[0m  [1mSELECT 1 FROM "tasks" WHERE "tasks"."name" = 'ttt22' LIMIT 1[0m
+  [1m[35mSystemTaskStatus Load (0.4ms)[0m  SELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'CLOSED' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "system_task_status".* FROM "system_task_status" WHERE "system_task_status"."name" = 'OPENED' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("assigned_id", "contact_id", "contact_type", "created_at", "description", "due_time", "finish_time", "interested_id", "interested_type", "name", "notes", "resolution_id", "status_id", "type_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"  [["assigned_id", nil], ["contact_id", nil], ["contact_type", nil], ["created_at", Seg, 24 Set 2012 08:02:40 UTC +00:00], ["description", ""], ["due_time", nil], ["finish_time", nil], ["interested_id", 945], ["interested_type", "Customer"], ["name", "ttt22"], ["notes", "notas de então"], ["resolution_id", nil], ["status_id", 1], ["type_id", nil], ["updated_at", Seg, 24 Set 2012 08:02:40 UTC +00:00], ["user_id", 2]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  Rendered tasks/create.js.erb (0.3ms)
+Completed 201 Created in 29ms (Views: 1.3ms | ActiveRecord: 3.6ms)

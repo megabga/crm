@@ -23,9 +23,13 @@ class TasksController < ApplicationController
   
   def create
     @task = @customer.tasks.build(params[:task])
+    
+    @task.status = SystemTaskStatus.OPENED
+    @task.user = current_user
+    
     respond_to do |format|
       if @task.save
-        format.js { render :locals => { :task => @task }, :layout => false, :status => :created }
+        format.js { render :locals => { :task => @task }, :layout => false, :content_type => "application/javascript", :status => :created }
         format.html { redirect_to @comment } 
       else
         format.js { render :json => format_errors("tasks", @task.errors), :content_type => "application/json", :status => :unprocessable_entity }

@@ -86,3 +86,8 @@ $(document).ready(function(){
     });
 
 });
+
+function showMessage(message_content) {
+	$(".alert-ajax").show().html(message_content);
+	$(document).scrollTop();
+}
