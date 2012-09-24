@@ -8,18 +8,27 @@ describe "Customer Task Pages" do
   
   subject { page }
   
-  let (:admin) { FactoryGirl.create(:admin) }
-  let (:user) { FactoryGirl.create(:user) }
-  let (:customer_pj) { FactoryGirl.create(:customer_pj)}
-  let (:contact) { FactoryGril.create(:contact)}
+  let (:admin) { Factory(:admin) }
+  let (:user) { Factory(:user) }
+  let!(:customer_pj) { Factory(:customer_pj) }
+  let!(:contact) { Factory(:contact, customer: customer_pj.customer) }
+  let (:task) { Factory(:task, user: user, interested: customer_pj ) }
 
   before do
+    #rights
     able(user, :read,  :customer)
     able(user, :read,  :customer_pj)
     able(user, :read,  :task)
     able(user, :write, :task)
+    
+    #reload customer
+    #customer_pj.customer.stub(:contacts).and_return([mock(:contact, name: "test1")])
+    #FactoryGirl.create(:contact, customer: customer_pj.customer)
+    #customer_pj.customer.contacts.reload
+    #puts customer_pj.customer.contacts.to_yaml
+    
+    #sign_in
     sign_in user
-    FactoryGirl.create(:task, user: user, interested: customer_pj )
   end
   
   after(:all) do
@@ -49,14 +58,15 @@ describe "Customer Task Pages" do
       
       describe "add valid task" do
         before do
+          #save_and_open_page
           fill_in I18n.t("tasks.name"),      with: Faker::Name.first_name
-          fill_in I18n.t("tasks.due_time"),  with: Time.now + 2.days
-          select I18n.t("tasks.contact"),    with: contact.name
-          select I18n.t("tasks.assigned"),   with: user.name
-          fill_in I18n.t("tasks.notes"),     with: Faker::Lorem.sequence(5)
+          fill_in I18n.t("tasks.due_time"),  with: (Time.now + 2.days).strftime("%d/%m/%Y %H:%m")
+          select contact.name, from: I18n.t("tasks.contact")
+          select user.name, from: I18n.t("tasks.assigned")
+          fill_in I18n.t("tasks.notes"),     with: Faker::Lorem.sentence(5)
         end
         
-        it { excpect(click_on I18n.t("helpers.forms.save")).to change(Task, :count).by(+1) }
+        it { expect{ click_on I18n.t("helpers.forms.save") }.to change(Task, :count).by(+1) }
       end
     end    
     

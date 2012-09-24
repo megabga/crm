@@ -9,7 +9,8 @@ class Task < ActiveRecord::Base
   include StringHelper
   
   attr_accessible :name, :interested, :user, :contact, :status, :resolution, :due_time, :finish_time, :notes,
-                  :description, :type, :assigned
+                  :description, :type, :assigned,
+                  :type_id, :contact_id, :assigned_id # to form 
 
   belongs_to :interested, :polymorphic => true
   belongs_to :contact, :polymorphic => true
@@ -36,7 +37,8 @@ class Task < ActiveRecord::Base
     def valid_status?
       if (((self.status == SystemTaskStatus.CLOSED) and (self.resolution == nil)) or
           ((self.status == SystemTaskStatus.OPENED) and (self.resolution != nil))) then
-        errors.add(:status, I18n.t(:not_valid_status_and_resolution, status: name_or_empty(self.status), resolution: name_or_empty(self.resolution)))
+        errors.add(:status, I18n.t(:not_valid_status_and_resolution, status: name_or_empty(self.status),
+                    resolution: name_or_empty(self.resolution)))
         false
       else  
         true

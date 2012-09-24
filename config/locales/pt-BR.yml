@@ -106,10 +106,20 @@ pt-BR:
     new:
       title: "Nova Tarefa"
       link: "Nova Tarefa"
-    
-    
-    
-      
+    #fields
+    name: "Nome"
+    due_time: "Prazo"
+    contact: "Contato"
+    type: "Atividade:"
+    notes: "Notas"
+    description: "Descrição"
+    assigned: "Atribuído para"
+    user: "Criado por"
+    finish_time: "Finalizado em"
+    resolution: "Resolução"
+    status: "Estado"
+    interested: "Interessado"
+    feedbacks: "Respostas"
       
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
@@ -209,6 +219,7 @@ pt-BR:
       business_segment: "Segmento"
       business_activity: "Atividade"
       user: "Usuário"
+      task: "Tarefa"
     abilities:
       READ: "Ler"
       CREATE: "Criar"
@@ -235,6 +246,9 @@ pt-BR:
       contact:
           <<: *attr_contacts
       
+      task:
+          <<: *attr_tasks
+      
     models: 
       <<: *system_modules
       
@@ -242,7 +256,7 @@ pt-BR:
   helpers:
     <<: *commons
     
-    forms:
+    forms: &forms_commons
       cancel: "Cancelar"
       edit: "Editar"
       update: "Atualizar"
@@ -283,4 +297,13 @@ pt-BR:
     previous_label: "Anteriores"
     next_label: "Próximos"
         
+        
+  # [Formtastic]
+  
+  formtastic:
+      actions:
+          reset: "Desfazer"
+          update: "Salvar %{model}"
+          create: "Salvar %{model}"
+  
   # ========================== Components >

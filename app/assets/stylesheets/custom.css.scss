@@ -5,7 +5,6 @@ $navbarBackground: #400;
 $navbarBackgroundHighlight: black;
 $navbarHeight: 46px;
 
-
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -274,6 +273,36 @@ aside {
 		.new {
 			background-color: #f1f1f1;
 		}
+	}
+}
+
+/* Commons */
+
+.well-compact {
+	@extend .well;
+	
+	margin-top: 10px;
+	padding: 10px;
+}
+
+/* formtastic */
+
+fieldset.inputs ol {
+	list-style: none;
+}
+
+fieldset.actions {
+
+	.action {
+		input {
+			@extend .btn;
+			@extend .btn-primary;
+		}
+	}
+	
+	ol {
+		list-style: none;
+		margin: 0;
 	}
 }
 

@@ -1,52 +1,31 @@
-<%= form_for [@customer, @task]  do |f| %>
+
+<%= semantic_form_for [@customer, @task], :remote => (remote || false), :html => {  :'data-type' => 'html', :class => "remote_form" } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 <fieldset>
   <legend><%= title %></legend>
-
- <div class="row">
-  <div class="span6">
-    <div class="control-group">
-    <%= f.label :name %>	  
-	  <div class="control">
-    <%= f.text_field :name %>		
-	  </div>
+	<div class="row">
+		<div class="span6">
+			<%= f.input :name %>
+		</div>
+		
+		<div class="span3">
+			<%= f.input :due_time, :as => :string, :input_html => { 'data-behaviour' => 'datetimepicker' } %>
+		</div>
+		<div class="span3">
+			<%= f.inputs :type  %>
+		</div>
+		<div class="span6">
+			<%= f.input :contact, collection: @customer.contacts %>
+			<%= f.input :assigned, collection: User.all %>
+		</div>
+		<div class="span6">
+			<%= f.input :notes, :as => :text,  :input_html => { rows: 2  }%>
+			<%= f.input :description, :as => :text, :input_html => { rows: 5 } %>
+			<div class="well-compact">
+				<%= f.actions %>
+			</div>
+		</div>
 	</div>
-	
-    <div class="control-group">
-    <%= f.label :due_time %>	  
-	  <div class="control">
-    <%= f.text_field :name %>		
-	  </div>
-	</div>
-	
-    <div class="control-group">
-    <%= f.label :notes %>	  
-	  <div class="control">
-    <%= f.memo_field :notes %>		
-	  </div>
-	</div>
-	
-    <div class="control-group">
-    <%= f.label :name %>	  
-	  <div class="control">
-    <%= f.text_field :name %>		
-	  </div>
-	</div>
-	
-    <div class="control-group">
-    <%= f.label :name %>	  
-	  <div class="control">
-    <%= f.text_field :name %>		
-	  </div>
-	</div>
-	
-    <div class="control-group">
-    <%= f.label :name %>	  
-	  <div class="control">
-    <%= f.text_field :name %>		
-	  </div>
-	</div>
-  </div>
 </fieldset>
 
 <% end %>

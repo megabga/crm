@@ -11,6 +11,8 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'rails3-jquery-autocomplete'
 gem 'formtastic-bootstrap'
+#gem 'bootstrap-datepicker-rails'
+#gem 'bootstrap-timepicker-rails'
 
 #test support
 gem 'faker', '1.0.1'
