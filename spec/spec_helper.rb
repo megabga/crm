@@ -11,7 +11,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-Capybara.javascript_driver = :webkit
+
+#Capybara.javascript_driver = :webkit
 #Capybara.default_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -20,7 +21,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 
 def config_transactional(config)
-  config.use_transactional_fixtures = false
   
   except_tables = %w[SystemAbility SystemModule SystemTaskStatus SystemTaskResolution State City BusinessSegment BusinessActivity].collect { |e| pluralize_without_count(2, e.underscore) }
   
@@ -33,7 +33,7 @@ def config_transactional(config)
     DatabaseCleaner.start
   end
 
-  config.after do
+  config.after :each do
     DatabaseCleaner.clean
   end
 end

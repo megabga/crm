@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   
   has_many :tasks
   
+  has_many :assigned_tasks, class_name: "Task", foreign_key: "assigned_id"
+  
   #GROUPS<=================
   belongs_to :primary_group, class_name: "UserGroup", foreign_key: "primary_group_id"
   has_many :users_has_groups, class_name: "UsersHasGroups"

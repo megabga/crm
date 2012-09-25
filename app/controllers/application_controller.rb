@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   rescue_from CanCan::AccessDenied do |exception|
-      redirect_to root_url, :flash => { :error => exception.message }
+    Rails.logger.fatal "Access denied on #{exception.action} #{exception.subject.inspect}"
+    redirect_to root_url, :flash => { :error => exception.message }
   end
 end

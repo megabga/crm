@@ -1,0 +1,9 @@
+
+<ul class="tasks-list">
+<% items.each do |item|  %>
+   <li>
+	 <div><%= item.name %></div>
+	 <div><%= format_datetime(item.due_time) %></div>
+   </li>
+<% end %>
+<ul>

@@ -1,6 +1,14 @@
 <p/>
 <div class="alert alert-block">
 	        <a class="close">×</a>
-	        <h4 class="alert-heading">Item desabilitado</h4>
-	        <p>No momento este recurso está desabilitado</p>
+			<div>
+				<ul>
+				<% current_user.assigned_tasks.paginate(page: 1, per_page: 5) do |task| %>
+					<li>
+						<div class="name"><%= task.name %></div>
+						<div class="date"><%= format_datetime(task.due_time) %></div>
+					</li>
+				<% end %>
+				</ul>
+			</div>
 </div>

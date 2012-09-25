@@ -1,6 +1,5 @@
-
 include ApplicationHelper
-
+include AbilityHelper
 #def full_title(page_title)
 #  base_title = "Ruby on Rails Tutorial Sample App"
 #  if page_title.empty?
@@ -24,12 +23,6 @@ def sign_out()
   visit destroy_user_session_path
 end
 
-def able(user, ability_str, module_str)
-  ability_model = SystemAbility.find_by_name(ability_str.to_s.upcase)
-  module_model = SystemModule.find_by_name(module_str.to_s.titleize)
-  user.abilities.build(:module => module_model, :ability => ability_model).save
-end
-
 
 ### Botões automáticos
 def autotitle(model_, operation)
@@ -48,6 +41,29 @@ end
 def wait_animations()
   wait_until { page.evaluate_script('$(":animated").length') == 0 }  
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

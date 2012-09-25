@@ -31,8 +31,8 @@ describe "User Abilities Pages" do
   
   describe "edit multiple abilities and modules on index page " do
     before do
-       able(user, :read,   "CUSTOMER")
-       able(user, :update, "CONTACT")
+       able(user, :read,   "customer")
+       able(user, :update, "contact")
        visit user_abilities_path(user)
     end
       

@@ -72,11 +72,14 @@ describe "Authentication" do
           
           before do
              able_update(user, SystemModule.USER)
+             able(user, :read, :task)
+             able(user, :update, :task)
              sign_in user
              visit edit_user_path(user)
           end
           
           it "should render the desired protected page" do
+            save_and_open_page
             page.should have_selector('title', text: I18n.t('users.edit.title'))
           end
         end

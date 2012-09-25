@@ -7,6 +7,15 @@ class TasksController < ApplicationController
   include FormAjaxHelper
   
   def index
+    respond_to do |format|
+      format.json do
+         @content = render_to_string( :template => "tasks/_list", :locals => { items: @customer.tasks }, :formats => :html, :layout => false)
+         #render :json => { html: @content }, :content_type => "application/json"
+         render :json => @content, :content_type => "application/json"
+      end
+      format.js { head :no_content }
+      format.html #
+    end
   end
   
   def show
@@ -30,7 +39,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.js { render :locals => { :task => @task }, :layout => false, :content_type => "application/javascript", :status => :created }
-        format.html { redirect_to @comment } 
+        format.html { redirect_to @comment }
       else
         format.js { render :json => format_errors("tasks", @task.errors), :content_type => "application/json", :status => :unprocessable_entity }
         format.html { render :action => :new, :status => :unprocessable_entity }

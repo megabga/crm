@@ -16,6 +16,7 @@ SystemModule.create([
                      { name: 'State' }, 
                      { name: 'City' }, 
                      { name: 'District' },
+                     { name: 'Task' },
                   ])
                      
 SystemTaskStatus.create([
