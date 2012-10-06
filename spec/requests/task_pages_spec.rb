@@ -11,7 +11,7 @@ describe "Customer Task Pages" do
   let!(:user) { Factory(:user) }
   let!(:customer_pj) { Factory(:customer_pj) }
   let!(:contact) { Factory(:contact, customer: customer_pj.customer) }
-  let (:task) { Factory(:task, user: user, interested: customer_pj ) }
+  let!(:task) { Factory(:task, user: user, interested: customer_pj.customer ) }
   
   before do
     #rights
@@ -91,26 +91,22 @@ describe "Customer Task Pages" do
       end
     end
     
-    describe "and Show more details for task" do
+    describe "show last 3 tasks on index" do
+      pending("fazer a contagem de tasks")
+    end
+    
+    describe "and Show more details for task", :js => true, :no_driver => :selenium do
       before do
-        wait_for_animations
-        wait_for_response
-        save_and_open_page
         find("#task%d" % task.id).click()
-        wait_for_animations
-        wait_until_visible
+        wait_for_response
       end
       
       it "should appear um dialog with more explanation of task" do
-        should visible?(".modal-task")
+        visible?(".modal-task").should be_true
         should have_content I18n.t("tasks.show.title")
         should have_content task.name
         should have_content format_datetime(task.due_time)
       end
-    end
-    
-    describe "show last 3 tasks on index" do
-      pending("fazer a contagem de tasks")
     end
     
   end

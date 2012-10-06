@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
   
   def show
     @task = @customer.tasks.build
+    @tasks = @customer.tasks.paginate(page:params[:task_page] || 1, per_page: 3)
     render "show."+@customer.person.prefix
   end
   

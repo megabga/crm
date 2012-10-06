@@ -3,7 +3,7 @@
 	<div class="new">
 		
 		<div class="tasks-list">
-			
+			<%= render :partial => 'tasks/list', :locals => { items: @tasks } %>
 		</div>
 		<% if can? :create, :task  %>
 		<a class="new-link btn btn-primary" href="#"><%= t("tasks.new.link") %></a>
@@ -57,8 +57,8 @@ function update_tasks() {
 
 
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	update_tasks();
-});
+});*/
 
 </script>

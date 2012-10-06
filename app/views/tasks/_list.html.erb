@@ -33,10 +33,9 @@ function task_show(id) {
 	    }
 	});*/
 	
-	path = "<%= customer_task_path(@customer,999999) %>.js"
+	path = "<%= customer_task_path(@customer,0) %>"+id+".js"
 
-
-    path = path.replace(reg, id);
+    //path = path.replace(reg, id);
 	
 	$('.modal-task .modal-body').html("<div></div>");
 	$('.modal-task .modal-body').load(path);
