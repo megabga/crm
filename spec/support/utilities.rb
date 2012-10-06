@@ -33,13 +33,26 @@ def clear_test_dummy
   User.unscoped.where('email like ?', 'person%').each { |u| u.destroy_fully }
 end
 
+def visible?(element)
+  find(element).visible?
+end
+
 def wait_until_visible(element)
   wait_until { page.find(element).visible? }
 end
 
+def wait_until_content(element, content)
+  wait_until { have_css(element, content).maches? }
+end
+
+def wait_for_response
+  wait_until { page.evaluate_script('jQuery.active') == 0 }
+  sleep(0.1)
+end
+
 #TODO: work any context
-def wait_animations()
-  wait_until { page.evaluate_script('$(":animated").length') == 0 }  
+def wait_for_animations()
+  wait_until { page.evaluate_script('$(":animated").length') == 0 }
 end
 
 

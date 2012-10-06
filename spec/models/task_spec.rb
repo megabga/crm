@@ -44,19 +44,23 @@ describe Task do
   it { should respond_to(:assigned) }
   it { should respond_to(:feedbacks) }
   
+  it { should respond_to(:done?) }
+  it { should respond_to(:done) }
+  it { should respond_to(:due_critical_level) }
+  
   it { should be_valid }
   
   describe "specials accessible fields" do
     it "attr user must be accessible" do
       expect do
         @task.user = nil
-      end.should_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
+      end.to_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
     end
     
     it "attr status must be accessible" do
       expect do
         @task.status = nil
-      end.should_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
+      end.to_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
     end
   end  
     
@@ -136,7 +140,37 @@ describe Task do
   end
   
   describe "associated with a CUSTOMER destroyed, must also be destroyed" do
-    it { expect { customer_pj.customer.destroy_fully }.to change{ Task.count }.by(-1) }
+    it { expect { customer_pj.customer.destroy_fully }.to change{ Task.count }.by(-1*customer_pj.customer.tasks.count) }
+  end
+  
+  it "STATUS is CLOSE" do
+    @task.status = SystemTaskStatus.CLOSED
+    should be_done
+  end
+  
+  describe "due time ending" do
+    
+    it "overdue" do
+      @task.due_time = 2.days.ago
+      @task.due_critical_level.should be(3)
+    end
+    
+    it "4 days remain its critical, level is 2" do
+      @task.due_time = Time.now + 3.days
+      @task.due_critical_level.should be(2)
+    end
+    
+    it "Long time remaining, critical level 1" do
+      @task.due_time = Time.now + 200.days
+      @task.due_critical_level.should be(1)
+    end
+    
+    
+    it "and tasks is done, critical level is 0" do
+      @task.due_time = 2.days.ago
+      @task.done
+      @task.due_critical_level.should be(0)
+    end
   end
 
 end

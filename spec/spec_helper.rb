@@ -12,13 +12,13 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-#Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :webkit
 #Capybara.default_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
+Dir[Rails.root.join("lib/**/*.rb")].each {|f| require f}
 
 def config_transactional(config)
   

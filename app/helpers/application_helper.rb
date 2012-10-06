@@ -1,6 +1,8 @@
 # encoding: utf-8
-
+require File.dirname(__FILE__) + '/../../lib/active_extend/string_helper.rb'
 module ApplicationHelper
+  
+  include StringHelper
   
   # Returns the full title on a per-page basis.
     def full_title(page_title)

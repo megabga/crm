@@ -82,7 +82,9 @@
 
 				<div class="span6">
 				  <div class="form-actions">
+					<% if can? :update, @customer  %>
 					<%= link_to t("helpers.forms.edit"), edit_customer_path(@customer), :class => "btn btn-primary" %>
+					<% end %>
 		          </div>
 				</div>
 

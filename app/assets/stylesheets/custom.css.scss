@@ -175,6 +175,17 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+form .label {
+	background: $white;
+	color: $grayDark;
+}
+
+input, textarea, select {
+	font-size: 14px;
+	text-transform:uppercase;
+	margin-top: -4px;
+}
+
 #error_explanation {
   color: #f00;
   ul {

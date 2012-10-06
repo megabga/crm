@@ -14,6 +14,9 @@ end
 module GUARACRM
   class Application < Rails::Application
     
+    #TASKS CONFIGURATION
+    TASKS_DUE_CRITICAL_DAYS_REMAINING = 4
+    
     #Devise
     #config.assets.initialize_on_precompile = false
     

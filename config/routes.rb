@@ -1,5 +1,9 @@
 GUARACRM::Application.routes.draw do  
 
+  resources :task_types
+
+  resources :system_task_status
+
   devise_for :users#, :controllers => { :sessions => "sessions" } do
 #    #get "/signup" => "devise/registrations#new", :as => 'user_signup'
 #    #get '/logout' => 'devise/sessions#destroy', :as => 'user_logout'

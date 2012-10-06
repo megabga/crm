@@ -1,9 +1,52 @@
 
 <ul class="tasks-list">
 <% items.each do |item|  %>
-   <li>
-	 <div><%= item.name %></div>
-	 <div><%= format_datetime(item.due_time) %></div>
-   </li>
+	<div class="alert <%= task_alert_level_class(item) %>" id="task<%= item.id %>" onClick="task_show(<%= item.id %>)">
+		<h5><%= item.name %></h5>
+		<code><%= format_datetime(item.due_time) %></code>
+		<%= name_or_empty(item.type) %>
+	</div>
 <% end %>
+
+	<div class="modal-task modal hide fade" style="display:none">
+		<div class="modal-body">
+		</div>
+		<div class="modal-footer">
+			<a id="close" class="btn btn-primary"><%= t("helpers.close") %></a>
+		</div>
+	</div>
 <ul>
+<script>
+
+var reg = new RegExp("\\999999", "gm");
+
+function task_show(id) {	
+	$(".modal-task").modal({
+      "backdrop"  : "static",
+      "keyboard"  : true,
+      "show"      : true,
+	  "scrollbars": true
+    });
+	/*.css({
+	    'margin-left': function () {
+	        return -($(this).width() / 2);
+	    }
+	});*/
+	
+	path = "<%= customer_task_path(@customer,999999) %>.js"
+
+
+    path = path.replace(reg, id);
+	
+	$('.modal-task .modal-body').html("<div></div>");
+	$('.modal-task .modal-body').load(path);
+}
+
+$(function() {	
+   $(".modal-task #close").click(function(e) {
+       $(".modal-task").modal('hide');
+   });   
+});
+
+
+</script>

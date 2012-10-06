@@ -13,4 +13,8 @@ class SystemTaskResolution < ActiveRecord::Base
     readonly.find_by_name("BLOCKED")
   end  
   
+  
+  def name
+    I18n.t("task_resolutions.%s" % super)
+  end
 end

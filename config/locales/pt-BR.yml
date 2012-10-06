@@ -101,13 +101,18 @@ pt-BR:
     show:
       title: "Visualizando Histórico"
       link: "Ver histórico"
-    status:
-      not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolved}"                  
+    errors:
+      not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolution}"                  
     new:
       title: "Nova Tarefa"
       link: "Nova Tarefa"
+    form:
+        save_without_feedback:
+            title: "Sem Feedback"
+        save_with_feedback:
+            title: "Com Feedback"
     #fields
-    name: "Nome"
+    name: "Assunto"
     due_time: "Prazo"
     contact: "Contato"
     type: "Atividade:"
@@ -119,8 +124,25 @@ pt-BR:
     resolution: "Resolução"
     status: "Estado"
     interested: "Interessado"
-    feedbacks: "Respostas"
-      
+    feedbacks: "Feedbacks"
+    
+    
+  task_resolutions:
+    RESOLVED:  "Concluído"
+    CANCELED:  "Cancelado"
+    BLOCKED:   "Pendente"
+    RESOLVED_AND_BUSINESS: "Negócio Fechado"
+    
+  feedbacks: &attr_feedbacks
+    show:
+      title: "Feedback"
+        
+      #fields
+    notes: "Resposta"
+    resolution: "Resolução"
+    user: "Usuário da Resposta"
+    date: "Data da Resposta"
+  
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
     doc_rg: "Inscrição Estadual"
@@ -248,6 +270,9 @@ pt-BR:
       
       task:
           <<: *attr_tasks
+          
+      feedback:
+          <<: *attr_feedbacks
       
     models: 
       <<: *system_modules

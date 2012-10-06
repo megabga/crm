@@ -71,13 +71,13 @@ $(document).ready(function(){
       }
 
       // Build an unordered list from the list of errors
-      errorText = "Erros ao registrar dados: \n<ul>";
+      errorText = "<div class=\"alert alert-block alert-error\"><h4>Erros ao registrar dados:</h4> \n<ul>";
 
       for ( error in errors ) {
         errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
       }
 
-      errorText += "</ul>";
+      errorText += "</ul></div>";
 
 	  $(document).scrollTop();
 
@@ -91,3 +91,7 @@ function showMessage(message_content) {
 	$(".alert-ajax").show().html(message_content);
 	$(document).scrollTop();
 }
+
+$(function() {
+	$( "#accordion" ).accordion();
+});

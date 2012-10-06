@@ -17,10 +17,23 @@ class Ability
           resource = eval(ab.module.name)
         end
       
-        can ab.ability.name.downcase.to_sym, resource
+        t_ability = ab.ability.name.downcase.to_sym
+        can t_ability, resource
         Rails.logger.debug ("ability: :%s, resource: %s" % [ab.ability.name.downcase.to_sym.to_s, resource.to_s])
+        
+        if (t_ability.to_sym == :read)
+          can [:index, :show], resource
+        end
       end 
     end
+    
+    def can?(action, subject, *extra_args)
+        Rails.logger.debug ("cancan::Ability.can? action: :%s, subject: %s" % [action.to_s, subject.to_s])      
+        ret = super 
+        Rails.logger.debug ("***-CAN'T action: :%s, subject: %s" % [action.to_s, subject.to_s]) if !ret
+        ret
+    end
+    
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

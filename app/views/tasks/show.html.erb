@@ -1,5 +1,6 @@
-
+<% if not @no_layout %>
 <%= render :partial => "header" %>
+<% end %>
 
 <section class="show">
 
@@ -7,39 +8,20 @@
   <li class="span9">
     <div class="thumbnail">
       <div class="caption">
-		<legend><%= t("customers.show.title") %></legend>
+		<legend><%= t("tasks.show.title") %> <small><%= name_or_empty(@task) %></small></legend>
+		<h3><%= name_or_empty(@task.type) %></h3>
 	  </div>
 	  <div class="row">
 		<div class="span4">
 
 		  <div class="control-group">
-            <%= show_label_tag t('contacts.name') %>
-			<%= @contact.name %>
+            <%= show_label_tag t('tasks.due_time') %>
+			<%= format_datetime(@task.due_time) %>
           </div>
 
 		  <div class="control-group">
-            <%= show_label_tag t('contacts.departament') %>
-			<%= @contact.departament %>
-          </div>
-
-		  <div class="control-group">
-            <%= show_label_tag t('contacts.business_function') %>
-			<%= @contact.business_function %>
-          </div>
-
-		  <div class="control-group">
-            <%= show_label_tag t('contacts.phone') %>
-			<%= @contact.phone %>
-          </div>
-
-		  <div class="control-group">
-            <%= show_label_tag t('contacts.cell') %>
-			<%= @contact.cell %>
-          </div>
-
-		  <div class="control-group">
-            <%= show_label_tag t('contacts.birthday') %>
-			<%= @contact.birthday %>
+            <%= show_label_tag t('tasks.status') %>
+			<%= name_or_empty(@task.status) %>
           </div>
 
 		</div>
@@ -48,5 +30,5 @@
 </ul>
 </section>
 
-<%= link_to t('helpers.forms.edit'), edit_customer_contact_path(@contact.customer, @contact) %> |
-<%= link_to t('helpers.forms.back'), customer_contacts_path(@contact.customer) %>
+<%= link_to t('helpers.forms.edit'), edit_customer_contact_path(@customer, @task) %> |
+<%= link_to t('helpers.forms.back'), customer_contacts_path(@customer) %>

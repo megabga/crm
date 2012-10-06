@@ -2,19 +2,19 @@
 
 SystemAbility.create([{ id:1, name: 'CREATE' }, { id:2, name: 'READ' }, { id:3, name: 'UPDATE' }, { id:4, name: 'DELETE' }])
 SystemModule.create([
-                     { name: 'All' }, 
+                     { name: 'All' },
                      { name: 'User' },
                      { name: 'Customer' },
                      { name: 'Contact' },
                      { name: 'CustomerPj' },
-                     { name: 'CustomerPf' }, 
-                     { name: 'BusinessActivity' }, 
-                     { name: 'BusinessSegment' }, 
-                     { name: 'BusinessActivity' }, 
-                     { name: 'Contact' }, 
+                     { name: 'CustomerPf' },
+                     { name: 'BusinessActivity' },
+                     { name: 'BusinessSegment' },
+                     { name: 'BusinessActivity' },
+                     { name: 'Contact' },
                      { name: 'Micropost' },
-                     { name: 'State' }, 
-                     { name: 'City' }, 
+                     { name: 'State' },
+                     { name: 'City' },
                      { name: 'District' },
                      { name: 'Task' },
                   ])
@@ -30,6 +30,7 @@ SystemTaskResolution.create([
                           { name: "RESOLVED" },
                           { name: "CANCELED" },
                           { name: "BLOCKED" }
+                          { name: "RESOLVED_AND_BUSINESS" }
                        ])
                      
 ### States
