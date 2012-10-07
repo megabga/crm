@@ -11,7 +11,7 @@ describe Task do
   
   before do
     
-    @task = Task.create(name: "task "+Faker::Lorem.sentence(4),
+    @task = Task.create(name: "task "+Faker::Lorem.sentence(4)[0..52],
                        interested: customer_pj,
                        contact: contact,
                        user: user,

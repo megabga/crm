@@ -7,7 +7,6 @@ describe SystemTaskResolution do
   subject { system_task_status }
   
   it { should respond_to(:name) }
-  it { should respond_to(:t_all) }
 
   it { SystemTaskResolution.should respond_to(:RESOLVED) }
   it { SystemTaskResolution.should respond_to(:CANCELED) }
@@ -15,7 +14,4 @@ describe SystemTaskResolution do
     
   it { should be_valid }
   
-  descrive "list translated items" do
-    its(:t_all) { should include(I18n.t('task_resolutions.RESOLVED')) }
-  end
 end

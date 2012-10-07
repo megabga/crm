@@ -157,7 +157,7 @@ describe User do
       it "attr admin must be accessible" do
         expect do
           @user.toggle!(:admin)
-        end.should_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
+        end.to_not raise_error(ActiveModel::MassAssignmentSecurity::Error)  
       end
       
     end
@@ -263,10 +263,7 @@ describe User do
   
   
   describe "tasks" do
-    before do
-      task = FactoryGirl.create(:task, user: @user)
-    end
-    
+    let(:task)  { FactoryGirl.create(:task, user: @user) }
     it { @user.tasks.should include(task) }
   end
   

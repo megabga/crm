@@ -38,7 +38,7 @@ describe "Contacts Customer" do
     
     describe "with invalid information" do
       it "it should not change contacts" do
-        expect { click_button autotitle_create('Contact')  }.should_not change(Contact, :count)
+        expect { click_button autotitle_create('Contact')  }.to_not change(Contact, :count)
       end
     end
     
@@ -48,7 +48,7 @@ describe "Contacts Customer" do
         fill_in I18n.t("customers.contacts.name"),     with: name
       end
       it "it should create contact" do
-        expect { click_button autotitle_create('Contact') }.should change(Contact, :count).by(+1)
+        expect { click_button autotitle_create('Contact') }.to change(Contact, :count).by(+1)
       end
     end
     

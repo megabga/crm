@@ -4,6 +4,9 @@ describe "Micropost pages" do
 
   subject { page }
 
+  it { pending("Micropost, waiting revision") }
+
+=begin
   let(:user) { FactoryGirl.create(:user) }
   
   before do
@@ -12,9 +15,7 @@ describe "Micropost pages" do
      sign_in user
   end
   
-  it { pending("Micropost, waiting revision") }
-  
-=begin
+
 
   describe "micropost creation" do
     before { visit root_path }

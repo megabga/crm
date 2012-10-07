@@ -79,7 +79,7 @@ describe "Authentication" do
           end
           
           it "should render the desired protected page" do
-            save_and_open_page
+            
             page.should have_selector('title', text: I18n.t('users.edit.title'))
           end
         end
