@@ -4,6 +4,7 @@ pt-BR:
     yes: "Sim"
     no: "Não"
     empty: "Vazio"
+    all: "Todos"
   
   crm:
     title:
@@ -39,7 +40,7 @@ pt-BR:
     birthdays: "Aniversariantes"
     new:
       link: "Novo Cliente"
-      title: "Edição"
+      title: "Criação"
     index:
       title: "Pesquisa de Clientes"
     show:
@@ -80,16 +81,21 @@ pt-BR:
       #business_segment: "Segmento"
       #business_activity: "Atividade"
       business_function: "Cargo"
-      departament: "Setor"
+      department: "Setor"
       phone: "Fone"
       cell: "Celular"
       birthday: "Aniversário"
+      side:
+        title: "Contatos"
       edit:
         title: "Editar Contato"
+        link: "Editar Contato"
       new:
-        title: "Novo Contato"  
-      title: "%{customer}"
-      link: "Contatos"
+        title: "Novo Contato"
+        link:  "Novo Contato"
+      index: 
+        title: "%{customer}"
+        link: "Contatos"
       search:
           title: "Filtro Contatos"
       

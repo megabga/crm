@@ -58,8 +58,9 @@ group :test do
   gem 'capybara-webkit', '0.12.1'
   gem "launchy"
   gem 'ZenTest'
+
   #MAC OS Especific
-  gem 'rb-fsevent', '0.4.3.1', :require => false
+  gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'
 
   #Cucumber

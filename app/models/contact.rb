@@ -1,8 +1,9 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :birthday, :business_function, :cell, :departament, :name, :phone, :customer
+  attr_accessible :birthday, :business_function, :cell, :department, :department_id, :name, :phone, :customer
   
   #=========================== associations <--------------------------------------------
   belongs_to :customer
+  belongs_to :department, class_name: "BusinessDepartment"
   has_many :emails, :as => :emailable
 
   #=========================== validations <--------------------------------------------
@@ -11,7 +12,30 @@ class Contact < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => :customer_id
 
   #=========================== search <--------------------------------------------  
-  def self.search(results, name)
+  
+  def self.search_by_params(results=nil, query)
+    
+    results = self.send(:relation) unless results
+    where = {}
+    
+    query.each do |k,v|
+      if k=="name"
+        where.merge! 'upper(name) LIKE ?', "%#{name}%"
+      elsif self.instance_methods.include?((k.to_s+"_id").to_sym)
+        where.merge! :"#{k}_id" => v
+        puts "mergin "+k
+      elsif self.instance_methods.include?(k.to_sym)
+        where.merge! k.to_sym => v
+      end
+    end
+    
+    puts query.to_yaml
+    puts "============>"+where.to_yaml
+    results.where(where)
+  end
+  
+  
+  def self.search_by_name(results, name)
     conditions = []
     conditions_and = []
     conditions_params = []
@@ -31,6 +55,10 @@ class Contact < ActiveRecord::Base
       []
     end
     
+  end
+  
+  def self.search_by_department
+    @contacts = @customer.contacts.where( @selected_department ? ({ department_id: @selected_department }) : "1=1")
   end
   
 end

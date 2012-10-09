@@ -5,7 +5,8 @@ describe Contact do
      @contact = Contact.new(
                   name: 'Teste Contact 1',
                   birthday: 35.years.ago,
-                  customer: FactoryGirl.create(:customer))
+                  customer: FactoryGirl.create(:customer),
+                  department: Factory(:business_department))
    end
    
    subject { @contact }
@@ -15,7 +16,9 @@ describe Contact do
    it { should respond_to :phone }
    it { should respond_to :customer }
    it { should respond_to :emails }
-   
+   it { should respond_to :department }
+   it { should respond_to :department_id }
+      
    it { should be_valid }
    
    describe "require name" do
@@ -37,6 +40,12 @@ describe Contact do
      let!(:email_private) { FactoryGirl.create(:email, emailable: @contact, private: true) }
      
      it { @contact.emails.should == [email, email_private] }
+   end
+   
+   describe "department" do
+     before { @contact.department = BusinessDepartment.last }
+     its(:department) { should == (BusinessDepartment.last) }
+     its(:department_id) { should == (BusinessDepartment.last.id) }
    end
    
 end

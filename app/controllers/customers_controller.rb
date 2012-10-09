@@ -14,6 +14,9 @@ class CustomersController < ApplicationController
   def show
     @task = @customer.tasks.build
     @tasks = @customer.tasks.paginate(page:params[:task_page] || 1, per_page: 3)
+    
+    @selected_department = params[:department]
+    @contacts = Contact.search_by_params query: { department_id: @selected_department }
     render "show."+@customer.person.prefix
   end
   

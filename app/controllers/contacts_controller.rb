@@ -6,12 +6,22 @@ class ContactsController < ApplicationController
   # GET customers/1/contacts.json
   def index  
     @sels = params["sels"] || []
-    @contacts = Contact.search(@contacts, params[:name]).paginate(page: params[:page], :per_page => 5)
+    @contacts = @customer.contacts.search_by_params(@contacts, params).paginate(page: params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @contacts }
+      format.json do
+        #@content = render_to_string( :template => "contacts/_list", :locals => { items: @customer.contacts }, :formats => :html, :layout => false)
+        #render :json => { html: @content }, :content_type => "application/json"
+        #render :json => @content, :content_type => "application/json"
+        puts @contacts.to_yaml
+        render :template => "contacts/_list", :locals => { items: @contacts }, :formats => :html, :layout => false
+        end
     end
+  end
+  
+  def self.select_departments
+    BusinessDepartment.all
   end
 
 =begin
