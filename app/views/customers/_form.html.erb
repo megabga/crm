@@ -1,7 +1,8 @@
-<%= form_for @customer, :html => {:class => "well"}  do |f| %>
-<%= f.fields_for @customer.person do |person_f| %>
+<%= semantic_form_for @customer, :html => {:class => "well"}  do |f| %>
+<%= f.semantic_fields_for @customer.person do |person_f| %>
+<%= render 'shared/error_messages', object: f.object %>
 	<fieldset>
-	  <legend><%= t("customers.new.title") %></legend>
+	  <legend><%= @customer.new_record? ? t("customers.new.title") : t("customers.edit.title") %></legend>
 	  <div class="row">
 		<div class="span4">
 
@@ -71,55 +72,34 @@
 
 		   
 		</div>
-		<div class="span4">
+		<div class="span4 column2">
+
+	          <%= f.input :is_customer, :label => false %>
+		  
+	          <%= f.input :complete, :label => false %>
 			
-		  <div class="control-group">
-            <%= f.label :is_customer, :class => "control-label" %>
-            <div class="controls">
-	          <%= f.check_box :is_customer %>
-            </div>
-          </div>
-			
-		  <div class="control-group">
-            <%= f.label :phone, :class => "control-label" %>
-            <div class="controls">
-	          <%= f.text_field :phone, :class => "phone" %>
-            </div>
-          </div>
+	          <%= f.input :phone, :class => "phone" %>
 
-		  <div class="control-group">
-            <%= person_f.label :fax, :class => "control-label" %>
-            <div class="controls">
-	          <%= person_f.text_field :fax, :class => "phone" %>
-            </div>
-          </div>
+	          <%= person_f.input :fax, :class => "phone" %>
 
-		  <div class="control-group">
-            <%= f.label :site, :class => "control-label" %>
-            <div class="controls">
-	          <%= f.text_field :site %>
-            </div>
-          </div>
+	          <%= f.input :site %>
 
-		  <div class="control-group">
-            <%= f.label :social_link, :class => "control-label" %>
-            <div class="controls">
-	          <%= f.text_field :social_link %>
-            </div>
-          </div>
+	          <%= f.input :social_link %>
+	
+	          <%= f.input :other_contacts %>
 
-			  <div class="control-group">
-	            <%= person_f.label :total_employes, :class => "control-label" %>
-	            <div class="controls">
-		          <%= person_f.number_field :total_employes %>
-	            </div>
-	          </div>
+	          <%= person_f.input :total_employes %>
+
+	          <%= f.input :notes, :as => :text, :input_html => { rows: 2  } %>
+
+		</div>
 		
+		<div class="span3 column2">
 			  <div class="control-group">
 	            <%= person_f.label :segments, :class => "control-label" %>
 	            <div class="controls">
 		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
-					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.segments, :autocomplete => multiselect_business_segments_customers_path, :form_field => :segments, :field_show => :name, :field_store => :id } %>
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.segments, :autocomplete => multiselect_business_segments_customers_path, :form_field => :segments, :field_show => :name, :field_store => :id, width: 220 } %>
 	            </div>
 	          </div>
 	
@@ -128,11 +108,16 @@
 	            <%= person_f.label :activities, :class => "control-label" %>
 	            <div class="controls">
 		          <!-- %= render  :partial => 'customer_segment', :collection => @person.customer_segments % -->
-					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.activities, :autocomplete => multiselect_business_activities_customers_path, :form_field => :activities, :field_show => :name, :field_store => :id } %>
+					<%= render :partial => 'shared/multi_selection', :locals => { :form => person_f, :values => @person.activities, :autocomplete => multiselect_business_activities_customers_path, :form_field => :activities, :field_show => :name, :field_store => :id, width: 220 } %>
 	            </div>
 	          </div>
-			  
-		</div>
+	
+				<div class="thumbnail" id="emails">
+					<legend><small><%= t("customers.emails").titleize %></small></legend>
+			  <%= render :partial => 'active_extend/one_to_many_inputs', :locals => { :values => @customer.emails, :form => f, :target => :emails, :inputs => { :email => { :as => :string, :class => "span2", :label => false, :placeholder => "e-mail", :glyph => "icon-envelope" } } } %>
+				</div>
+	
+			</div>
 		
 		<div class="span8">
 			<div class="form-actions">

@@ -29,7 +29,7 @@ SystemTaskStatus.create([
 SystemTaskResolution.create([
                           { name: "RESOLVED" },
                           { name: "CANCELED" },
-                          { name: "BLOCKED" }
+                          { name: "BLOCKED" },
                           { name: "RESOLVED_AND_BUSINESS" }
                        ])
                      

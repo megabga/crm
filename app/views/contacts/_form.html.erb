@@ -1,5 +1,5 @@
 
-<%= form_for [@contact.customer, @contact], :html => {:class => "well"}  do |f| %>
+<%= semantic_form_for [@contact.customer, @contact], :html => {:class => "well"}  do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 <fieldset>
   <legend><%= title %></legend>
@@ -14,10 +14,7 @@
 	</div>
 
     <div class="control-group">
-    <%= f.label :departament %>	  
-	  <div class="control">
-      <%= f.text_field :departament %>		
-	  </div>
+    <%= f.input :department %>	  
 	</div>
 
     <div class="control-group">

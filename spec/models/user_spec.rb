@@ -11,6 +11,8 @@
 
 require 'spec_helper'
 
+include UsersHelper
+
 describe User do
 
   before(:all) { clear_test_dummy }
@@ -47,6 +49,8 @@ describe User do
   it { should respond_to :secundary_groups }
     
   it { should respond_to(:admin) }
+  
+  it { should respond_to(:primary_company_business) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -252,8 +256,8 @@ describe User do
   
   describe "user able?" do
     before do
-      able_create(@user, SystemModule.CUSTOMER)
-      able_read(@user, SystemModule.USER)
+      able(@user, :create, :customer)
+      able(@user, :read, :user)
     end
     
     it { @user.able?(SystemModule.CUSTOMER, SystemAbility.CREATE).should be_true }
@@ -266,6 +270,5 @@ describe User do
     let(:task)  { FactoryGirl.create(:task, user: @user) }
     it { @user.tasks.should include(task) }
   end
-  
   
 end

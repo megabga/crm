@@ -14,7 +14,7 @@ module ActiveDisablable
     end
     
     def all_disabled
-      where(:enabled => false) 
+      where(:enabled => false)
     end
     
   end
@@ -29,16 +29,16 @@ module ActiveDisablable
     self.enabled = true
   end
   
-  def is_enabled?
+  def enabled?
     self.enabled
   end
   
-  def is_disabled?
+  def disabled?
     !self.enabled
   end  
   
   def destroy
-    if (@destroy_fully || self.is_disabled?)
+    if (@destroy_fully || self.disabled?)
       super
     else
       disable

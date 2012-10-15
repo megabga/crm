@@ -6,15 +6,22 @@ class ContactsController < ApplicationController
   # GET customers/1/contacts.json
   def index  
     @sels = params["sels"] || []
-    @contacts = Contact.search(@contacts, params[:name]).paginate(page: params[:page], :per_page => 5)
+    @contacts = @customer.contacts.search_by_params(@contacts, params).paginate(page: params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @contacts }
+      format.json do
+        #@content = render_to_string( :template => "contacts/_list", :locals => { items: @customer.contacts }, :formats => :html, :layout => false)
+        #render :json => @content, :content_type => "application/json"
+        render :partial => "list", :locals => { items: @contacts, :layout => false }, :formats => :html, :layout => false
+        end
     end
   end
+  
+  def self.select_departments
+    BusinessDepartment.all
+  end
 
-=begin
   # GET customers/1/contacts/1
   # GET customers/1/contacts/1.json
   def show
@@ -23,10 +30,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @contact }
+      format.json { render "show.html.erb", :layout => false }
     end
   end
 
+=begin
   # GET customers/1/contacts/new
   # GET customers/1/contacts/new.json
   def new
@@ -72,7 +80,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to([@contact.customer, @contact], :notice => 'Contact was successfully updated.') }
+        format.html { redirect_to([@contact.customer, @contact], :notice => t('forms.update.sucess')) }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

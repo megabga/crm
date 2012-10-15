@@ -1,13 +1,13 @@
-
+<% if @json %>
 <%= render :partial => "header" %>
-
+<% end %>
 <section class="show">
 
 <ul class="thumbnails">
   <li class="span9">
     <div class="thumbnail">
       <div class="caption">
-		<legend><%= t("customers.show.title") %></legend>
+		<legend><%= t("customers.contacts.show.title") %></legend>
 	  </div>
 	  <div class="row">
 		<div class="span4">
@@ -19,7 +19,7 @@
 
 		  <div class="control-group">
             <%= show_label_tag t('contacts.departament') %>
-			<%= @contact.departament %>
+			<%= name_or_empty @contact.department %>
           </div>
 
 		  <div class="control-group">
@@ -47,6 +47,6 @@
   </li>
 </ul>
 </section>
-
-<%= link_to t('helpers.forms.edit'), edit_customer_contact_path(@contact.customer, @contact) %> |
-<%= link_to t('helpers.forms.back'), customer_contacts_path(@contact.customer) %>
+<% if @json then @new_target = { target: 'new' } end %>
+<%= link_to t('helpers.forms.edit'), edit_customer_contact_path(@contact.customer, @contact), @new_target %> |
+<%= link_to t('helpers.forms.back'), customer_contacts_path(@contact.customer), @new_target %>

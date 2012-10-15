@@ -10,10 +10,6 @@ module CustomersHelper
     0
   end
   
-  def format_namedlist(list)
-     list.all.collect {|item| "#{item.name}" }.join ", "
-  end
-  
   def navbar_title
     nil
   end

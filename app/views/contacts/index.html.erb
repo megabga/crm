@@ -40,7 +40,6 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th><%= t("search.select") %></th>
         <th><%= t("customers.contacts.name") %></th>
         <th><%= t("customers.contacts.departament") %></th>
         <th><%= t("customers.contacts.business_function") %></th>
@@ -54,11 +53,11 @@
     <% @contacts.each do |contact| %>
       <tr>
 	    <td><%= contact.name %></td>
-	    <td><%= contact.departament %></td>
+	    <td><%= name_or_empty contact.department %></td>
 	    <td><%= contact.business_function %></td>
 	    <td><%= contact.phone %></td>
 	    <td><%= contact.cell %></td>
-	    <td><%= contact.birthday %></td>
+	    <td><%= format_date contact.birthday %></td>
 	    <td></td>
 	    <td><%= link_to t('helpers.forms.show'), [contact.customer, contact] %></td>
       </tr>

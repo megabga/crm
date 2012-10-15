@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   include ActiveDisablable
   #attr_readonly :admin
   attr_accessible :name, :email, :password, :password_confirmation, :admin, :remember_me, :users_has_groups, 
-                  :primary_group, :secundary_groups
+                  :primary_group, :secundary_groups, :primary_company_business, :primary_company_business_id
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :tasks
   
   has_many :assigned_tasks, class_name: "Task", foreign_key: "assigned_id"
+  
+  belongs_to :primary_company_business, class_name: "CompanyBusiness"
   
   #GROUPS<=================
   belongs_to :primary_group, class_name: "UserGroup", foreign_key: "primary_group_id"

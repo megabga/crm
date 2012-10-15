@@ -1,7 +1,8 @@
 
 class CustomersController < ApplicationController
+  load_and_authorize_resource :except => [:create]
   before_filter :custom_load_creator, :only => :create
-  load_and_authorize_resource
+  before_filter :filter_before_changes, :only => [:create,:update]
   
   autocomplete :business_segment, :name, :full => true
   autocomplete :business_activity, :name, :full => true
@@ -14,6 +15,11 @@ class CustomersController < ApplicationController
   def show
     @task = @customer.tasks.build
     @tasks = @customer.tasks.paginate(page:params[:task_page] || 1, per_page: 3)
+    
+    @selected_department = params[:department]
+    @contacts = @customer.contacts
+    @contacts = Contact.search_by_params @contacts, department_id: @selected_department if @selected_department
+    
     render "show."+@customer.person.prefix
   end
   
@@ -32,8 +38,6 @@ class CustomersController < ApplicationController
     if (params[:customer]==nil)
       return
     end
-    
-    filter_inputs params[:customer] if params[:customer]
     
     @customer = Customer.new(params[:customer])
     @person = CustomerPj.new(params[:customer_pj])
@@ -55,34 +59,34 @@ class CustomersController < ApplicationController
     
     params_pj = params[:customer][:customer_pj]
     params[:customer].delete :customer_pj
+    puts params[:customer].to_yaml
     
-    #@customer = Customer.find(params[:id])
+    #@customer = Customer.find params[:id]
     @person = @customer.person
     
     @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
     @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
     
-    @person.save
-    
-    if @customer.update_attributes(params[:customer]) &&
-    @person.update_attributes(params_pj)
-      
-      if @customer.save
-        flash[:success] = t("helpers.forms.new_sucess")
-        redirect_to customer_path(@customer)
-      else
-        render 'new.'+preferences_customer_type?.to_s
-      end
+    if @person.save && @customer.update_attributes(params[:customer]) && @person.update_attributes(params_pj)
+      flash[:success] = t("helpers.forms.new_sucess")
+      redirect_to customer_path(@customer)
+    else
+      render 'new.'+preferences_customer_type?.to_s
     end
   end
   
   def edit
     @customer = Customer.find params[:id]
     @person = @customer.person
+    
+    @customer.emails.build
   end
   
-  def filter_inputs(params)
-    params[:doc].gsub! /[\.\/-]/, "" if params[:doc] 
+  def filter_before_changes
+    authorize! params[:action].to_sym, @customer
+    
+    params[:customer][:doc].gsub! /[\.\/-]/, "" if params[:customer][:doc]
+    params[:customer][:doc_rg].gsub! /[\.\/-]/, "" if params[:customer][:doc_rg] 
   end
   
   

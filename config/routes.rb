@@ -1,7 +1,8 @@
 GUARACRM::Application.routes.draw do  
 
+  resources :districts
+  resources :business_departments
   resources :task_types
-
   resources :system_task_status
 
   devise_for :users#, :controllers => { :sessions => "sessions" } do
@@ -45,7 +46,9 @@ GUARACRM::Application.routes.draw do
     get :customer_pj, :on => :collection
     
     resources :contacts
-    resources :tasks
+    resources :tasks do
+      resources :feedbacks
+    end
   end
   
   namespace :tests do
