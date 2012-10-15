@@ -9,17 +9,39 @@ describe Customer do
                               birthday: "19/01/1900", 
                               state: FactoryGirl.create(:state),
                               city: FactoryGirl.create(:city),
-                              district: FactoryGirl.create(:district))
+                              district: FactoryGirl.create(:district),
+                              phone: 9)
                               
    end
    
    subject { @customer }
+   
+   it { should respond_to :name }
+   it { should respond_to :name_sec }
+   
+   it { should respond_to :doc }
+   it { should respond_to :doc_rg }
+   it { should respond_to :birthday }
+   it { should respond_to :state }
+   it { should respond_to :city }
+   it { should respond_to :district }
+   it { should respond_to :phone }
+   it { should respond_to :address }
+   
+   it { should respond_to :notes }
+   it { should respond_to :other_contacts }
    
    it { should respond_to :emails }
    it { should respond_to :complete? }
    
    it { should respond_to :contacts }
    it { should be_valid }
+   
+   it "MassAssignmentSecurity" do
+     expect do
+       @customer.notes = ""
+     end.to_not raise_error(:MassAssignmentSecurity)
+   end
    
    describe "when record is complete" do
      describe "require essencials fields" do
@@ -43,5 +65,39 @@ describe Customer do
         @customer.contacts.should include(contact, contact_other)
       end
       
-    end
+   end
+   
+   describe "Complete" do
+     before do
+       @customer.complete = false
+     end
+     
+     it { should be_can_complete }
+     it { should_not be_complete }
+     
+     describe "change field complete after save" do
+       before { @customer.save }
+       it { should be_complete }
+     end
+   end
+   
+   describe "incomplete customer" do
+     let(:incomplete) do
+        Customer.new name: Faker::Name.first_name,
+                     doc: ''
+     end
+     subject { incomplete }
+     
+     it { should be_valid  }
+     
+     describe "test can complete?" do
+       before { incomplete.can_complete? }
+       it { should be_valid }
+     end
+     
+     describe "save!" do
+       before { incomplete.save! }
+       it { should be_valid }
+     end
+   end
 end

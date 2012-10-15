@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007131035) do
+ActiveRecord::Schema.define(:version => 20121014212430) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20121007131035) do
   end
 
   add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
+
+  create_table "company_businesses", :force => true do |t|
+    t.string   "name"
+    t.boolean  "enabled"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contacts", :force => true do |t|
     t.integer  "customer_id"
@@ -104,28 +111,29 @@ ActiveRecord::Schema.define(:version => 20121007131035) do
   end
 
   create_table "customers", :force => true do |t|
-    t.string   "name",        :limit => 60,                     :null => false
-    t.string   "doc",         :limit => 14
-    t.string   "doc_rg",      :limit => 22
-    t.string   "name_sec",    :limit => 40
-    t.string   "address",     :limit => 80
+    t.string   "name",           :limit => 60,                     :null => false
+    t.string   "doc",            :limit => 14
+    t.string   "doc_rg",         :limit => 22
+    t.string   "name_sec",       :limit => 40
+    t.string   "address",        :limit => 80
     t.integer  "district_id"
     t.integer  "city_id"
     t.integer  "state_id"
-    t.string   "postal",      :limit => 8
-    t.string   "notes",       :limit => 500
+    t.string   "postal",         :limit => 8
+    t.string   "notes",          :limit => 500
     t.date     "birthday"
-    t.string   "phone",       :limit => 15
-    t.string   "social_link", :limit => 200
-    t.string   "site",        :limit => 200
-    t.boolean  "is_customer",                :default => false
+    t.string   "phone",          :limit => 15
+    t.string   "social_link",    :limit => 200
+    t.string   "site",           :limit => 200
+    t.boolean  "is_customer",                   :default => false
     t.integer  "parent_id"
-    t.boolean  "enabled",                    :default => true
+    t.boolean  "enabled",                       :default => true
     t.integer  "person_id"
     t.string   "person_type"
     t.boolean  "complete"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "other_contacts", :limit => 70
   end
 
   create_table "districts", :force => true do |t|
@@ -206,9 +214,12 @@ ActiveRecord::Schema.define(:version => 20121007131035) do
   create_table "task_types", :force => true do |t|
     t.string   "name"
     t.boolean  "enabled"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "company_business_id"
   end
+
+  add_index "task_types", ["company_business_id"], :name => "index_task_types_on_company_business_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "name",            :limit => 60
@@ -254,23 +265,24 @@ ActiveRecord::Schema.define(:version => 20121007131035) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                   :limit => 25
-    t.string   "email",                  :limit => 100
-    t.boolean  "enabled",                               :default => true
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.string   "name",                        :limit => 25
+    t.string   "email",                       :limit => 100
+    t.boolean  "enabled",                                    :default => true
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.string   "remember_token"
-    t.boolean  "admin",                                 :default => false
-    t.string   "encrypted_password",                    :default => "",    :null => false
+    t.boolean  "admin",                                      :default => false
+    t.string   "encrypted_password",                         :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                              :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "primary_group_id"
+    t.integer  "primary_company_business_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

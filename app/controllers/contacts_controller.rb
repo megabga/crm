@@ -12,10 +12,8 @@ class ContactsController < ApplicationController
       format.html # index.html.erb
       format.json do
         #@content = render_to_string( :template => "contacts/_list", :locals => { items: @customer.contacts }, :formats => :html, :layout => false)
-        #render :json => { html: @content }, :content_type => "application/json"
         #render :json => @content, :content_type => "application/json"
-        puts @contacts.to_yaml
-        render :template => "contacts/_list", :locals => { items: @contacts }, :formats => :html, :layout => false
+        render :partial => "list", :locals => { items: @contacts, :layout => false }, :formats => :html, :layout => false
         end
     end
   end
@@ -24,7 +22,6 @@ class ContactsController < ApplicationController
     BusinessDepartment.all
   end
 
-=begin
   # GET customers/1/contacts/1
   # GET customers/1/contacts/1.json
   def show
@@ -33,10 +30,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @contact }
+      format.json { render "show.html.erb", :layout => false }
     end
   end
 
+=begin
   # GET customers/1/contacts/new
   # GET customers/1/contacts/new.json
   def new
@@ -82,7 +80,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to([@contact.customer, @contact], :notice => 'Contact was successfully updated.') }
+        format.html { redirect_to([@contact.customer, @contact], :notice => t('forms.update.sucess')) }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

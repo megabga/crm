@@ -1,8 +1,8 @@
 
 pt-BR:
   commons: &commons
-    yes: "Sim"
-    no: "Não"
+    "yes": "Sim"
+    "no": "Não"
     empty: "Vazio"
     all: "Todos"
   
@@ -61,6 +61,12 @@ pt-BR:
     district: "Bairro"
     city: "Cidade"
     state: "Estado"
+    emails: "e-mails"
+    notes: "Notas"
+    phone: "Fone"
+    fax: fax
+    site: site
+    social_link: "Redes sociais" 
     
     city_id: "Cidade"
     state_id: "Estado"
@@ -96,6 +102,8 @@ pt-BR:
       index: 
         title: "%{customer}"
         link: "Contatos"
+      show:
+        title: "Exibindo Contato"
       search:
           title: "Filtro Contatos"
       
@@ -105,7 +113,7 @@ pt-BR:
     side:
       title: "Histórico"
     show:
-      title: "Visualizando Histórico"
+      title: "Histórico: %{task}"
       link: "Ver histórico"
     errors:
       not_valid_status_and_resolution: "Estado atual inválido %{status}, e resolvido como %{resolution}"                  
@@ -117,6 +125,8 @@ pt-BR:
             title: "Sem Feedback"
         save_with_feedback:
             title: "Com Feedback"
+    search:
+        title: "Pesquisar"
     #fields
     name: "Assunto"
     due_time: "Prazo"
@@ -139,6 +149,10 @@ pt-BR:
     BLOCKED:   "Pendente"
     RESOLVED_AND_BUSINESS: "Negócio Fechado"
     
+  task_types: &attr_task_types
+      name: "Tipo de Tarefa"
+      company_business: "Área de Negócio"
+    
   feedbacks: &attr_feedbacks
     show:
       title: "Feedback"
@@ -148,6 +162,8 @@ pt-BR:
     resolution: "Resolução"
     user: "Usuário da Resposta"
     date: "Data da Resposta"
+    side:
+        title: "Feedbacks"
   
   customer_pjs: &attr_customer_pj
     doc: "CNPJ"
@@ -216,6 +232,9 @@ pt-BR:
   search:
     results: "Resultados"
     select: "Sel."
+    
+  
+  
   #LINKS <===================================
 
   more: "Veja mais"
@@ -242,12 +261,14 @@ pt-BR:
   #Guara CRM System <========================
   system:
     modules: &system_modules
-      customer: "Cliente"
-      contact: "Contato"
       business_segment: "Segmento"
       business_activity: "Atividade"
+      company_business: "Área de Negócio"
+      customer: "Cliente"
+      contact: "Contato"
       user: "Usuário"
       task: "Tarefa"
+      task_type: "Tipo de Tarefa"
     abilities:
       READ: "Ler"
       CREATE: "Criar"
@@ -279,6 +300,9 @@ pt-BR:
           
       feedback:
           <<: *attr_feedbacks
+          
+      task_type:
+          <<: *attr_task_types
       
     models: 
       <<: *system_modules

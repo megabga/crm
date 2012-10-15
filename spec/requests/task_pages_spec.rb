@@ -103,12 +103,22 @@ describe "Customer Task Pages" do
       
       it "should appear um dialog with more explanation of task" do
         visible?(".modal-task").should be_true
-        should have_content I18n.t("tasks.show.title")
+        should have_content I18n.t("tasks.show.title", task: name_or_empty(task) )
         should have_content task.name
         should have_content format_datetime(task.due_time)
       end
     end
     
+  end
+  
+  describe "show task" do
+    before do
+      sign_in admin
+      visit customer_task_path(customer_pj.customer, task)
+    end
+    
+    it { should have_content(I18n.t("feedbacks.side.title")) }
+    it { pending("test list of feedbacks for task") }
   end
 
 end

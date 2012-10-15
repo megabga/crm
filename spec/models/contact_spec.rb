@@ -5,7 +5,7 @@ describe Contact do
      @contact = Contact.new(
                   name: 'Teste Contact 1',
                   birthday: 35.years.ago,
-                  customer: FactoryGirl.create(:customer),
+                  customer: Factory(:customer),
                   department: Factory(:business_department))
    end
    
@@ -46,6 +46,15 @@ describe Contact do
      before { @contact.department = BusinessDepartment.last }
      its(:department) { should == (BusinessDepartment.last) }
      its(:department_id) { should == (BusinessDepartment.last.id) }
+   end
+   
+   describe "search" do
+     before do
+       @contact.save
+       @contacts = Contact.search_by_params @contact.customer.contacts, department_id: nil
+     end
+     it { @contact.customer.contacts include(@contact) }
+     it { @contacts.should include(@contact) }
    end
    
 end

@@ -5,11 +5,11 @@
 <section class="show">
 
 <ul class="thumbnails">
-  <li class="span9">
+  <li class="span5">
     <div class="thumbnail">
       <div class="caption">
-		<legend><%= t("tasks.show.title") %> <small><%= name_or_empty(@task) %></small></legend>
-		<h3><%= name_or_empty(@task.type) %></h3>
+		<legend><%= t("tasks.show.title", task: name_or_empty(@task) ) %></legend>
+		<h4><%= name_or_empty(@task.type) %></h4>
 	  </div>
 	  <div class="row">
 		<div class="span4">
@@ -27,8 +27,20 @@
 		</div>
 	</div>
   </li>
+  <li class="span5">
+    <div class="thumbnail">
+      <div class="caption">
+		<legend><%= t("feedbacks.side.title") %></legend>
+	  </div>
+	  <div class="row">
+		<div class="span4">
+			<%= render :partial => "task_feedbacks/side_panel" %>
+		</div>
+	  </div>
+	</div>
+  </li>
 </ul>
 </section>
 
-<%= link_to t('helpers.forms.edit'), edit_customer_contact_path(@customer, @task) %> |
-<%= link_to t('helpers.forms.back'), customer_contacts_path(@customer) %>
+<%= link_to t('helpers.forms.edit'), edit_customer_task_path(@customer, @task) %> |
+<%= link_to t('helpers.forms.back'), customer_tasks_path(@customer) %>

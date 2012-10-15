@@ -215,8 +215,27 @@ ul {
 .show {
 	.control-group {
 		background: #f1f1f1;
+		margin-top: 20px;
+		padding-bottom: 10px;
 		label {
 			background: #ffffff;
+			margin-bottom: 10px;
+		}
+	}
+	
+	.controls {
+		min-height: 13px;
+	}
+}
+
+.edit, .new {
+	.control-group {
+		background: inherit;
+		margin-top: 5px;
+		padding-bottom: 5px;
+		label {
+			background: #ffffff;
+			margin-bottom: 5px;
 		}
 	}
 	
@@ -268,30 +287,7 @@ aside {
   }
 }
 
-/* customer contacts */
 
-.thumbnail.contacts {
-	overflow-y: scroll;
-	max-height: 240px;
-}
-
-
-/* tasks */
-
-.tasks {
-	.disabled {
-		display: none;
-	}
-	
-	.enabled {
-		display: block;
-	}
-	.side {
-		.new {
-			background-color: #f1f1f1;
-		}
-	}
-}
 
 /* Commons */
 

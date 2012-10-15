@@ -6,15 +6,15 @@ describe "Contacts Customer" do
   
   #login
   let(:user) { FactoryGirl.create(:user) }
+  
+  #customer neasted
+  let(:customer) { FactoryGirl.create(:customer_pj).customer }
+  
   before do
     able_update(user, SystemModule.CUSTOMER)
     able_update(user, SystemModule.CONTACT)
     sign_in user
   end
-  
-  #customer neasted
-  let(:customer) { FactoryGirl.create(:customer_pj).customer }
-  
   
   describe "access in customer form" do
     before do
@@ -55,34 +55,42 @@ describe "Contacts Customer" do
   end
   
   describe "show customer side panel" do
-    before do
+    before :each do
       @contacts = []
       @departments = [Factory(:business_department), Factory(:business_department)]
       10.times { |i| @contacts << Factory(:contact, customer:customer, department: @departments[i / 5]) }
+      
       visit customer_path(customer)
     end
     
+    it "should find all cantacts in list" do
+      @contacts.each do |contact|
+        should have_selector '#contact%d' % contact.id, text: contact.name
+      end
+    end
+    
     it { should have_content I18n.t("customers.contacts.side.title") }
-    it { @contacts.each { |contact| should have_selector '#contact%d' % contact.id, text: contact.name } }
     
     describe "select department filter", :js => true do
       before do
         wait_for_animations()
         find("#select_department #%d" % @departments[0].id).click()
         wait_for_response()
-        save_and_open_page
       end
       
-      it "should only apears contacts of clicked department" do
-        @contacts.select { |contact| contact.department == @departments[0] }.each do |contact|
-          #BUG CAPYBARA: No work with have_selector
-          find('#contact%d' % contact.id).should have_content contact.name
-        end
-        @contacts.select { |contact| contact.department == @departments[0] }.each do |contact|
-          find('#contact%d' % contact.id).should_not have_content contact.name
+      it "should only apears contacts of clicked department!" do
+        @contacts.each do |contact|
+          if contact.department == @departments[0]
+            #find('#contact%d' % contact.id).should have_content contact.name
+            should have_css('#contact%d' % contact.id, text: contact.name)
+          else
+            should_not have_css('#contact%d' % contact.id, text: contact.name)
+          end
         end
       end
+      
     end
+    
   end
   
 end

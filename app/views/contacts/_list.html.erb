@@ -4,7 +4,7 @@
 	<li id="contact<%= item.id %>" onClick="contact_show(<%= item.id %>)">
 		<h5><%= item.name %> <small>Fone: <%= item.phone %></small></h5>
 		<span class="email"><%= concat_emails(item.emails) %></span>
-		<%= name_or_empty(item.department) %>
+		<%= item.business_function %> - <%= name_or_empty(item.department) %>
 	</li>
 <% end %>
 <ul>
@@ -28,13 +28,7 @@ function contact_show(id) {
 	  "scrollbars": true
     });
 	
-	/*.css({
-	    'margin-left': function () {
-	        return -($(this).width() / 2);
-	    }
-	});*/
-	
-	path = "<%= customer_contact_path(@customer,0) %>"+id+".js"
+	path = "<%= customer_contact_path(@customer,0) %>"+id+".json"
 
     //path = path.replace(reg, id);
 	

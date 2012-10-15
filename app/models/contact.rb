@@ -15,22 +15,22 @@ class Contact < ActiveRecord::Base
   
   def self.search_by_params(results=nil, query)
     
-    results = self.send(:relation) unless results
+    results = self.send(:relation) if results.nil?
     where = {}
     
     query.each do |k,v|
+      
+      next if v.nil?
+      
       if k=="name"
         where.merge! 'upper(name) LIKE ?', "%#{name}%"
-      elsif self.instance_methods.include?((k.to_s+"_id").to_sym)
+      elsif self.instance_methods.include?("#{k}_id".to_sym)
         where.merge! :"#{k}_id" => v
-        puts "mergin "+k
       elsif self.instance_methods.include?(k.to_sym)
         where.merge! k.to_sym => v
       end
     end
     
-    puts query.to_yaml
-    puts "============>"+where.to_yaml
     results.where(where)
   end
   

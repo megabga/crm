@@ -1,14 +1,15 @@
 class Customer < ActiveRecord::Base
   attr_accessible :doc, :doc_rg, :name, :birthday, :name_sec, :address, :state_id, :city_id, :district_id,
                   :is_customer, :person, :postal, :emails, :complete, :state, :city, :district, 
-                  :phone, :fax, :social_link, :site, :enabled, :emails
+                  :phone, :fax, :social_link, :site, :enabled, :other_contacts, :notes, :emails_attributes
   #attr_protected 
+  
+  before_validation :before_validation_completed
   
   include ActiveDisablable
   include StringHelper
   
-  default_scope order: "name"
-  
+  default_scope order: "name"  
   
   #=========================== associations <--------------------------------------------
   
@@ -20,6 +21,10 @@ class Customer < ActiveRecord::Base
   belongs_to :state
   belongs_to :city
   belongs_to :district
+  
+  #============================ 
+  
+  accepts_nested_attributes_for :emails, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true
   
   #=========================== VALIDATE <------------------------------------------------
   
@@ -33,6 +38,7 @@ class Customer < ActiveRecord::Base
   validates :state_id, :presence => true, :if => :complete?
   validates :city_id, :presence => true, :if => :complete?
   validates :district_id, :presence => true, :if => :complete?
+  validates :phone, :presence => true, :if => :complete?
   
   # -------------------------------------------------------------------------> validates
   
@@ -67,10 +73,25 @@ class Customer < ActiveRecord::Base
   end
   
   def complete?
-    complete
+    self.complete
   end
   
-  def customer_pj=(customer_pj)
+  def can_complete?
+    raise "erros not empty" if self.errors.count>0
+    old_complete = self.complete
     
+    self.complete = true;
+    ret = self.valid?
+    
+    self.complete = old_complete
+    self.errors.clear
+    ret
   end
+  
+  
+  private
+    def before_validation_completed
+      (self.complete = self.can_complete?) if not self.complete
+      true
+    end
 end
