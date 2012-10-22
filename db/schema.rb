@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014212430) do
+ActiveRecord::Schema.define(:version => 20121015101844) do
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -193,7 +193,8 @@ ActiveRecord::Schema.define(:version => 20121014212430) do
   end
 
   create_table "system_task_resolutions", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "parent_id"
   end
 
   create_table "system_task_status", :force => true do |t|
@@ -239,6 +240,11 @@ ActiveRecord::Schema.define(:version => 20121014212430) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
+
+  add_index "tasks", ["assigned_id"], :name => "index_tasks_on_assigned_id"
+  add_index "tasks", ["interested_id"], :name => "index_tasks_on_interested_id"
+  add_index "tasks", ["status_id"], :name => "index_tasks_on_status_id"
+  add_index "tasks", ["type_id"], :name => "index_tasks_on_type_id"
 
   create_table "tests_ajaxes", :force => true do |t|
     t.string   "name"

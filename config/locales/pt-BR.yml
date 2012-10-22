@@ -147,7 +147,7 @@ pt-BR:
     RESOLVED:  "Concluído"
     CANCELED:  "Cancelado"
     BLOCKED:   "Pendente"
-    RESOLVED_AND_BUSINESS: "Negócio Fechado"
+    RESOLVED_WITH_BUSINESS: "Negócio Fechado"
     
   task_types: &attr_task_types
       name: "Tipo de Tarefa"

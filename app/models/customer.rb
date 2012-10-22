@@ -39,57 +39,68 @@ class Customer < ActiveRecord::Base
   validates :city_id, :presence => true, :if => :complete?
   validates :district_id, :presence => true, :if => :complete?
   validates :phone, :presence => true, :if => :complete?
+
+
+  # ---> public ----------------------------------------------------------------------
+  public
+    def businesses
+      resolution = SystemTaskResolution.RESOLVED_WITH_BUSINESS
+      self.tasks.unscoped.joins(:type).select("company_business_id, max(finish_time) AS business_at").where(resolution_id: 4).group(:company_business_id)
+    end
+
+
   
   # -------------------------------------------------------------------------> validates
-  
-  def self.search(customers, name)
-    conditions = []
-    conditions_and = []
-    conditions_params = []
-    if name
-      name = name.upcase
-      conditions_and << 'upper(name) LIKE ?'
-      conditions_params << "%#{name}%"
+  public
+    def self.search(customers, name)
+      conditions = []
+      conditions_and = []
+      conditions_params = []
+      if name
+        name = name.upcase
+        conditions_and << 'upper(name) LIKE ?'
+        conditions_params << "%#{name}%"
+      end
+    
+      conditions << conditions_and.join(" and ")
+      conditions_params.each { |p| conditions << p  }
+    
+      if conditions.count>0
+        logger.debug customers
+        ret = customers.where(conditions)
+      else
+        []
+      end
+    
     end
-    
-    conditions << conditions_and.join(" and ")
-    conditions_params.each { |p| conditions << p  }
-    
-    if conditions.count>0
-      logger.debug customers
-      ret = customers.where(conditions)
-    else
-      []
+  
+    def format_address
+      (self.address ? self.address : "") + ", " + name_or_empty(self.district) + ", " + name_or_empty(self.city) + ", " + name_or_empty(self.state)
     end
+  
+    def doc_needs?
+      self.complete? || (doc !="" && doc != "0"*11 && doc != "0"*14)
+    end
+  
+    def complete?
+      self.complete
+    end
+  
+    def can_complete?
+      raise "erros not empty" if self.errors.count>0
+      old_complete = self.complete
     
-  end
-  
-  def format_address
-    (self.address ? self.address : "") + ", " + name_or_empty(self.district) + ", " + name_or_empty(self.city) + ", " + name_or_empty(self.state)
-  end
-  
-  def doc_needs?
-    self.complete? || (doc !="" && doc != "0"*11 && doc != "0"*14)
-  end
-  
-  def complete?
-    self.complete
-  end
-  
-  def can_complete?
-    raise "erros not empty" if self.errors.count>0
-    old_complete = self.complete
+      self.complete = true;
+      ret = self.valid?
     
-    self.complete = true;
-    ret = self.valid?
-    
-    self.complete = old_complete
-    self.errors.clear
-    ret
-  end
+      self.complete = old_complete
+      self.errors.clear
+      ret
+    end
   
   
   private
+  
     def before_validation_completed
       (self.complete = self.can_complete?) if not self.complete
       true

@@ -56,6 +56,7 @@ class Task < ActiveRecord::Base
     
     def done
       self.status = SystemTaskStatus.CLOSED
+      self.finish_time = Time.now
     end
   
   private

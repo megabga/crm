@@ -35,6 +35,9 @@ describe Customer do
    it { should respond_to :complete? }
    
    it { should respond_to :contacts }
+   
+   it { should respond_to :businesses }
+   
    it { should be_valid }
    
    it "MassAssignmentSecurity" do
@@ -98,6 +101,32 @@ describe Customer do
      describe "save!" do
        before { incomplete.save! }
        it { should be_valid }
+     end
+   end
+   
+   describe "after add task with business" do
+     before do
+       @date_finish = 1.day.ago
+       @customer.tasks.clear
+       
+       @company_business = Factory(:company_business)
+       
+       @task = Factory(:task, interested: @customer)
+       @task.type = Factory(:task_type)
+       @task.type.company_business = @company_business
+       @task.type.save
+       @task.due_time = 2.days.ago
+       @task.done
+       @task.finish_time = @date_finish
+       @task.resolution = SystemTaskResolution.RESOLVED_WITH_BUSINESS
+     end
+
+     it { expect { @task.save }.to change { @customer.businesses.length }.by(+1) }
+     
+     it "should display last businesses date" do
+       @task.save
+       puts @customer.businesses.to_yaml
+       @customer.businesses.each { |business| Time.parse(business.business_at.to_s).to_s.should eq(Time.parse(@date_finish.utc.to_s)) }
      end
    end
 end

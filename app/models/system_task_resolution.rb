@@ -1,5 +1,7 @@
 class SystemTaskResolution < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :parent, :parent_id
+  
+  belongs_to :parent, class_name: "SystemTaskResolution"
   
   def self.RESOLVED
     readonly.find_by_name("RESOLVED")
@@ -12,6 +14,10 @@ class SystemTaskResolution < ActiveRecord::Base
   def self.BLOCKED
     readonly.find_by_name("BLOCKED")
   end  
+  
+  def self.RESOLVED_WITH_BUSINESS
+    readonly.find_by_name("RESOLVED_WITH_BUSINESS")
+  end
   
   
   def name

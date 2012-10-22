@@ -12,7 +12,7 @@
 				</div>
 
 				<div class="span5">
-				<%= f.input :type  %>
+				<%= f.input :type, collection: task_types_for_current_user()  %>
 				</div> 
 				<div class="span5">
 					<%= f.input :contact, collection: @customer.contacts %>
