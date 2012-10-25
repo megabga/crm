@@ -43,9 +43,14 @@ class Customer < ActiveRecord::Base
 
   # ---> public ----------------------------------------------------------------------
   public
+    ##
+    # The bussinesses done at the time
+    #
+    # @return [OpenStruct]    The struct containing CompanyBusiness as :business and Last Time of Business Deal as business_at
     def businesses
       resolution = SystemTaskResolution.RESOLVED_WITH_BUSINESS
-      self.tasks.unscoped.joins(:type).select("company_business_id, max(finish_time) AS business_at").where(resolution_id: 4).group(:company_business_id)
+      businesses = self.tasks.unscoped.joins(:type).select("company_business_id, max(finish_time) AS business_at").where(resolution_id: 4).group(:company_business_id)
+      businesses.collect { |b| OpenStruct.new(business: CompanyBusiness.find(b.company_business_id), business_at: b.business_at) }
     end
 
 
@@ -96,6 +101,10 @@ class Customer < ActiveRecord::Base
       self.complete = old_complete
       self.errors.clear
       ret
+    end
+    
+    def a_customer?
+      self.is_customer || (self.businesses.count>0)
     end
   
   

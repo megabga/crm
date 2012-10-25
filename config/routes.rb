@@ -1,5 +1,7 @@
 GUARACRM::Application.routes.draw do  
 
+  resources :company_businesses
+
   resources :districts
   resources :business_departments
   resources :task_types

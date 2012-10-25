@@ -48,6 +48,8 @@ pt-BR:
     edit:
       title: "Cadastro de Clientes"
       link: "Edição"
+      
+    a_customer: "É Cliente"
     
     name: "Nome/Fantasia"
     name_sec: "Apelido/Razão Social"

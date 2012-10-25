@@ -6,6 +6,9 @@
         <div class="thumbnail">
           <div class="caption">
 			  <legend><%=@customer.name %> <small><%= @customer.name_sec || t("customers.show.title") %></small></legend>
+			
+			<%= render partial: "businesses_done" %>
+			
 			  <div class="row">
 				<div class="span4">
 
@@ -64,12 +67,6 @@
 
 				</div>
 				<div class="span2 column2">
-					<dl>
-			            <dt><%=  t("customers.is_customer") %></dt>
-				        <dd><span class="badge large <%= @customer.is_customer ? "badge-success" : "badge-important" %>"><%= format_boolean @customer.is_customer %></span></dd>
-	
-			        </dl>
-	
 					<dl>
 			            <dt><%=  t("customers.complete") %></dt>
 				        <dd><span class="badge <%= @customer.complete? ? "badge-success" : "badge-important" %>"><%= format_boolean @customer.complete %></span></dd>
