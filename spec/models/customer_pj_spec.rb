@@ -51,7 +51,7 @@ describe CustomerPj do
     it "should allow access to basics fields" do
       expect do
         @customer.save
-      end.should_not raise_error(ActiveModel::MassAssignmentSecurity::Error)
+      end.to_not raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end    
   end
   

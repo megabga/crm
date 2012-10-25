@@ -59,7 +59,7 @@ describe "Authentication" do
 
       describe "when attempting to visit a protected page" do
         before do
-          #expect { visit edit_user_path(user) }.should raise_error(CanCan::AccessDenied)
+          #expect { visit edit_user_path(user) }.to raise_error(CanCan::AccessDenied)
           visit edit_user_path(user)
         end
         
