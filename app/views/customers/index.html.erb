@@ -20,7 +20,7 @@
         <th><%= t("search.select") %></th>
         <th><%= t("customers.code") %></th>
         <th><%= t("customers.names") %></th>
-        <th><%= t("customers.is_customer") %></th>
+        <th><%= t("customers.a_customer") %></th>
         <th><%= t("customers.enabled") %></th>
         <th><%= t("customers.complete") %></th>
         <th><%= t("helpers.forms.actions") %></th>
@@ -32,9 +32,9 @@
         <td><%= check_box_tag 'sels[]', c.id, @sels[c.id] %></td>
         <td><%= c.id %></td>
         <td><%= link_to c.name, customer_path(c)  %></td>
-        <td><%= format_boolean c.is_customer %></td>
-        <td><%= format_boolean c.enabled %></td>
-        <td><%= format_boolean c.complete %></td>
+        <td><span class="badge <%= c.a_customer? ? "badge-success" : "badge-important" %>"><%= format_boolean c.a_customer? %></td>
+        <td><span class="badge <%= c.enabled ? "badge-success" : "badge-important" %>"><%= format_boolean c.enabled %></span></td>
+        <td><span class="badge <%= c.complete? ? "badge-success" : "badge-important" %>"><%= format_boolean c.complete %></span></td>
         <td><%= link_to t("helpers.forms.show"), customer_path(c), :class => "btn" %></td>
       </tr>
     <% end %>

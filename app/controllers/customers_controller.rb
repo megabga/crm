@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
   
   def index
     @sels = params["sels"] || []
-    @customers = Customer.search(@customers, params[:name]).paginate(page: params[:page], :per_page => 5)
+    @customers = Customer.search_by_name(@customers, params[:name]).paginate(page: params[:page], :per_page => 5)
   end
   
   def show

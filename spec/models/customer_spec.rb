@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include LocaleHelper
+
 describe Customer do
   before do
     
@@ -37,7 +39,9 @@ describe Customer do
    it { should respond_to :contacts }
    
    it { should respond_to :businesses }
-   
+
+   it { Customer.should respond_to :search_by_name }
+      
    it { should be_valid }
    
    it "MassAssignmentSecurity" do
@@ -125,8 +129,7 @@ describe Customer do
      
      it "should display last businesses date" do
        @task.save
-       puts @customer.businesses.to_yaml
-       @customer.businesses.each { |business| Time.parse(business.business_at.to_s).to_s.should eq(Time.parse(@date_finish.utc.to_s)) }
+       @customer.businesses.each { |business| format_datetime(Time.parse(business.business_at.to_s)).should eq(format_datetime(@date_finish)) }
      end
    end
 end
