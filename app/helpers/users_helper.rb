@@ -21,8 +21,6 @@ module UsersHelper
     return [] if business.nil? and not current_user.admin?
     
     if not business.nil?
-      puts business.to_yaml
-      puts       TaskType.for_business(business).to_yaml
       TaskType.for_business(business)
     else
       TaskType.send :relation

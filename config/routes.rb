@@ -47,6 +47,8 @@ GUARACRM::Application.routes.draw do
     
     get :customer_pj, :on => :collection
     
+    get :multiselect_customers_pj, :on => :collection
+    
     resources :contacts
     resources :tasks do
       resources :feedbacks

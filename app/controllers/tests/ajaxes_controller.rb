@@ -92,7 +92,6 @@ class Tests::AjaxesController < ApplicationController
   def add
     respond_to do |format| 
       format.json do
-        puts format.html.to_yaml
         @ajax = Tests::Ajax.create!(name: (((Tests::Ajax.last ? Tests::Ajax.last.id : 0) + 1).to_s))
         all
       end

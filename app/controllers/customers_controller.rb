@@ -34,6 +34,13 @@ class CustomersController < ApplicationController
     render "new."+preferences_customer_type?.to_s
   end
   
+  def update_advanced_fields    
+    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
+    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
+    
+    @person.associateds = params[:associateds_select] ? params[:associateds_select].collect { |assoc| CustomerPj.find assoc }.uniq : []    
+  end
+  
   def create
     if (params[:customer]==nil)
       return
@@ -41,10 +48,10 @@ class CustomersController < ApplicationController
     
     @customer = Customer.new(params[:customer])
     @person = CustomerPj.new(params[:customer_pj])
+
     @customer.person = @person
     
-    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
-    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
+    update_advanced_fields
     
     if @customer.save
       flash[:success] = t("helpers.forms.new_sucess")
@@ -59,13 +66,11 @@ class CustomersController < ApplicationController
     
     params_pj = params[:customer][:customer_pj]
     params[:customer].delete :customer_pj
-    puts params[:customer].to_yaml
     
     #@customer = Customer.find params[:id]
     @person = @customer.person
     
-    @person.segments = params[:segments_select] ? params[:segments_select].collect { |bsid| BusinessSegment.find bsid }.uniq : []
-    @person.activities = params[:activities_select] ? params[:activities_select].collect { |baid| BusinessActivity.find baid }.uniq : []
+    update_advanced_fields
     
     if @person.save && @customer.update_attributes(params[:customer]) && @person.update_attributes(params_pj)
       flash[:success] = t("helpers.forms.new_sucess")
@@ -91,19 +96,19 @@ class CustomersController < ApplicationController
   
   
   def multiselect_business_segments
-    res = []
-    BusinessSegment.all.each {|b| res << {:key => b.id.to_s, :value => b.name} }
-    render :json => res
+    render :json => BusinessSegment.where(["name ilike ?", "%"+params[:tag]+"%"] ).collect { |c| { :key => c.id.to_s, :value => c.name } }
   end
   
   def multiselect_business_activities
-    res = []
-    BusinessActivity.all.each {|b| res << {:key => b.id.to_s, :value => b.name} }
-    render :json => res
+    render :json => BusinessActivity.where(["name ilike ?", "%"+params[:tag]+"%"] ).collect { |c| { :key => c.id.to_s, :value => c.name } }
   end
   
   def custom_load_creator
     params[:customer_pj] = params[:customer][:customer_pj]
     params[:customer].delete :customer_pj
+  end
+  
+  def multiselect_customers_pj
+    render :json => CustomerPj.includes(:customer).where(["(customers.name ilike ?  or customers.name_sec ilike ?)", params[:tag]+"%", params[:tag]+"%"] ).collect { |c| { :key => c.id.to_s, :value => c.customer.name } }
   end
 end

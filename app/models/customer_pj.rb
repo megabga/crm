@@ -18,6 +18,14 @@ class CustomerPj < ActiveRecord::Base
   #person
   has_one	:customer, :as => :person
   
+  has_many :associations, foreign_key: "from_id", class_name: "CustomerPjHasCustomersPj"
+  has_many :associateds, through: :associations, source: :to
+  
+  has_many :reverse_associations, foreign_key: "to_id",
+                                     class_name:  "CustomerPjHasCustomersPj",
+                                     dependent:   :destroy
+  has_many :associates, through: :reverse_associations, source: :from          
+  
   #many-to-many helpers <-----------------------------------
   
   def new_customer_segments_attributes=(segment_attributes)
@@ -50,6 +58,14 @@ class CustomerPj < ActiveRecord::Base
   
   def prefix
     "pj"
+  end
+  
+  def associate_to!(customer_pj)
+    associations.create!(to: customer_pj)
+  end
+  
+  def name
+    customer.name
   end
   
 end

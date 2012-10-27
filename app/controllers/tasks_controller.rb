@@ -93,8 +93,6 @@ class TasksController < ApplicationController
     
     
     respond_to do |format|
-      puts params.to_yaml
-      puts @task.to_yaml
       
       if @task.update_attributes(params[:task])
         format.html { redirect_to([@task.interested, @task], :notice => I18n.t('forms.update.sucess')) }

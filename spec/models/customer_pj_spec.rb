@@ -30,6 +30,10 @@ describe CustomerPj do
   it { should respond_to :segments }
   it { should respond_to :activities }
   
+  it { should respond_to(:associateds) }
+  it { should respond_to(:associates) }
+  it { should respond_to(:associate_to!) }
+  
   it { should be_valid }
   
   describe "validate on default attributes" do
@@ -53,6 +57,16 @@ describe CustomerPj do
         @customer.save
       end.to_not raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end    
+  end
+  
+  describe "has many custemers_pj" do
+    before do
+      @customer.save
+      @anothers_pj = Array.new(2) { Factory(:customer_pj) }
+      @anothers_pj.each { |pj| @customer.person.associate_to!(pj) }
+    end
+    
+    it { @anothers_pj.each { |another_pj| @customer.person.associateds.should include(another_pj) } }
   end
   
 end
