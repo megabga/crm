@@ -5,7 +5,9 @@ pt-BR:
     "no": "Não"
     empty: "Vazio"
     all: "Todos"
-  
+    min: "Mínimo"
+    max: "Máximo"  
+    
   crm:
     title:
       full: "Gestão do Relacionamento de Clientes"
@@ -83,6 +85,7 @@ pt-BR:
     cnpj: "CNPJ"
     inscricao_estadual: "Inscrição estadual"
     
+    contact_name: "Com Contato de Nome"
     
     contacts: &attr_contacts
       name: "Nome"
@@ -108,7 +111,10 @@ pt-BR:
         title: "Exibindo Contato"
       search:
           title: "Filtro Contatos"
-      
+
+  searches:
+      advanced: "Avançado"
+
   tasks: &attr_tasks
     title: "Histórico do Cliente"
     link: "Histórico"
