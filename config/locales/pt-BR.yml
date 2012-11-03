@@ -213,13 +213,39 @@ pt-BR:
       user: "Usuário"
       link: "Permissões de Acesso"
       title: "Permissões de Acesso para %{user}"
-      
+  
+  company_businesses:
+    link: "Áreas de Negócio"
+    title: "Áreas de Negócio"
+  
   business_segments:
     link: "Segmentos"
+    title: "Segmentos"
     
   business_activities:
     link: "Atividades"
+    title: "Atividades"
 
+  districts:
+    link: "Bairros"
+    title: "Bairros"
+  
+  cities:
+    link: "Cidades"
+    title: "Cidades"
+  
+  states:
+    link: "Estados"
+    title: "Estados"
+  
+  business_departments:
+    link: "Setores"
+    title: "Setores das Empresas"
+  
+  task_types:
+    link: "Atividades"
+    title: "Atividades"
+  
   #SECTIONS <===================================
   
   account:
@@ -271,12 +297,17 @@ pt-BR:
     modules: &system_modules
       business_segment: "Segmento"
       business_activity: "Atividade"
+      business_department: "Setor"
+      city: "Cidade"
+      state: "Estado"
+      district: "Bairro"
       company_business: "Área de Negócio"
       customer: "Cliente"
       contact: "Contato"
       user: "Usuário"
       task: "Tarefa"
       task_type: "Tipo de Tarefa"
+      
     abilities:
       READ: "Ler"
       CREATE: "Criar"

@@ -1,8 +1,8 @@
 /* override bootstrap default variables */
 $linkColor:      #cc0000;
 $linkColorHover: #cc3333;
-$navbarBackground: #400;
-$navbarBackgroundHighlight: black;
+$navbarInverseBackground: #400;
+$navbarInverseBackgroundHighlight: black;
 $navbarHeight: 46px;
 
 @import "bootstrap";
@@ -10,7 +10,7 @@ $navbarHeight: 46px;
 /* mixins, variables, etc. */
 $grayMediumLight: #eaeaea;
 
-/* universal */
+/* Base */
 
 html {
   overflow-y: scroll;

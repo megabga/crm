@@ -3,7 +3,6 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 require "active_support/json"
 
-
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -13,6 +12,8 @@ end
 
 module GUARACRM
   class Application < Rails::Application
+    
+    Dir[Rails.root.join("config/guara/*.rb")].each {|f| require f}
     
     #TASKS CONFIGURATION
     TASKS_DUE_CRITICAL_DAYS_REMAINING = 4

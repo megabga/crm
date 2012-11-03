@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
     Rails.logger.fatal "Access denied on #{exception.action} #{exception.subject.inspect}"
     redirect_to root_url, :flash => { :error => exception.message }
   end
+  
 end

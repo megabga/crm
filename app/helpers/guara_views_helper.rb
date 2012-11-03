@@ -14,7 +14,7 @@ module GuaraViewsHelper
     link_to(t("helpers.forms.#{name}"), '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
   
-  def nbsp value
+  def nbsp(value)
     if value.nil? || ((value.kind_of? String) &&  value.empty?)
       raw "&nbsp;"
     else

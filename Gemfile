@@ -5,14 +5,15 @@ gem 'pg', '0.12.2'
 
 gem "meta_search"
 
-# Bootstrap and layouting
-gem 'bootstrap-sass', '2.0.3'
 gem 'will_paginate', '3.0.3'
+
+# Bootstrap and layouting
+gem 'bootstrap-sass', '~> 2.1.1.0'
 gem 'bootstrap-will_paginate', '0.0.6'
+
+# Forms
 gem 'rails3-jquery-autocomplete'
 gem 'formtastic-bootstrap'
-#gem 'bootstrap-datepicker-rails'
-#gem 'bootstrap-timepicker-rails'
 
 #test support
 gem 'faker', '1.0.1'
@@ -27,6 +28,11 @@ gem 'bcrypt-ruby', '3.0.1'
 #BR
 gem 'brazilian-rails'
 gem 'rails-i18n'
+
+gem 'jquery-rails'
+
+gem 'activeadmin', '0.5.0'
+
 
 group :development do
 	gem 'annotate', '~> 2.4.1.beta'
@@ -50,8 +56,6 @@ group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
 end
-
-gem 'jquery-rails'
 
 group :test do
   gem 'capybara', '1.1.2'

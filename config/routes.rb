@@ -1,5 +1,7 @@
 GUARACRM::Application.routes.draw do  
 
+  ActiveAdmin.routes(self)
+
   resources :company_businesses
 
   resources :districts
