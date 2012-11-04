@@ -18,7 +18,7 @@ class CreateTasks < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :tasks, :interested_id
+    add_index :tasks, [:interested_id, :interested_type]
     add_index :tasks, :status_id
     add_index :tasks, :assigned_id
     add_index :tasks, :type_id

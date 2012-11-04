@@ -20,7 +20,7 @@ describe "Customer Pages" do
     
     describe "show customer" do
       
-      descibe "field associateds" do
+      describe "field associateds" do
         before { customer.person.associate_to(Factory(:customer_pj).person) }
         
         it { should have_content(customer.person.associateds[0].name) }

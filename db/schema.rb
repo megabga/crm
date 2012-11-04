@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103183646) do
+ActiveRecord::Schema.define(:version => 20121104141751) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(:version => 20121103183646) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.integer  "district_id"
+    t.string   "address",          :limit => 120
+    t.string   "complement",       :limit => 30
+    t.string   "postal_code",      :limit => 20
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "addresses", ["state_id", "city_id"], :name => "index_addresses_on_state_id_and_city_id"
 
   create_table "business_activities", :force => true do |t|
     t.string   "name",       :limit => 30
@@ -86,6 +102,19 @@ ActiveRecord::Schema.define(:version => 20121103183646) do
     t.integer  "activity_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "customer_financials", :force => true do |t|
+    t.integer  "customer_id"
+    t.boolean  "billing_address_different"
+    t.integer  "billing_address_id"
+    t.integer  "contact_leader_id"
+    t.boolean  "payment_pending"
+    t.string   "payment_pending_message",   :limit => 500
+    t.integer  "address_id"
+    t.string   "notes",                     :limit => 1000
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "customer_has_customers", :force => true do |t|
